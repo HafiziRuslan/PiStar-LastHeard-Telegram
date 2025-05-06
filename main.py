@@ -15,6 +15,7 @@ from telegram.ext import Application as TelegramApplication
 # Environment variables
 TG_BOTTOKEN = ""
 TG_CHATID = ""
+GW_ADDRESS = ""
 
 # Project variables
 TG_APP: TelegramApplication = None
@@ -42,6 +43,7 @@ class DstarLogLine:
     rpt1: str = ""
     rpt2: str = ""
     src: str = ""
+    qrz_url: str = ""
 
     def __init__(self, logline: str):
         """
@@ -60,11 +62,12 @@ class DstarLogLine:
 
         # Extract and assign fields
         self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S")
-        self.my = match.group("my").strip()
-        self.your = match.group("your").strip()
-        self.rpt1 = match.group("rpt1").strip()
-        self.rpt2 = match.group("rpt2").strip()
-        self.src = match.group("src").strip()
+        self.my = remove_double_spaces(match.group("my").strip())
+        self.your = remove_double_spaces(match.group("your").strip())
+        self.rpt1 = remove_double_spaces(match.group("rpt1").strip())
+        self.rpt2 = remove_double_spaces(match.group("rpt2").strip())
+        self.src = remove_double_spaces(match.group("src").strip())
+        self.qrz_url = f"https://www.qrz.com/db/{self.my.split('/')[0].strip()}"
 
     def __str__(self):
         """
@@ -74,6 +77,24 @@ class DstarLogLine:
             f"Timestamp: {self.timestamp}, My: {self.my}, Your: {self.your}, "
             f"Rpt1: {self.rpt1}, Rpt2: {self.rpt2}, Src: {self.src}"
         )
+
+    def get_telegram_message(self) -> str:
+        """
+        Returns a formatted message for Telegram.
+        """
+        message = (
+            f"<b>Time:</b> {self.timestamp} UTC\n"
+            f"<b>Call:</b> <a href=\"{self.qrz_url}\">{self.my}</a>\n"
+            f"<b>Dest:</b> {self.your}\n"
+            f"<b>Rpt1:</b> {self.rpt1}\n"
+            f"<b>Rpt2:</b> {self.rpt2}"
+        )
+
+        if GW_ADDRESS:
+            message += f"\n<b>Src: </b> {'Local RF' if GW_ADDRESS in self.src else 'Network'}"
+        
+        return message
+
         
 def get_dstar_logs_path() -> str:
     """
@@ -106,25 +127,27 @@ def get_last_line_of_file(file_path: str) -> str:
     """
     Reads the last line of a file.
     """
-    with open(file_path, 'rb') as file:
-        file.seek(-2, os.SEEK_END)  # Move to the end of the file
-        while file.read(1) != b'\n':  # Read backwards until we find a newline
-            file.seek(-2, os.SEEK_CUR)
-        last_line = file.readline().decode()
-    return last_line.strip()
+    with open(file_path, 'r', encoding="UTF-8", errors="replace") as file:
+        # Read the entire file into memory
+        content = file.readlines()
 
-def build_tg_message(log_line: DstarLogLine) -> str:
-    """
-    Builds a Telegram message from the DStar log line.
-    """
-    return (
-        f"<b>Timestamp:</b> {log_line.timestamp} UTC\n"
-        f"<b>My:</b> {log_line.my}\n"
-        f"<b>Your:</b> {log_line.your}\n"
-        f"<b>Rpt1:</b> {log_line.rpt1}\n"
-        f"<b>Rpt2:</b> {log_line.rpt2}\n"
-        #f"<b>Src:</b> {log_line.src}"
-    )
+        # Extract the last line only if anything is present
+        last_line = ""
+
+        while len(last_line) < 10 and content:
+            # Read the last line
+            last_line = content.pop()
+        
+        if len(last_line) < 10:
+            return ""
+        
+        last_line = content.pop() if content else b""
+        # Remove any trailing newline characters
+        last_line = last_line.replace('\n', '')
+        # Remove any leading and trailing whitespace
+        last_line = last_line.strip()
+        # Return the last line
+        return last_line
 
 async def logs_to_telegram(tg_message: str):
     """
@@ -145,6 +168,14 @@ async def logs_to_telegram(tg_message: str):
         except Exception as e:
             logging.error(f"Failed to send message to Telegram: {e}")
 
+def remove_double_spaces(text: str) -> str:
+    """
+    Removes double spaces from a string.
+    """
+    while "  " in text:
+        text = text.replace("  ", " ")
+    return text
+
 ### Environment variables ###
 
 def load_env_variables():
@@ -155,16 +186,22 @@ def load_env_variables():
     load_dotenv()
 
     # Load environment variables
-    global TG_BOTTOKEN, TG_CHATID, MKT_API_ADDRESS
+    global TG_BOTTOKEN, TG_CHATID, GW_ADDRESS
     
     TG_BOTTOKEN = os.getenv("TG_BOTTOKEN")
     TG_CHATID = os.getenv("TG_CHATID")
+    GW_ADDRESS = os.getenv("GW_ADDRESS")
 
     # Validate environment variables
     if not TG_BOTTOKEN:
         raise ValueError("TG_BOTTOKEN is not set in the environment variables.")
     if not TG_CHATID:
         raise ValueError("TG_CHATID is not set in the environment variables.")
+    if not GW_ADDRESS:
+        logging.warning("Invalid GW_ADDRESS, the src field will not be set.")
+        GW_ADDRESS = None
+
+    logging.info("Environment variables loaded successfully.")
 
 ### Telegram application builder ###
 
@@ -207,7 +244,7 @@ def dstar_logs_watcher(main_loop: asyncio.AbstractEventLoop):
                     logging.info(f"New log entry: {parsed_line}")
                     last_event = parsed_line.timestamp
                     # Build the Telegram message
-                    tg_message = build_tg_message(parsed_line)
+                    tg_message = parsed_line.get_telegram_message()
                     if tg_message and TG_APP:
                         try:
                             asyncio.run_coroutine_threadsafe(logs_to_telegram(tg_message), main_loop)
