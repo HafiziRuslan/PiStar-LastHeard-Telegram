@@ -46,6 +46,14 @@ The script will:
 - Install the required dependencies.
 - Start the bot and monitor the DStar logs.
 
+## Automatic execution
+
+To run the script at boot, add an entry in cron:
+
+```bash
+@reboot cd /home/pi-star/lastheard && chmod +x ./main.sh  && ./main.sh > /tmp/lastheard.txt 2>&1
+```
+
 ## File Structure
 
 - `main.py`: The main script that contains the bot logic and log monitoring functionality.
