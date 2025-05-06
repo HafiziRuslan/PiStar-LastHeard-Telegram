@@ -141,7 +141,6 @@ def get_last_line_of_file(file_path: str) -> str:
         if len(last_line) < 10:
             return ""
         
-        last_line = content.pop() if content else b""
         # Remove any trailing newline characters
         last_line = last_line.replace('\n', '')
         # Remove any leading and trailing whitespace
@@ -205,7 +204,7 @@ def load_env_variables():
 
 ### Telegram application builder ###
 
-def build_telegram_app():
+def build_telegram_app(main_loop: asyncio.AbstractEventLoop):
     """
     Build the Telegram application.
     """
@@ -233,6 +232,10 @@ def dstar_logs_watcher(main_loop: asyncio.AbstractEventLoop):
         logging.info(f"Latest DStar log file: {log_path}")
         while not shutdown_flag.is_set():
             try:
+                while TG_APP is None:
+                    logging.debug("Waiting for Telegram application to be built...")
+                    time.sleep(1)
+                
                 # Parse the last line of the log file
                 last_line = get_last_line_of_file(log_path)
                 logging.debug(f"Last line of log file: {last_line}")
@@ -260,6 +263,24 @@ def dstar_logs_watcher(main_loop: asyncio.AbstractEventLoop):
     except Exception as e:
         logging.error(f"Error: {e}")
 
+def run_bot(main_loop: asyncio.AbstractEventLoop) -> None:
+    global TG_APP
+
+    while not shutdown_flag.is_set():
+        try:
+            # Build the Telegram application
+            build_telegram_app(main_loop)
+            logging.info("Telegram application built successfully.")
+            # Start the bot
+            TG_APP.run_polling()
+        except Exception as e:
+            logging.error(f"Error running Telegram bot: {e}")
+            time.sleep(5)
+
+    logging.info("Stopping Telegram bot...")
+    TG_APP.stop()
+    logging.info("Telegram bot stopped.")
+
 ### Main function ###
 
 def main():
@@ -272,27 +293,29 @@ def main():
     # Load environment variables
     load_env_variables()
 
-    # Build the Telegram application
-    build_telegram_app()
+    # Create an event loop
+    loop = asyncio.new_event_loop()
+
+    # Start the Telegram application
+    tg_thread = threading.Thread(target=run_bot, args=(loop,), daemon=False)
+    tg_thread.start()
 
     # Start the logs server
-    loop = asyncio.get_event_loop()
     logs_thread = threading.Thread(target=dstar_logs_watcher, args=(loop,), daemon=False)
     logs_thread.start()
 
     # Start the Telegram bot
     try:
-        logging.info("Starting Telegram bot...")
-        TG_APP.run_polling()
-    except KeyboardInterrupt:
+        logging.info("Starting loop...")
+        while True:
+            time.sleep(1)
+    except:
         logging.info("Stopping Telegram bot...")
         shutdown_flag.set()
         logs_thread.join()
-        TG_APP.stop()
-    except Exception as e:
-        logging.error(f"An error occurred: {e}")
+        tg_thread.join()
     finally:
-        logging.info("Exiting...")
+        logging.info("Exiting main loop...")
 
 ### Script entry point ###
 
@@ -307,4 +330,4 @@ if __name__ == "__main__":
     except Exception as e:
         logging.error(f"An error occurred: {e}")
     finally:
-        logging.info("Exiting...")
+        logging.info("Exiting script...")
