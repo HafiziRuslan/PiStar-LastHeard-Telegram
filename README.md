@@ -30,6 +30,7 @@ cd pistar-lastheard-telegram
 ```
 TG_BOTTOKEN=<your-telegram-bot-token>
 TG_CHATID=<your-telegram-chat-id>
+GW_ADDRESS=172.16.0.1
 ```
 
 ## Usage
