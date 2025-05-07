@@ -63,9 +63,9 @@ class DstarLogLine:
         # Extract and assign fields
         self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S")
         self.my = remove_double_spaces(match.group("my").strip())
-        self.your = remove_double_spaces(match.group("your").strip())
-        self.rpt1 = remove_double_spaces(match.group("rpt1").strip())
-        self.rpt2 = remove_double_spaces(match.group("rpt2").strip())
+        self.your = match.group("your").strip()
+        self.rpt1 = match.group("rpt1").strip()
+        self.rpt2 = match.group("rpt2").strip()
         self.src = remove_double_spaces(match.group("src").strip())
         self.qrz_url = f"https://www.qrz.com/db/{self.my.split('/')[0].strip()}"
 
@@ -80,18 +80,30 @@ class DstarLogLine:
 
     def get_telegram_message(self) -> str:
         """
-        Returns a formatted message for Telegram.
+        Returns a formatted message for Telegram with emojis.
         """
-        message = (
-            f"<b>Time:</b> {self.timestamp} UTC\n"
-            f"<b>Call:</b> <a href=\"{self.qrz_url}\">{self.my}</a>\n"
-            f"<b>Dest:</b> {self.your}\n"
-            f"<b>Rpt1:</b> {self.rpt1}\n"
-            f"<b>Rpt2:</b> {self.rpt2}"
-        )
+        message = f"🕒 <b>Time:</b> {self.timestamp} UTC\n"
+        message += f"\n📡 <b>Call:</b> <a href=\"{self.qrz_url}\">{self.my}</a>"
 
         if GW_ADDRESS:
-            message += f"\n<b>Src: </b> {'Local RF' if GW_ADDRESS in self.src else 'Network'}"
+            message += f" ({'Local RF' if GW_ADDRESS in self.src else 'Network'})"
+
+        message += f"\n🎯 <b>Dest:</b> {self.your}"
+        message += f"\n📶 <b>Rpt1:</b> {self.rpt1}"
+        message += f"\n📶 <b>Rpt2:</b> {self.rpt2}"
+
+        if self.your.startswith("/"):
+            message += f"\n\n➡️ <b>Action:</b> Routing to {self.your[1:]}"
+        elif self.your.startswith("CQCQCQ"):
+            message += "\n\n📢 <b>Action:</b> Call to all stations"
+        if self.your.endswith("L"):
+            message += f"\n\n🔗 <b>Action:</b> Link to {self.your[:-1]}"
+        elif self.your.endswith("U"):
+            message += f"\n\n❌ <b>Action:</b> Unlink reflector"
+        elif self.your.endswith("I"):
+            message += f"\n\nℹ️ <b>Action:</b> Get repeater info"
+        elif self.your.endswith("E"):
+            message += f"\n\n🔄 <b>Action:</b> Echo test"
         
         return message
 
