@@ -23,7 +23,7 @@ shutdown_flag = threading.Event()  # Create a shutdown flag
 
 def configure_logging():
     logging.basicConfig(
-        level=logging.DEBUG,
+        level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
         # handlers=[
         #     logging.FileHandler("dstar_log_parser.log"),
@@ -141,7 +141,6 @@ def get_last_line_of_file(file_path: str) -> str:
         if len(last_line) < 10:
             return ""
         
-        last_line = content.pop() if content else b""
         # Remove any trailing newline characters
         last_line = last_line.replace('\n', '')
         # Remove any leading and trailing whitespace
@@ -203,24 +202,10 @@ def load_env_variables():
 
     logging.info("Environment variables loaded successfully.")
 
-### Telegram application builder ###
-
-def build_telegram_app():
-    """
-    Build the Telegram application.
-    """
-
-    global TG_APP
-    logging.info("Building Telegram application...")
-    TG_APP = ApplicationBuilder().token(TG_BOTTOKEN).build()
-
-### Observer for DStar logs ###
-
-def dstar_logs_watcher(main_loop: asyncio.AbstractEventLoop):
+async def dstar_logs_observer():
     """
     Watches the DStar logs and sends updates to the Telegram bot.
     """
-
     global TG_APP
 
     logging.info("Starting DStar log file retrieval...")
@@ -246,53 +231,61 @@ def dstar_logs_watcher(main_loop: asyncio.AbstractEventLoop):
                     # Build the Telegram message
                     tg_message = parsed_line.get_telegram_message()
                     if tg_message and TG_APP:
-                        try:
-                            asyncio.run_coroutine_threadsafe(logs_to_telegram(tg_message), main_loop)
-                        except Exception as e:
-                            logging.error(f"Failed to send log line to Telegram: {e}")
+                        await logs_to_telegram(tg_message)
                 else:
                     logging.debug("No new log entry found.")
             except Exception as e:
                 logging.error(f"Error reading log file: {e}")
             finally:
                 # Sleep for a while before checking again
-                time.sleep(1)
+                await asyncio.sleep(1)
     except Exception as e:
         logging.error(f"Error: {e}")
 
-### Main function ###
-
-def main():
+async def main():
     """
-    Main function to initialize and run the Telegram bot.
+    Main function to initialize and run the Telegram bot and DStar logs observer.
     """
-
     global TG_APP
 
     # Load environment variables
     load_env_variables()
 
     # Build the Telegram application
-    build_telegram_app()
+    tg_app_built = False
+    while not tg_app_built:
+        try:
+            TG_APP = ApplicationBuilder().token(TG_BOTTOKEN).build()
+            tg_app_built = True
+            logging.info("Telegram application built successfully.")
+        except Exception as e:
+            logging.error(f"Error building Telegram application: {e}")
+            await asyncio.sleep(5)
 
-    # Start the logs server
-    loop = asyncio.get_event_loop()
-    logs_thread = threading.Thread(target=dstar_logs_watcher, args=(loop,), daemon=False)
-    logs_thread.start()
+    async with TG_APP:
+        tg_app_started = False
+        while not tg_app_started:
+            try:
+                logging.info("Starting Telegram bot...")
+                await TG_APP.initialize()
+                await TG_APP.start()
+                await TG_APP.updater.start_polling()
+                tg_app_started = True
+                logging.info("Telegram bot started successfully.")
+            except Exception as e:
+                logging.error(f"Error starting Telegram bot: {e}")
+                await asyncio.sleep(5)
 
-    # Start the Telegram bot
-    try:
-        logging.info("Starting Telegram bot...")
-        TG_APP.run_polling()
-    except KeyboardInterrupt:
-        logging.info("Stopping Telegram bot...")
-        shutdown_flag.set()
-        logs_thread.join()
-        TG_APP.stop()
-    except Exception as e:
-        logging.error(f"An error occurred: {e}")
-    finally:
-        logging.info("Exiting...")
+        try:
+            # Run the DStar logs observer in parallel
+            logging.info("Starting DStar logs observer...")
+            await dstar_logs_observer()
+        except asyncio.CancelledError:
+            logging.info("DStar logs observer cancelled.")
+        finally:
+            # Stop the Telegram bot
+            await TG_APP.updater.stop()
+            await TG_APP.stop()
 
 ### Script entry point ###
 
@@ -301,10 +294,10 @@ if __name__ == "__main__":
 
     try:
         logging.info("Starting the application...")
-        main()
+        asyncio.run(main())
     except KeyboardInterrupt:
         logging.info("Stopping application...")
     except Exception as e:
         logging.error(f"An error occurred: {e}")
     finally:
-        logging.info("Exiting...")
+        logging.info("Exiting script...")
