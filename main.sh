@@ -11,4 +11,8 @@ source venv/bin/activate
 echo "Installing dependencies"
 pip install -r requirements.txt
 echo "Running main.py"
-python3 ./main.py
+while true; do
+    python3 ./main.py
+    echo "Script exited. Waiting for 10 seconds before the next run."
+    sleep 10
+done
