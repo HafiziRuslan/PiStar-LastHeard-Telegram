@@ -247,7 +247,7 @@ async def dstar_logs_observer():
                     logging.info(f"New log entry: {parsed_line}")
                     last_event = parsed_line.timestamp
                     # Check if the message is from the gateway
-                    if GW_IGNORE_TIME_MESSAGES and parsed_line.my.contains("/TIME"):
+                    if GW_IGNORE_TIME_MESSAGES and "/TIME" in parsed_line.my:
                         logging.info("Ignoring time message from gateway.")
                         continue
                     # Build the Telegram message
