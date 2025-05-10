@@ -13,9 +13,10 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, filte
 from telegram.ext import Application as TelegramApplication
 
 # Environment variables
-TG_BOTTOKEN = ""
-TG_CHATID = ""
-GW_ADDRESS = ""
+TG_BOTTOKEN: str = ""
+TG_CHATID: str = ""
+GW_ADDRESS: str = ""
+GW_IGNORE_TIME_MESSAGES: bool = True
 
 # Project variables
 TG_APP: TelegramApplication = None
@@ -37,6 +38,7 @@ def configure_logging():
     logging.getLogger("httpx").setLevel(logging.WARNING)
 
 class DstarLogLine:
+
     timestamp: datetime = None
     my: str = ""
     your: str = ""
@@ -107,7 +109,8 @@ class DstarLogLine:
         
         return message
 
-        
+### Dstar log functions ###
+
 def get_dstar_logs_path() -> str:
     """
     Finds and returns the path to the latest DStar log file.
@@ -197,11 +200,12 @@ def load_env_variables():
     load_dotenv()
 
     # Load environment variables
-    global TG_BOTTOKEN, TG_CHATID, GW_ADDRESS
+    global TG_BOTTOKEN, TG_CHATID, GW_ADDRESS, GW_IGNORE_TIME_MESSAGES
     
     TG_BOTTOKEN = os.getenv("TG_BOTTOKEN")
     TG_CHATID = os.getenv("TG_CHATID")
     GW_ADDRESS = os.getenv("GW_ADDRESS")
+    GW_IGNORE_TIME_MESSAGES = os.getenv("GW_IGNORE_MESSAGES", "True").lower() == "true"
 
     # Validate environment variables
     if not TG_BOTTOKEN:
@@ -211,6 +215,8 @@ def load_env_variables():
     if not GW_ADDRESS:
         logging.warning("Invalid GW_ADDRESS, the src field will not be set.")
         GW_ADDRESS = None
+    if GW_IGNORE_TIME_MESSAGES:
+        logging.warning("GW_IGNORE_MESSAGES is set to True, messages from the gateway will be ignored.")
 
     logging.info("Environment variables loaded successfully.")
 
@@ -240,6 +246,10 @@ async def dstar_logs_observer():
                 if last_event is None or parsed_line.timestamp > last_event:
                     logging.info(f"New log entry: {parsed_line}")
                     last_event = parsed_line.timestamp
+                    # Check if the message is from the gateway
+                    if GW_IGNORE_TIME_MESSAGES and parsed_line.my.contains("/TIME"):
+                        logging.info("Ignoring time message from gateway.")
+                        continue
                     # Build the Telegram message
                     tg_message = parsed_line.get_telegram_message()
                     if tg_message and TG_APP:

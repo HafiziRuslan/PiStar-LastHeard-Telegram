@@ -27,10 +27,15 @@ cd pistar-lastheard-telegram
 
 2. Create a `.env` file in the project directory and add the following environment variables:
 
-```
+```env
+# Telegram bot token
 TG_BOTTOKEN=<your-telegram-bot-token>
+# Target chat where to send messages
 TG_CHATID=<your-telegram-chat-id>
+# Address of the RP2C device
 GW_ADDRESS=172.16.0.1
+# Ignore the time server messages?
+GW_IGNORE_TIME_MESSAGES = True
 ```
 
 ## Usage
@@ -51,7 +56,7 @@ The script will:
 To run the script at boot, add an entry in cron:
 
 ```bash
-@reboot cd /home/pi-star/lastheard && chmod +x ./main.sh  && ./main.sh > /tmp/lastheard.txt 2>&1
+@reboot cd /home/pi-star/lastheard && ./main.sh > /tmp/lastheard.txt 2>&1
 ```
 
 ## File Structure
@@ -85,6 +90,10 @@ Install them using:
 ```bash
 pip install -r requirements.txt
 ```
+
+## Tips when running on Pi-Star
+
+As Pi-Star starts the device in read-only mode, I suggest commenting out the `pip install ...` line in `main.sh` to avoid errors due to read-only mode
 
 ## Logging
 
