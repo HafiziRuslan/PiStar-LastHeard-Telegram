@@ -1,10 +1,10 @@
 # Pi-Star Last Heard Telegram Bot
 
-This project is a Python-based Telegram bot that monitors DStar logs and sends updates to a specified Telegram chat. It uses the `python-telegram-bot` library to interact with Telegram and parses DStar log files to extract relevant information.
+This project is a Python-based Telegram bot that monitors DStar logs and sends updates to a specified Telegram chat. It uses the `python-telegram-bot` library to interact with Telegram and parses DStar or MMDVM log files to extract relevant information.
 
 ## Features
 
-- Monitors DStar log files for new entries.
+- Monitors DStar/MMDVM log files for new entries.
 - Parses log entries and formats them into readable messages.
 - Sends updates to a Telegram chat using a bot.
 - Configurable via environment variables.
@@ -32,10 +32,21 @@ cd pistar-lastheard-telegram
 TG_BOTTOKEN=<your-telegram-bot-token>
 # Target chat where to send messages
 TG_CHATID=<your-telegram-chat-id>
-# Address of the RP2C device
+# Address of the RP2C device (only for dstar gateway log monitoring)
 GW_ADDRESS=172.16.0.1
 # Ignore the time server messages?
-GW_IGNORE_TIME_MESSAGES = True
+GW_IGNORE_TIME_MESSAGES=True
+```
+
+3. Choose the script you want to use to run the bot:
+   - `main-dstargateway.py`: Run the bot which monitors the Dstar Gateway log file (for gateways running ICOM hardware).
+   - `main-mmdvm.py`: Run the bot which monitors the MMDVM log file (for gateways running MMDVM hardware).
+
+4. Rename the chosen script to `main.py`
+   - For example, if you want to use the Dstar Gateway log monitoring script:
+
+```bash
+mv main-dstargateway.py main.py
 ```
 
 ## Usage
@@ -47,6 +58,7 @@ The bot can be launched using the following command:
 ```
 
 The script will:
+
 - Create and activate a virtual environment (if not already created).
 - Install the required dependencies.
 - Start the bot and monitor the DStar logs.
@@ -82,6 +94,7 @@ To run the script at boot, add an entry in cron:
 > If using the `main.sh` script, all dependencies and virtual environment are created automatically
 
 The project requires the following Python libraries:
+
 - `python-telegram-bot`: For interacting with the Telegram Bot API.
 - `dotenv`: For loading environment variables from a `.env` file.
 
