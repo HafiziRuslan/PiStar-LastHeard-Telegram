@@ -155,7 +155,7 @@ class MMDVMLogLine:
         if self.mode == "DMR":
             base += f", Slot: {self.slot}"
             if self.is_network is True:
-                base += f", Duration: {self.duration}s, PL: {self.packet_loss}%, BER: {self.ber}%"
+                base += f", Duration: {self.duration}s, Packet Loss: {self.packet_loss}%, BER: {self.ber}%"
             else:
                 base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi}dBm"
         return base
