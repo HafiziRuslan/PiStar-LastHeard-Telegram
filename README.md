@@ -21,7 +21,7 @@ This project is a Python-based Telegram bot that monitors DStar logs and sends u
 1. Clone the repository to your Pi-Star system:
 
 ```bash
-git clone https://github.com/iu2frl/pistar-lastheard-telegram
+git clone https://github.com/HafiziRuslan/pistar-lastheard-telegram
 cd pistar-lastheard-telegram
 ```
 
@@ -35,9 +35,9 @@ TG_CHATID=<your-telegram-chat-id>
 # Address of the RP2C device (only for dstar gateway log monitoring)
 GW_ADDRESS=172.16.0.1
 # Ignore the time server messages?
-GW_IGNORE_TIME_MESSAGES=True
+GW_IGNORE_TIME_MESSAGES=true
 ```
-
+<!--
 3. Choose the script you want to use to run the bot:
    - `main-dstargateway.py`: Run the bot which monitors the Dstar Gateway log file (for gateways running ICOM hardware).
    - `main-mmdvm.py`: Run the bot which monitors the MMDVM log file (for gateways running MMDVM hardware).
@@ -48,12 +48,13 @@ GW_IGNORE_TIME_MESSAGES=True
 ```bash
 mv main-dstargateway.py main.py
 ```
-
+ -->
 ## Usage
 
 The bot can be launched using the following command:
 
 ```bash
+sudo chmod a+x ./main.sh
 ./main.sh
 ```
 
@@ -79,13 +80,13 @@ To run the script at boot, add an entry in cron:
 
 ## How It Works
 
-1. **Log Monitoring**:  
+1. **Log Monitoring**:
     The bot reads the latest DStar log file and extracts the last line. It parses the log line using a regex pattern to extract fields like timestamp, callsigns, and repeaters.
 
-2. **Telegram Integration**:  
+2. **Telegram Integration**:
     The bot formats the parsed log entry into an HTML message and sends it to the specified Telegram chat using the `python-telegram-bot` library.
 
-3. **Environment Variables**:  
+3. **Environment Variables**:
     The bot uses environment variables (`TG_BOTTOKEN` and `TG_CHATID`) to configure the Telegram bot token and chat ID.
 
 ## Dependencies
@@ -96,7 +97,7 @@ To run the script at boot, add an entry in cron:
 The project requires the following Python libraries:
 
 - `python-telegram-bot`: For interacting with the Telegram Bot API.
-- `dotenv`: For loading environment variables from a `.env` file.
+- `python-dotenv`: For loading environment variables from a `.env` file.
 
 Install them using:
 
