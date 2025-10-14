@@ -6,7 +6,7 @@ import glob
 import logging
 import asyncio
 import threading
-from datetime import datetime, timedelta
+from datetime import datetime
 from dotenv import load_dotenv
 
 from telegram import Update, Message
@@ -46,7 +46,6 @@ class MMDVMLogLine:
     callsign: str = ""
     destination: str = ""
     duration: str = ""
-    blocks: str = ""
     packet_loss: str = ""
     ber: str = ""
     rssi: str = ""
@@ -62,9 +61,9 @@ class MMDVMLogLine:
         # Check if it's a DMR line
         dmr_pattern = (
             r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
-            r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:late entry|voice header|end of voice transmission|data header) "
+            r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:late entry|voice header|end of voice transmission) "
             r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
-            r"(?:, (?P<duration>[\d\.]+) seconds |, (?P<blocks>[\d]+) blocks)"
+            r"(?:, (?P<duration>[\d\.]+) seconds)"
             r"(?:, (?P<packet_loss>[\d\.]+)% packet loss)"
             r"(?:, BER: (?P<ber>[\d\.]+)%)"
             r"(?:, RSSI: (?P<rssi>[-\d\/]+) dBm)"
@@ -96,30 +95,24 @@ class MMDVMLogLine:
         match = re.match(dmr_pattern, logline)
         if match:
             self.mode = "DMR"
-            self.timestamp = datetime.strptime(
-                match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
+            self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
             self.slot = match.group("slot")
             self.is_network = match.group("source") == "network"
             self.callsign = match.group("callsign").strip()
             self.destination = match.group("destination").strip()
-            self.duration = match.group(
-                "duration") if match.group("duration") else "N/A"
-            self.packet_loss = match.group(
-                "packet_loss") if match.group("packet_loss") else "N/A"
+            self.duration = match.group("duration") if match.group("duration") else "N/A"
+            self.packet_loss = match.group("packet_loss") if match.group("packet_loss") else "N/A"
             self.ber = match.group("ber") if match.group("ber") else "N/A"
             self.rssi = match.group("rssi") if match.group("rssi") else "N/A"
-            self.blocks = match.group("blocks") if match.group("blocks") else "N/A"
             self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
             return
 
         match = re.match(dstar_pattern, logline)
         if match:
             self.mode = "D-Star"
-            self.timestamp = datetime.strptime(
-                match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
+            self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
             self.is_network = match.group("source") == "network"
-            self.callsign = remove_double_spaces(
-                match.group("callsign").strip())
+            self.callsign = remove_double_spaces(match.group("callsign").strip())
             self.destination = match.group("destination").strip()
             self.duration = match.group("duration")
             self.packet_loss = match.group("packet_loss")
@@ -131,8 +124,7 @@ class MMDVMLogLine:
         match = re.match(dstar_watchdog_pattern, logline)
         if match:
             self.mode = "D-Star"
-            self.timestamp = datetime.strptime(
-                match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
+            self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
             self.is_network = match.group("source") == "network"
             self.callsign = "Unknown"
             self.destination = "Unknown"
@@ -146,8 +138,7 @@ class MMDVMLogLine:
         match = re.match(ysf_pattern, logline)
         if match:
             self.mode = "YSF"
-            self.timestamp = datetime.strptime(
-                match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
+            self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
             self.is_network = match.group("source") == "network"
             self.callsign = match.group("callsign").strip()
             self.destination = f"DG-ID {match.group('dgid')}"
@@ -201,14 +192,13 @@ class MMDVMLogLine:
 
         message += f" ({'RF' if not self.is_network else 'Network'})"
         message += f"\n🎯 <b>Destination</b>: {self.destination}"
-        if self.blocks != "N/A":
-            message += f"\n📦 <b>Data Blocks</b>: {self.blocks} blocks"
+        message += f"\n⏱️ <b>Duration</b>: {self.duration} s"
+        message += f"\n🧰 <b>Bit Error Rate</b>: {self.ber} %"
+        if not self.is_network:
+            message += f"\n📶 <b>Received Signal Strength Indicator</b>: {self.rssi} dBm"
         else:
-            message += f"\n⏱️ <b>Duration</b>: {self.duration} s"
             message += f"\n🛜 <b>Packet Loss</b>: {self.packet_loss} %"
-            message += f"\n🧰 <b>Bit Error Rate</b>: {self.ber} %"
-            if not self.is_network:
-                message += f"\n📶 <b>Received Signal Strength Indicator</b>: {self.rssi} dBm"
+
 
         if self.is_watchdog:
             message += "\n\n⚠️ <b>Warning</b>: Network watchdog expired"
