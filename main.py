@@ -448,7 +448,7 @@ async def main():
     global TG_APP
 
     # Load environment variables
-    load_dotenv()
+    load_env_variables()
 
     # Build the Telegram application
     tg_app_built = False
