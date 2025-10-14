@@ -75,7 +75,7 @@ class MMDVMLogLine:
         )
         dmr_data_pattern = (
             r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
-            r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) data header "
+            r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:data header) "
             r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
             r"(?:, (?P<block>[\d]+) blocks)"
         )
@@ -240,7 +240,7 @@ class MMDVMLogLine:
         else:
             message += f"\n📡 <b>Caller</b>: {self.callsign}"
 
-        message += f" ({'RF' if not self.is_network else 'Network'})"
+        message += f" ({'RF' if not self.is_network else 'NET'})"
         message += f"\n🎯 <b>Destination</b>: {self.destination}"
         if self.is_voice:
             message += "\n\n🗣️ <b>Type</b>: Voice"
