@@ -160,7 +160,7 @@ class MMDVMLogLine:
             if self.is_network is True:
                 base += f", Duration: {self.duration}s, Packet Loss: {self.packet_loss}%, BER: {self.ber}%"
             else:
-                base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi} dBm"
+                base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi}dBm"
         return base
 
     def get_telegram_message(self) -> str:
@@ -192,12 +192,12 @@ class MMDVMLogLine:
 
         message += f" ({'RF' if not self.is_network else 'Network'})"
         message += f"\n🎯 <b>Destination</b>: {self.destination}"
-        message += f"\n⏱️ <b>Duration</b>: {self.duration} s"
-        message += f"\n🧰 <b>Bit Error Rate</b>: {self.ber} %"
+        message += f"\n⏱️ <b>Duration</b>: {self.duration}s"
+        message += f"\n🧰 <b>Bit Error Rate</b>: {self.ber}%"
         if not self.is_network:
-            message += f"\n📶 <b>Received Signal Strength Indicator</b>: {self.rssi} dBm"
+            message += f"\n📶 <b>Received Signal Strength Indicator</b>: {self.rssi}dBm"
         else:
-            message += f"\n🛜 <b>Packet Loss</b>: {self.packet_loss} %"
+            message += f"\n🛜 <b>Packet Loss</b>: {self.packet_loss}%"
 
 
         if self.is_watchdog:
