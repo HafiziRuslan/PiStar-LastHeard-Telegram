@@ -174,40 +174,40 @@ class MMDVMLogLine:
         else:
             mode_icon = "📶"
 
-        message = f"{mode_icon} <b>Mode:</b> {self.mode}"
+        message = f"{mode_icon} <b>Mode</b>: {self.mode}"
 
         if self.mode == "DMR":
             message += f" (Slot {self.slot})"
 
-        message += f"\n🕒 <b>Time:</b> {self.timestamp.strftime('%Y-%m-%d %H:%M:%S')} UTC\n"
+        message += f"\n🕒 <b>Time</b>: {self.timestamp.strftime('%Y-%m-%d %H:%M:%S')} UTC\n"
 
         # Add callsign with or without QRZ link
         if self.qrz_url:
-            message += f"\n📡 <b>Call:</b> <a href=\"{self.qrz_url}\">{self.callsign}</a>"
+            message += f"\n📡 <b>Caller</b>: <a href=\"{self.qrz_url}\">{self.callsign}</a>"
         else:
-            message += f"\n📡 <b>Call:</b> {self.callsign}"
+            message += f"\n📡 <b>Caller</b>: {self.callsign}"
 
         message += f" ({'RF' if not self.is_network else 'Network'})"
-        message += f"\n🎯 <b>Dest:</b> {self.destination}"
-        message += f"\n⏱️ <b>Duration:</b> {self.duration}s"
-        message += f"\n� <b>Packet Loss:</b> {self.packet_loss}%"
-        message += f"\n� <b>BER:</b> {self.ber}%"
+        message += f"\n🎯 <b>Destination</b>: {self.destination}"
+        message += f"\n⏱️ <b>Duration</b>: {self.duration}s"
+        message += f"\n📶 <b>Packet Loss</b>: {self.packet_loss}%"
+        message += f"\n📶 <b>Bit Error Rate</b>: {self.ber}%"
 
         if self.is_watchdog:
-            message += "\n\n⚠️ <b>Warning:</b> Network watchdog expired"
+            message += "\n\n⚠️ <b>Warning</b>: Network watchdog expired"
 
         # Check for special D-Star destinations
         if self.mode == "D-Star":
             if self.destination.startswith("CQCQCQ"):
-                message += "\n\n📢 <b>Action:</b> Call to all stations"
+                message += "\n\n📢 <b>Action</b>: Call to all stations"
             elif self.destination.endswith("L"):
-                message += f"\n\n🔗 <b>Action:</b> Link to {self.destination[:-1]}"
+                message += f"\n\n🔗 <b>Action</b>: Link to {self.destination[:-1]}"
             elif self.destination.endswith("U"):
-                message += "\n\n❌ <b>Action:</b> Unlink reflector"
+                message += "\n\n❌ <b>Action</b>: Unlink reflector"
             elif self.destination.endswith("I"):
-                message += "\n\nℹ️ <b>Action:</b> Get repeater info"
+                message += "\n\nℹ️ <b>Action</b>: Get repeater info"
             elif self.destination.endswith("E"):
-                message += "\n\n🔄 <b>Action:</b> Echo test"
+                message += "\n\n🔄 <b>Action</b>: Echo test"
 
         return message
 
@@ -230,7 +230,7 @@ def get_latest_mmdvm_log_path() -> str:
     log_files.sort(key=os.path.getmtime, reverse=True)
 
     latest_log = log_files[0]
-    logging.info("Latest MMDVM log file: %s", latest_log)
+    # logging.info("Latest MMDVM log file: %s", latest_log)
 
     return latest_log
 
