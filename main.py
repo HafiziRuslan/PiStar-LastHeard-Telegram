@@ -63,19 +63,19 @@ class MMDVMLogLine:
         # Check if it's a DMR line
         dmr_gw_pattern = (
             r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
-            r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:late entry|voice header|end of voice transmission) "
+            r"DMR Slot (?P<slot>\d), received (?P<source>network) (?:late entry|voice header|end of voice transmission) "
             r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
             r"(?:, (?P<duration>[\d\.]+) seconds, (?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%)"
         )
         dmr_rf_pattern = (
             r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
-            r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:late entry|voice header|end of voice transmission) "
+            r"DMR Slot (?P<slot>\d), received (?P<source>RF) (?:late entry|voice header|end of voice transmission) "
             r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
             r"(?:, (?P<duration>[\d\.]+) seconds, BER: (?P<ber>[\d\.]+)%, RSSI: (?P<rssi>[-\d]+) dBm)?"
         )
         dmr_data_pattern = (
             r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
-            r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:data header) "
+            r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) data header "
             r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
             r"(?:, (?P<block>[\d]+) blocks)"
         )
@@ -364,8 +364,7 @@ def load_env_variables():
 
     TG_BOTTOKEN = os.getenv("TG_BOTTOKEN")
     TG_CHATID = os.getenv("TG_CHATID")
-    GW_IGNORE_TIME_MESSAGES = os.getenv(
-        "GW_IGNORE_MESSAGES", "True").lower() == "true"
+    GW_IGNORE_TIME_MESSAGES = os.getenv("GW_IGNORE_MESSAGES", "True").lower() == "true"
 
     # Validate environment variables
     if not TG_BOTTOKEN:
@@ -403,7 +402,7 @@ async def mmdvm_logs_observer():
                 logging.debug("Last line of log file: %s", last_line)
 
                 # Skip lines that don't match our patterns
-                if not any(x in last_line for x in ["end of voice transmission", "end of transmission", "watchdog has expired"]):
+                if not any(x in last_line for x in ["end of voice transmission", "end of transmission", "ended RF data transmission", "watchdog has expired"]):
                     logging.debug("Line does not contain transmission end marker, skipping.")
                     await asyncio.sleep(1)
                     continue
