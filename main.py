@@ -163,7 +163,7 @@ class MMDVMLogLine:
             if self.is_network is True:
                 base += f", Duration: {self.duration}s, Packet Loss: {self.packet_loss}% packet loss, BER: {self.ber}%"
             else:
-                base += f", Duration: {self.duration}, BER: {self.ber}%, RSSI: {self.rssi}dBm"
+                base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi}dBm"
         return base
 
     def get_telegram_message(self) -> str:
@@ -195,24 +195,7 @@ class MMDVMLogLine:
 
         message += f" ({'RF' if not self.is_network else 'Network'})"
         message += f"\n🎯 <b>Destination</b>: {self.destination}"
-
-        # Format duration safely (may be "N/A" or a numeric string)
-        duration_display = self.duration
-        try:
-            duration_seconds = float(self.duration)
-            td = timedelta(seconds=duration_seconds)
-            if duration_seconds < 1:
-                duration_display = f"{duration_seconds:.3f} s"
-            else:
-                duration_display = str(td)
-                # Strip microseconds if present
-                if '.' in duration_display:
-                    duration_display = duration_display.split('.')[0]
-        except Exception:
-            # keep original if not parseable
-            duration_display = self.duration
-
-        message += f"\n⏱️ <b>Duration</b>: {duration_display}"
+        message += f"\n⏱️ <b>Duration</b>: {self.duration}s"
         message += f"\n📶 <b>Packet Loss</b>: {self.packet_loss}%"
         message += f"\n📶 <b>Bit Error Rate</b>: {self.ber}%"
         if not self.is_network:
