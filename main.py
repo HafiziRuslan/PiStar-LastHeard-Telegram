@@ -48,6 +48,7 @@ class MMDVMLogLine:
     duration: str = ""
     packet_loss: str = ""
     ber: str = ""
+    rssi: str = ""
     qrz_url: str = ""
     slot: str = ""  # For DMR
     is_network: bool = True
