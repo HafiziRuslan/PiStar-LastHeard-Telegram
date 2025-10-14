@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import os
 import re
 import glob
@@ -446,7 +448,7 @@ async def main():
     global TG_APP
 
     # Load environment variables
-    load_env_variables()
+    load_dotenv()
 
     # Build the Telegram application
     tg_app_built = False
