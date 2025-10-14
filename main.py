@@ -245,11 +245,11 @@ class MMDVMLogLine:
         if self.is_voice:
             message += "\n\n🗣️ <b>Type</b>: Voice"
             message += f"\n⏱️ <b>Duration</b>: {self.duration} seconds"
-            message += f"\n🧰 <b>Bit Error Rate</b>: {self.ber} %"
+            message += f"\n🧰 <b>BER</b>: {self.ber} %"
             if self.is_network:
-                message += f"\n🛜 <b>Packet Loss</b>: {self.packet_loss} %"
+                message += f"\n🛜 <b>PL</b>: {self.packet_loss} %"
             else:
-                message += f"\n📶 <b>Received Signal Strength Indicator</b>: {self.rssi} dBm"
+                message += f"\n📶 <b>RSSI</b>: {self.rssi} dBm"
         else:
             message += "\n\n💾 <b>Type</b>: Data"
             message += f"\n📦 <b>Blocks</b>: {self.block}"
