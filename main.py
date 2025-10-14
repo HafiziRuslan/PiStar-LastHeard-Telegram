@@ -369,13 +369,11 @@ def load_env_variables():
 
     # Validate environment variables
     if not TG_BOTTOKEN:
-        raise ValueError(
-            "TG_BOTTOKEN is not set in the environment variables.")
+        raise ValueError("TG_BOTTOKEN is not set in the environment variables.")
     if not TG_CHATID:
         raise ValueError("TG_CHATID is not set in the environment variables.")
     if GW_IGNORE_TIME_MESSAGES:
-        logging.warning(
-            "GW_IGNORE_MESSAGES is set to True, messages from the gateway will be ignored.")
+        logging.warning("GW_IGNORE_MESSAGES is set to True, messages from the gateway will be ignored.")
 
     logging.info("Environment variables loaded successfully.")
 
@@ -406,8 +404,7 @@ async def mmdvm_logs_observer():
 
                 # Skip lines that don't match our patterns
                 if not any(x in last_line for x in ["end of voice transmission", "end of transmission", "watchdog has expired"]):
-                    logging.debug(
-                        "Line does not contain transmission end marker, skipping.")
+                    logging.debug("Line does not contain transmission end marker, skipping.")
                     await asyncio.sleep(1)
                     continue
 
