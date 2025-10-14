@@ -112,9 +112,9 @@ class MMDVMLogLine:
             self.is_voice = True
             self.callsign = match.group("callsign").strip()
             self.destination = match.group("destination").strip().replace("TG ", "TG")
-            self.duration = match.group("duration") if match.group("duration") else "0"
-            self.packet_loss = match.group("packet_loss") if match.group("packet_loss") else "0"
-            self.ber = match.group("ber") if match.group("ber") else "0"
+            self.duration = match.group("duration")
+            self.packet_loss = match.group("packet_loss")
+            self.ber = match.group("ber")
             self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
             return
 
@@ -127,9 +127,9 @@ class MMDVMLogLine:
             self.is_voice = True
             self.callsign = match.group("callsign").strip()
             self.destination = match.group("destination").strip().replace("TG ", "TG")
-            self.duration = match.group("duration") if match.group("duration") else "0"
-            self.ber = match.group("ber") if match.group("ber") else "0"
-            self.rssi = match.group("rssi") if match.group("rssi") else "0"
+            self.duration = match.group("duration")
+            self.ber = match.group("ber")
+            self.rssi = match.group("rssi")
             self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
             return
 
@@ -142,7 +142,7 @@ class MMDVMLogLine:
             self.is_voice = False
             self.callsign = match.group("callsign").strip()
             self.destination = match.group("destination").strip().replace("TG ", "TG")
-            self.block = match.group("block") if match.group("block") else "0"
+            self.block = match.group("block")
             self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
             return
 
