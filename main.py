@@ -1,10 +1,12 @@
+#!/usr/bin/python3
+
 import os
 import re
 import glob
 import logging
 import asyncio
 import threading
-from datetime import datetime
+from datetime import datetime, timedelta
 from dotenv import load_dotenv
 
 from telegram import Update, Message
@@ -60,7 +62,7 @@ class MMDVMLogLine:
             r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
             r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:late entry|voice header|end of voice transmission) "
             r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
-            r"(?:, (?P<duration>[\d\.]+) seconds, (?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%)?"
+            r"(?:, (?P<duration>[\d\.]+) seconds, (?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%)?|(?:, (?P<duration>[\d\.]+) seconds, BER: (?P<ber>[\d\.]+)%, RSSI: (?P<rssi>([-\d\/]+) dBm)?"
         )
 
         # Check if it's a D-Star line (with "from...to")
@@ -100,6 +102,7 @@ class MMDVMLogLine:
             self.packet_loss = match.group(
                 "packet_loss") if match.group("packet_loss") else "N/A"
             self.ber = match.group("ber") if match.group("ber") else "N/A"
+            self.rssi = match.group("rssi") if match.group("rssi") else "N/A"
             self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
             return
 
@@ -157,7 +160,10 @@ class MMDVMLogLine:
         base = f"Timestamp: {self.timestamp}, Mode: {self.mode}, Callsign: {self.callsign}, Destination: {self.destination}"
         if self.mode == "DMR":
             base += f", Slot: {self.slot}"
-        base += f", Duration: {self.duration}s, Packet Loss: {self.packet_loss}%, BER: {self.ber}%"
+            if self.is_network is True:
+                base += f", Duration: {self.duration}s, Packet Loss: {self.packet_loss}% packet loss, BER: {self.ber}%"
+            else:
+                base += f", Duration: {self.duration}, BER: {self.ber}%, RSSI: {self.rssi}dBm"
         return base
 
     def get_telegram_message(self) -> str:
@@ -189,9 +195,28 @@ class MMDVMLogLine:
 
         message += f" ({'RF' if not self.is_network else 'Network'})"
         message += f"\n🎯 <b>Destination</b>: {self.destination}"
-        message += f"\n⏱️ <b>Duration</b>: {self.duration}s"
+
+        # Format duration safely (may be "N/A" or a numeric string)
+        duration_display = self.duration
+        try:
+            duration_seconds = float(self.duration)
+            td = timedelta(seconds=duration_seconds)
+            if duration_seconds < 1:
+                duration_display = f"{duration_seconds:.3f} s"
+            else:
+                duration_display = str(td)
+                # Strip microseconds if present
+                if '.' in duration_display:
+                    duration_display = duration_display.split('.')[0]
+        except Exception:
+            # keep original if not parseable
+            duration_display = self.duration
+
+        message += f"\n⏱️ <b>Duration</b>: {duration_display}"
         message += f"\n📶 <b>Packet Loss</b>: {self.packet_loss}%"
         message += f"\n📶 <b>Bit Error Rate</b>: {self.ber}%"
+        if not self.is_network:
+            message += f"\n📶 <b>RSSI</b>: {self.rssi}dBm"
 
         if self.is_watchdog:
             message += "\n\n⚠️ <b>Warning</b>: Network watchdog expired"
