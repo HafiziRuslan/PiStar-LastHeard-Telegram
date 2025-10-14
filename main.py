@@ -122,6 +122,7 @@ class MMDVMLogLine:
             self.rssi = match.group("rssi") if match.group("rssi") else "0"
             self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
             return
+
         match = re.match(dstar_pattern, logline)
         if match:
             self.mode = "D-Star"
