@@ -48,6 +48,7 @@ class MMDVMLogLine:
     duration: str = ""
     packet_loss: str = ""
     ber: str = ""
+    rssi: str = ""
     qrz_url: str = ""
     slot: str = ""  # For DMR
     is_network: bool = True
@@ -58,11 +59,17 @@ class MMDVMLogLine:
         Parses an MMDVM log line and initializes the attributes.
         """
         # Check if it's a DMR line
-        dmr_pattern = (
+        dmr_gw_pattern = (
             r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
             r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:late entry|voice header|end of voice transmission) "
             r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
             r"(?:, (?P<duration>[\d\.]+) seconds, (?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%)"
+        )
+        dmr_rf_pattern = (
+            r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
+            r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:late entry|voice header|end of voice transmission) "
+            r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
+            r"(?:, (?P<duration>[\d\.]+) seconds, BER: (?P<ber>[\d\.]+)%, RSSI: (?P<rssi>[-\d]+) dBm)?"
         )
 
         # Check if it's a D-Star line (with "from...to")
@@ -88,7 +95,7 @@ class MMDVMLogLine:
             r", (?P<duration>[\d\.]+) seconds, (?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%"
         )
 
-        match = re.match(dmr_pattern, logline)
+        match = re.match(dmr_gw_pattern, logline)
         if match:
             self.mode = "DMR"
             self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
@@ -96,12 +103,25 @@ class MMDVMLogLine:
             self.is_network = match.group("source") == "network"
             self.callsign = match.group("callsign").strip()
             self.destination = match.group("destination").strip()
-            self.duration = match.group("duration") if match.group("duration") else "N/A"
-            self.packet_loss = match.group("packet_loss") if match.group("packet_loss") else "N/A"
-            self.ber = match.group("ber") if match.group("ber") else "N/A"
+            self.duration = match.group("duration") if match.group("duration") else "0"
+            self.packet_loss = match.group("packet_loss") if match.group("packet_loss") else "0"
+            self.ber = match.group("ber") if match.group("ber") else "0"
             self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
             return
 
+        match = re.match(dmr_rf_pattern, logline)
+        if match:
+            self.mode = "DMR"
+            self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
+            self.slot = match.group("slot")
+            self.is_network = match.group("source") == "network"
+            self.callsign = match.group("callsign").strip()
+            self.destination = match.group("destination").strip()
+            self.duration = match.group("duration") if match.group("duration") else "0"
+            self.ber = match.group("ber") if match.group("ber") else "0"
+            self.rssi = match.group("rssi") if match.group("rssi") else "0"
+            self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
+            return
         match = re.match(dstar_pattern, logline)
         if match:
             self.mode = "D-Star"
@@ -152,7 +172,7 @@ class MMDVMLogLine:
         base = f"Timestamp: {self.timestamp}, Mode: {self.mode}, Callsign: {self.callsign}, Destination: {self.destination}"
         if self.mode == "DMR":
             base += f", Slot: {self.slot}"
-        base += f", Duration: {self.duration}s, PL: {self.packet_loss}%, BER: {self.ber}%"
+        base += f", Duration: {self.duration}s, PL: {self.packet_loss}%, BER: {self.ber}%, RSSI: {self.rssi} dBm"
         return base
 
     def get_telegram_message(self) -> str:
@@ -188,6 +208,8 @@ class MMDVMLogLine:
         message += f"\n🧰 <b>Bit Error Rate</b>: {self.ber} %"
         if self.is_network:
             message += f"\n🛜 <b>Packet Loss</b>: {self.packet_loss} %"
+        else:
+            message += f"\n📶 <b>Received Signal Strength Indicator</b>: {self.rssi} dBm"
 
         if self.is_watchdog:
             message += "\n\n⚠️ <b>Warning</b>: Network watchdog expired"
