@@ -62,8 +62,8 @@ class MMDVMLogLine:
         dmr_pattern = (
             r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
             r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:late entry|voice header|end of voice transmission) "
-            r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+), (?P<duration>[\d\.]+) seconds"
-            r"(?:, (?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%|, BER: (?P<ber>[\d\.]+)%, RSSI: (?P<rssi>[-\d]+) dBm)"
+            r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
+            r"(?:, (?P<duration>[\d\.]+) seconds, (?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%|, (?P<duration>[\d\.]+) seconds, BER: (?P<ber>[\d\.]+)%, RSSI: (?P<rssi>[-\d]+) dBm)"
         )
 
         # Check if it's a D-Star line (with "from...to")
@@ -155,7 +155,7 @@ class MMDVMLogLine:
         if self.mode == "DMR":
             base += f", Slot: {self.slot}"
             if self.is_network is True:
-                base += f", Duration: {self.duration}s, Packet Loss: {self.packet_loss}%, BER: {self.ber}%"
+                base += f", Duration: {self.duration}s, PL: {self.packet_loss}%, BER: {self.ber}%"
             else:
                 base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi}dBm"
         return base
@@ -189,12 +189,12 @@ class MMDVMLogLine:
 
         message += f" ({'RF' if not self.is_network else 'Network'})"
         message += f"\n🎯 <b>Destination</b>: {self.destination}"
-        message += f"\n⏱️ <b>Duration</b>: {self.duration}s"
-        message += f"\n🧰 <b>Bit Error Rate</b>: {self.ber}%"
+        message += f"\n⏱️ <b>Duration</b>: {self.duration} s"
+        message += f"\n🧰 <b>Bit Error Rate</b>: {self.ber} %"
         if not self.is_network:
-            message += f"\n📶 <b>Received Signal Strength Indicator</b>: {self.rssi}dBm"
+            message += f"\n📶 <b>Received Signal Strength Indicator</b>: {self.rssi} dBm"
         else:
-            message += f"\n🛜 <b>Packet Loss</b>: {self.packet_loss}%"
+            message += f"\n🛜 <b>Packet Loss</b>: {self.packet_loss} %"
 
 
         if self.is_watchdog:
