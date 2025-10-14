@@ -196,21 +196,21 @@ class MMDVMLogLine:
         base = f"Timestamp: {self.timestamp}, Mode: {self.mode}, Callsign: {self.callsign}, Destination: {self.destination}"
         if self.mode == "DMR":
             base += f", Slot: {self.slot}"
-        if self.is_voice:
-            base += ", Type: Voice"
-            if self.is_network:
-                base += ", Source: Network"
-                base += f", Duration: {self.duration}s, PL: {self.packet_loss}%, BER: {self.ber}%"
+            if self.is_voice:
+                base += ", Type: Voice"
+                if self.is_network:
+                    base += ", Source: Network"
+                    base += f", Duration: {self.duration}s, PL: {self.packet_loss}%, BER: {self.ber}%"
+                else:
+                    base += ", Source: RF"
+                    base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi} dBm"
             else:
-                base += ", Source: RF"
-                base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi} dBm"
-        else:
-            base += ", Type: Data"
-            if self.is_network:
-                base += ", Source: Network"
-            else:
-                base += ", Source: RF"
-            base += f", Blocks: {self.block}"
+                base += ", Type: Data"
+                if self.is_network:
+                    base += ", Source: Network"
+                else:
+                    base += ", Source: RF"
+                base += f", Blocks: {self.block}"
         return base
 
     def get_telegram_message(self) -> str:
