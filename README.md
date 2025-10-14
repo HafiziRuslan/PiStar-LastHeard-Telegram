@@ -69,7 +69,7 @@ The script will:
 To run the script at boot, add an entry in cron:
 
 ```bash
-@reboot cd /home/pi-star/lastheard && ./main.sh > /tmp/lastheard.txt 2>&1
+@reboot cd /home/pi-star/pistar-lastheard-telegram && ./main.sh > /tmp/lastheard.log 2>&1
 ```
 
 ## File Structure
