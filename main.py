@@ -67,7 +67,7 @@ class MMDVMLogLine:
             r"(?:, (?P<duration>[\d\.]+) seconds |, (?P<blocks>[\d]+) blocks)"
             r"(?:, (?P<packet_loss>[\d\.]+)% packet loss)"
             r"(?:, BER: (?P<ber>[\d\.]+)%)"
-            r"(?:, RSSI: (?P<rssi>([-\d\/]+) dBm)"
+            r"(?:, RSSI: (?P<rssi>[-\d\/]+) dBm)"
         )
 
         # Check if it's a D-Star line (with "from...to")
