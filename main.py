@@ -111,7 +111,7 @@ class MMDVMLogLine:
             self.is_network = match.group("source") == "network"
             self.is_voice = True
             self.callsign = match.group("callsign").strip()
-            self.destination = match.group("destination").strip()
+            self.destination = match.group("destination").strip().replace("TG ", "TG")
             self.duration = match.group("duration") if match.group("duration") else "0"
             self.packet_loss = match.group("packet_loss") if match.group("packet_loss") else "0"
             self.ber = match.group("ber") if match.group("ber") else "0"
@@ -126,7 +126,7 @@ class MMDVMLogLine:
             self.is_network = match.group("source") == "network"
             self.is_voice = True
             self.callsign = match.group("callsign").strip()
-            self.destination = match.group("destination").strip()
+            self.destination = match.group("destination").strip().replace("TG ", "TG")
             self.duration = match.group("duration") if match.group("duration") else "0"
             self.ber = match.group("ber") if match.group("ber") else "0"
             self.rssi = match.group("rssi") if match.group("rssi") else "0"
@@ -141,7 +141,7 @@ class MMDVMLogLine:
             self.is_network = match.group("source") == "network"
             self.is_voice = False
             self.callsign = match.group("callsign").strip()
-            self.destination = match.group("destination").strip()
+            self.destination = match.group("destination").strip().replace("TG ", "TG")
             self.block = match.group("block") if match.group("block") else "0"
             self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
             return
@@ -203,7 +203,7 @@ class MMDVMLogLine:
                     base += f", Duration: {self.duration}s, PL: {self.packet_loss}%, BER: {self.ber}%"
                 else:
                     base += ", Source: RF"
-                    base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi} dBm"
+                    base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi}dBm"
             else:
                 base += ", Type: Data"
                 if self.is_network:
