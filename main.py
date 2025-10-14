@@ -59,7 +59,7 @@ class MMDVMLogLine:
         dmr_pattern = (
             r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
             r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:late entry|voice header|end of voice transmission) "
-            r"from (?P<callsign>[\w\d]+) to TG (?P<tg>\d+)"
+            r"from (?P<callsign>[\w\d]+) to (?P<destination>[\w\d\s]+)"
             r"(?:, (?P<duration>[\d\.]+) seconds, (?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%)?"
         )
 
@@ -94,7 +94,7 @@ class MMDVMLogLine:
             self.slot = match.group("slot")
             self.is_network = match.group("source") == "network"
             self.callsign = match.group("callsign").strip()
-            self.destination = f"TG {match.group('tg')}"
+            self.destination = match.group("destination").strip()
             self.duration = match.group(
                 "duration") if match.group("duration") else "N/A"
             self.packet_loss = match.group(
