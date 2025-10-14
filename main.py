@@ -244,7 +244,7 @@ class MMDVMLogLine:
         message += f"\n🎯 <b>Destination</b>: {self.destination}"
         if self.is_voice:
             message += "\n\n🗣️ <b>Type</b>: Voice"
-            message += f"\n⏱️ <b>Duration</b>: {self.duration} s"
+            message += f"\n⏱️ <b>Duration</b>: {self.duration} seconds"
             message += f"\n🧰 <b>Bit Error Rate</b>: {self.ber} %"
             if self.is_network:
                 message += f"\n🛜 <b>Packet Loss</b>: {self.packet_loss} %"
