@@ -117,7 +117,6 @@ class MMDVMLogLine:
       self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
       self.slot = int(match.group("slot"))
       self.is_network = match.group("source") == "network"
-      self.is_voice = True
       self.callsign = match.group("callsign").strip()
       self.destination = match.group("destination").strip()
       self.duration = float(match.group("duration"))
@@ -132,7 +131,6 @@ class MMDVMLogLine:
       self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
       self.slot = int(match.group("slot"))
       self.is_network = match.group("source") == "network"
-      self.is_voice = True
       self.callsign = match.group("callsign").strip()
       self.destination = match.group("destination").strip()
       self.duration = float(match.group("duration"))
@@ -159,13 +157,11 @@ class MMDVMLogLine:
       self.mode = "D-Star"
       self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
       self.is_network = match.group("source") == "network"
-      self.is_voice = True
       self.callsign = remove_double_spaces(match.group("callsign").strip())
       self.destination = match.group("destination").strip()
       self.duration = float(match.group("duration"))
       self.packet_loss = int(match.group("packet_loss"))
       self.ber = float(match.group("ber"))
-      self.is_watchdog = False
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign.split('/')[0].strip()}"
       return
 
@@ -201,7 +197,7 @@ class MMDVMLogLine:
     if match:
       self.mode = "YSF-D"
       self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
-      self.is_network = True  # Always network for this type
+      self.is_network = match.group("source") == "network"
       self.is_voice = False
       self.callsign = match.group("callsign").strip()
       self.destination = f"DG-ID {match.group('dgid')} at {match.group('location').strip()}"
