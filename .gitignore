@@ -2,3 +2,5 @@ venv/*
 .env
 *.jar
 *.log
+*.pyc
+out.txt
