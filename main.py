@@ -118,7 +118,7 @@ class MMDVMLogLine:
       self.is_network = match.group("source") == "network"
       self.is_voice = True
       self.callsign = match.group("callsign").strip()
-      self.destination = match.group("destination").strip().replace("TG ", "TG")
+      self.destination = match.group("destination").strip()
       self.duration = match.group("duration")
       self.packet_loss = match.group("packet_loss")
       self.ber = match.group("ber")
@@ -133,7 +133,7 @@ class MMDVMLogLine:
       self.is_network = match.group("source") == "network"
       self.is_voice = True
       self.callsign = match.group("callsign").strip()
-      self.destination = match.group("destination").strip().replace("TG ", "TG")
+      self.destination = match.group("destination").strip()
       self.duration = match.group("duration")
       self.ber = match.group("ber")
       self.rssi = match.group("rssi")
@@ -148,7 +148,7 @@ class MMDVMLogLine:
       self.is_network = match.group("source") == "network"
       self.is_voice = False
       self.callsign = match.group("callsign").strip()
-      self.destination = match.group("destination").strip().replace("TG ", "TG")
+      self.destination = match.group("destination").strip()
       self.block = match.group("block")
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
       return
