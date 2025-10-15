@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
 
-import os
-import re
+import asyncio
+import datetime as dt
 import glob
 import logging
-import asyncio
+import os
+import re
 import threading
 from datetime import datetime
-from dotenv import load_dotenv
-
-from telegram import Update, Message
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, filters
-from telegram.ext import Application as TelegramApplication
 from typing import Optional
+
+import humanize
+from dotenv import load_dotenv
+from telegram import Message, Update
+from telegram.ext import Application as TelegramApplication
+from telegram.ext import (ApplicationBuilder, CommandHandler, ContextTypes, filters)
 
 # Environment variables
 TG_BOTTOKEN: str = ""
@@ -253,7 +255,7 @@ class MMDVMLogLine:
     if self.mode == "DMR" or self.mode == "DMR-D":
       message += f" (Slot {self.slot})"
 
-    message += f"\n🕒 <b>Time</b>: {self.timestamp.isoformat(sep='T', timespec='seconds') if self.timestamp else 'Unknown'}\n"
+    message += f"\n🕒 <b>Time</b>: {self.timestamp}\n"
 
     # Add callsign with or without QRZ link
     if self.qrz_url:
@@ -265,12 +267,12 @@ class MMDVMLogLine:
     message += f"\n🎯 <b>Target</b>: {self.destination}"
     if self.is_voice:
       message += "\n\n🗣️ <b>Type</b>: Voice"
-      message += f"\n⏰ <b>Duration</b>: {self.duration:.2f} seconds" if self.duration is not None else ""
-      message += f"\n📊 <b>BER</b>: {self.ber:.2f} %" if self.ber is not None else ""
+      message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds')}"
+      message += f"\n📊 <b>BER</b>: {self.ber} %"
       if self.is_network:
-        message += f"\n📈 <b>PL</b>: {self.packet_loss:.2f} %" if self.packet_loss is not None else ""
+        message += f"\n📈 <b>PL</b>: {self.packet_loss} %"
       else:
-        message += f"\n📶 <b>RSSI</b>: {self.rssi} dBm" if self.rssi is not None else ""
+        message += f"\n📶 <b>RSSI</b>: {self.rssi} dBm"
     else:
       message += "\n\n💾 <b>Type</b>: Data"
       message += f"\n📦 <b>Blocks</b>: {self.block}"

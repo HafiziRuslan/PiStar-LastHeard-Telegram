@@ -3,12 +3,12 @@
 Test script to process MMDVM log files and display what would be sent to Telegram.
 This script loads the MMDVMLogLine class from main.py and processes log entries.
 """
-import sys
 import os
-from datetime import datetime
-
+import sys
 # Mock telegram modules before importing main
 import unittest.mock as mock
+from datetime import datetime
+
 sys.modules['telegram'] = mock.MagicMock()
 sys.modules['telegram.ext'] = mock.MagicMock()
 
@@ -17,18 +17,18 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 # Now import from main.py
 try:
-  from datetime import datetime
-  import re
   import importlib.util
+  import re
+  from datetime import datetime
 
   # Load main.py as a module
   spec = importlib.util.spec_from_file_location("main", "main.py")
   main_module = importlib.util.module_from_spec(spec)
 
   # Inject required dependencies
-  import threading
-  import logging
   import asyncio
+  import logging
+  import threading
   main_module.threading = threading
   main_module.logging = logging
   main_module.os = os
