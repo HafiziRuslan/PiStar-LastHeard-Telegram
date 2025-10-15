@@ -96,12 +96,18 @@ class MMDVMLogLine:
       r", (?P<duration>[\d\.]+) seconds,\s+(?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%"
     )
 
-    # Check if it's a YSF line
+    # Check if it's a YSF end of transmission line
     ysf_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
       r"YSF, received (?P<source>network|RF) end of transmission "
       r"from (?P<callsign>[\w\d\-/]+) to DG-ID (?P<dgid>\d+)"
       r", (?P<duration>[\d\.]+) seconds, (?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%"
+    )
+    # Check if it's a YSF network data line (without statistics)
+    ysf_network_data_pattern = (
+        r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
+        r"YSF, received network data "
+        r"from (?P<callsign>[\w\d\-/]+)\s+to DG-ID (?P<dgid>\d+) at (?P<location>\S+)"
     )
 
     match = re.match(dmr_gw_pattern, logline)
@@ -188,6 +194,19 @@ class MMDVMLogLine:
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
       return
 
+    match = re.match(ysf_network_data_pattern, logline)
+    if match:
+      self.mode = "YSF"
+      self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
+      self.is_network = True  # Always network for this type
+      self.callsign = match.group("callsign").strip()
+      self.destination = f"DG-ID {match.group('dgid')} at {match.group('location').strip()}"
+      self.duration = "N/A"
+      self.packet_loss = "N/A"
+      self.ber = "N/A"
+      self.qrz_url = f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
+      return
+
     raise ValueError(f"Log line does not match expected format: {logline}")
 
   def __str__(self):
@@ -246,9 +265,9 @@ class MMDVMLogLine:
     if self.is_voice:
       message += "\n\n🗣️ <b>Type</b>: Voice"
       message += f"\n⏱️ <b>Duration</b>: {self.duration} seconds"
-      message += f"\n🧰 <b>BER</b>: {self.ber} %"
+      message += f"\n📊 <b>BER</b>: {self.ber} %"
       if self.is_network:
-        message += f"\n🛜 <b>PL</b>: {self.packet_loss} %"
+        message += f"\n📈 <b>PL</b>: {self.packet_loss} %"
       else:
         message += f"\n📶 <b>RSSI</b>: {self.rssi} dBm"
     else:
@@ -405,7 +424,7 @@ async def mmdvm_logs_observer():
         logging.debug("Last line of log file: %s", last_line)
 
         # Skip lines that don't match our patterns
-        if not any(x in last_line for x in ["end of voice transmission", "end of transmission", "ended RF data transmission", "watchdog has expired"]):
+        if not any(x in last_line for x in ["end of voice transmission", "end of transmission", "ended RF data transmission", "watchdog has expired", "received network data"]):
           logging.debug("Line does not contain transmission end marker, skipping.")
           await asyncio.sleep(1)
           continue
