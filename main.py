@@ -253,7 +253,7 @@ class MMDVMLogLine:
 
     message = f"{mode_icon} <b>Mode</b>: {self.mode}"
 
-    if self.mode == "DMR":
+    if self.mode == "DMR" or self.mode == "DMR-D":
       message += f" (Slot {self.slot})"
 
     message += f"\n🕒 <b>Time</b>: {self.timestamp.isoformat(sep='T', timespec='seconds') if self.timestamp else 'Unknown'}\n"
