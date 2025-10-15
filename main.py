@@ -41,18 +41,18 @@ def configure_logging():
 
 
 class MMDVMLogLine:
-  timestamp: Optional[datetime] = None
+  timestamp: datetime = datetime.now()
   mode: str = "" # "DMR" or "DSTAR" or "YSF"
   callsign: str = ""
   destination: str = ""
-  block: str = ""
-  duration: str = ""
-  packet_loss: str = ""
-  ber: str = ""
+  block: int = 0
+  duration: float = 0.0
+  packet_loss: int = 0
+  ber: float = 0.0
   rssi: str = ""
   qrz_url: str = ""
-  slot: str = "" # For DMR
-  is_voice: bool = True # False for data
+  slot: int = 2 # For DMR
+  is_voice: bool = True # False for data, True for voice
   is_network: bool = True
   is_watchdog: bool = False
 
@@ -114,14 +114,14 @@ class MMDVMLogLine:
     if match:
       self.mode = "DMR"
       self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
-      self.slot = match.group("slot")
+      self.slot = int(match.group("slot"))
       self.is_network = match.group("source") == "network"
       self.is_voice = True
       self.callsign = match.group("callsign").strip()
       self.destination = match.group("destination").strip()
-      self.duration = match.group("duration")
-      self.packet_loss = match.group("packet_loss")
-      self.ber = match.group("ber")
+      self.duration = float(match.group("duration"))
+      self.packet_loss = int(match.group("packet_loss"))
+      self.ber = float(match.group("ber"))
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
       return
 
@@ -129,13 +129,13 @@ class MMDVMLogLine:
     if match:
       self.mode = "DMR"
       self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
-      self.slot = match.group("slot")
+      self.slot = int(match.group("slot"))
       self.is_network = match.group("source") == "network"
       self.is_voice = True
       self.callsign = match.group("callsign").strip()
       self.destination = match.group("destination").strip()
-      self.duration = match.group("duration")
-      self.ber = match.group("ber")
+      self.duration = float(match.group("duration"))
+      self.ber = float(match.group("ber"))
       self.rssi = match.group("rssi")
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
       return
@@ -144,12 +144,12 @@ class MMDVMLogLine:
     if match:
       self.mode = "DMR-D"
       self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
-      self.slot = match.group("slot")
+      self.slot = int(match.group("slot"))
       self.is_network = match.group("source") == "network"
       self.is_voice = False
       self.callsign = match.group("callsign").strip()
       self.destination = match.group("destination").strip()
-      self.block = match.group("block")
+      self.block = int(match.group("block"))
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
       return
 
@@ -161,9 +161,9 @@ class MMDVMLogLine:
       self.is_voice = True
       self.callsign = remove_double_spaces(match.group("callsign").strip())
       self.destination = match.group("destination").strip()
-      self.duration = match.group("duration")
-      self.packet_loss = match.group("packet_loss")
-      self.ber = match.group("ber")
+      self.duration = float(match.group("duration"))
+      self.packet_loss = int(match.group("packet_loss"))
+      self.ber = float(match.group("ber"))
       self.is_watchdog = False
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign.split('/')[0].strip()}"
       return
@@ -175,9 +175,9 @@ class MMDVMLogLine:
       self.is_network = match.group("source") == "network"
       self.callsign = "Unknown"
       self.destination = "Unknown"
-      self.duration = match.group("duration")
-      self.packet_loss = match.group("packet_loss")
-      self.ber = match.group("ber")
+      self.duration = float(match.group("duration"))
+      self.packet_loss = int(match.group("packet_loss"))
+      self.ber = float(match.group("ber"))
       self.is_watchdog = True
       self.qrz_url = ""
       return
@@ -190,9 +190,9 @@ class MMDVMLogLine:
       self.is_voice = True
       self.callsign = match.group("callsign").strip()
       self.destination = f"DG-ID {match.group('dgid')}"
-      self.duration = match.group("duration")
-      self.packet_loss = match.group("packet_loss")
-      self.ber = match.group("ber")
+      self.duration = float(match.group("duration"))
+      self.packet_loss = int(match.group("packet_loss"))
+      self.ber = float(match.group("ber"))
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
       return
 
@@ -268,12 +268,12 @@ class MMDVMLogLine:
     message += f"\n🎯 <b>Target</b>: {self.destination}"
     if self.is_voice:
       message += "\n\n🗣️ <b>Type</b>: Voice"
-      message += f"\n⏰ <b>Duration</b>: {self.duration} seconds"
-      message += f"\n📊 <b>BER</b>: {self.ber} %"
+      message += f"\n⏰ <b>Duration</b>: {self.duration:.2f} seconds" if self.duration is not None else ""
+      message += f"\n📊 <b>BER</b>: {self.ber:.2f} %" if self.ber is not None else ""
       if self.is_network:
-        message += f"\n📈 <b>PL</b>: {self.packet_loss} %"
+        message += f"\n📈 <b>PL</b>: {self.packet_loss:.2f} %" if self.packet_loss is not None else ""
       else:
-        message += f"\n📶 <b>RSSI</b>: {self.rssi} dBm"
+        message += f"\n📶 <b>RSSI</b>: {self.rssi} dBm" if self.rssi is not None else ""
     else:
       message += "\n\n💾 <b>Type</b>: Data"
       message += f"\n📦 <b>Blocks</b>: {self.block}"
