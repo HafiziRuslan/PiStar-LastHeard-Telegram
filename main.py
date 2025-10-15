@@ -59,7 +59,7 @@ class MMDVMLogLine:
     """
     Parses an MMDVM log line and initializes the attributes.
     """
-    
+
     # Check if it's a DMR line
     dmr_gw_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
@@ -322,7 +322,7 @@ def get_last_line_of_file(file_path: str) -> str:
 
 async def logs_to_telegram(tg_message: str):
   """
-  Sends the DStar log line to the Telegram bot.
+  Sends the log line to the Telegram bot.
   """
   global TG_APP
 
@@ -441,7 +441,7 @@ async def mmdvm_logs_observer():
 
 async def main():
   """
-  Main function to initialize and run the Telegram bot and DStar logs observer.
+  Main function to initialize and run the Telegram bot and logs observer.
   """
   global TG_APP
 
