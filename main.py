@@ -268,9 +268,11 @@ class MMDVMLogLine:
     if self.is_voice:
       message += "\n\n🗣️ <b>Type</b>: Voice"
       message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds')}"
-      message += f"\n📊 <b>BER</b>: {self.ber} %"
+      if self.ber > 0:
+        message += f"\n📊 <b>BER</b>: {self.ber} %"
       if self.is_network:
-        message += f"\n📈 <b>PL</b>: {self.packet_loss} %"
+        if self.packet_loss > 0:
+          message += f"\n📈 <b>PL</b>: {self.packet_loss} %"
       else:
         message += f"\n📶 <b>RSSI</b>: {self.rssi} dBm"
     else:
@@ -426,7 +428,7 @@ async def mmdvm_logs_observer():
         logging.debug("Last line of log file: %s", last_line)
 
         # Skip lines that don't match our patterns
-        if not any(x in last_line for x in ["end of voice transmission", "end of transmission", "ended RF data transmission", "watchdog has expired", "received network data"]):
+        if not any(x in last_line for x in ["end of voice transmission", "end of transmission", "ended RF data transmission", "watchdog has expired", "received RF data", "received network data"]):
           logging.debug("Line does not contain transmission end marker, skipping.")
           await asyncio.sleep(1)
           continue
