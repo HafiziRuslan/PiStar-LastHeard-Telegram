@@ -48,9 +48,9 @@ class MMDVMLogLine:
   callsign: str = ""
   destination: str = ""
   block: int = 0
-  duration: int = 0
+  duration: float = 0.0
   packet_loss: int = 0
-  ber: int = 0
+  ber: float = 0.0
   rssi: str = ""
   qrz_url: str = ""
   slot: int = 2 # For DMR
@@ -121,9 +121,9 @@ class MMDVMLogLine:
       self.is_network = match.group("source") == "network"
       self.callsign = match.group("callsign").strip()
       self.destination = match.group("destination").strip()
-      self.duration = int(match.group("duration"))
+      self.duration = float(match.group("duration"))
       self.packet_loss = int(match.group("packet_loss"))
-      self.ber = int(match.group("ber"))
+      self.ber = float(match.group("ber"))
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
       return
 
@@ -135,8 +135,8 @@ class MMDVMLogLine:
       self.is_network = match.group("source") == "network"
       self.callsign = match.group("callsign").strip()
       self.destination = match.group("destination").strip()
-      self.duration = int(match.group("duration"))
-      self.ber = int(match.group("ber"))
+      self.duration = float(match.group("duration"))
+      self.ber = float(match.group("ber"))
       self.rssi = match.group("rssi")
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
       return
@@ -161,9 +161,9 @@ class MMDVMLogLine:
       self.is_network = match.group("source") == "network"
       self.callsign = remove_double_spaces(match.group("callsign").strip())
       self.destination = match.group("destination").strip()
-      self.duration = int(match.group("duration"))
+      self.duration = float(match.group("duration"))
       self.packet_loss = int(match.group("packet_loss"))
-      self.ber = int(match.group("ber"))
+      self.ber = float(match.group("ber"))
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign.split('/')[0].strip()}"
       return
 
@@ -174,9 +174,9 @@ class MMDVMLogLine:
       self.is_network = match.group("source") == "network"
       self.callsign = "Unknown"
       self.destination = "Unknown"
-      self.duration = int(match.group("duration"))
+      self.duration = float(match.group("duration"))
       self.packet_loss = int(match.group("packet_loss"))
-      self.ber = int(match.group("ber"))
+      self.ber = float(match.group("ber"))
       self.is_watchdog = True
       self.qrz_url = ""
       return
@@ -189,9 +189,9 @@ class MMDVMLogLine:
       self.is_voice = True
       self.callsign = match.group("callsign").strip()
       self.destination = f"DG-ID {match.group('dgid')}"
-      self.duration = int(match.group("duration"))
+      self.duration = float(match.group("duration"))
       self.packet_loss = int(match.group("packet_loss"))
-      self.ber = int(match.group("ber"))
+      self.ber = float(match.group("ber"))
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
       return
 
