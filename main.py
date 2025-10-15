@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 from telegram import Update, Message
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, filters
 from telegram.ext import Application as TelegramApplication
+from typing import Optional
 
 # Environment variables
 TG_BOTTOKEN: str = ""
@@ -19,7 +20,7 @@ TG_CHATID: str = ""
 GW_IGNORE_TIME_MESSAGES: bool = True
 
 # Project variables
-TG_APP: TelegramApplication = None
+TG_APP: Optional[TelegramApplication] = None
 shutdown_flag = threading.Event() # Create a shutdown flag
 
 
@@ -40,7 +41,7 @@ def configure_logging():
 
 
 class MMDVMLogLine:
-  timestamp: datetime = None
+  timestamp: Optional[datetime] = None
   mode: str = "" # "DMR" or "DSTAR" or "YSF"
   callsign: str = ""
   destination: str = ""
@@ -232,7 +233,7 @@ class MMDVMLogLine:
     if self.mode == "DMR":
       message += f" (Slot {self.slot})"
 
-    message += f"\n🕒 <b>Time</b>: {self.timestamp.strftime('%Y-%m-%d %H:%M:%S')} UTC\n"
+    message += f"\n🕒 <b>Time</b>: {self.timestamp.strftime('%Y-%m-%d %H:%M:%S') if self.timestamp else 'Unknown'} UTC\n"
 
     # Add callsign with or without QRZ link
     if self.qrz_url:
@@ -360,8 +361,8 @@ def load_env_variables():
   # Load environment variables
   global TG_BOTTOKEN, TG_CHATID, GW_IGNORE_TIME_MESSAGES
 
-  TG_BOTTOKEN = os.getenv("TG_BOTTOKEN")
-  TG_CHATID = os.getenv("TG_CHATID")
+  TG_BOTTOKEN = os.getenv("TG_BOTTOKEN", "")
+  TG_CHATID = os.getenv("TG_CHATID", "")
   GW_IGNORE_TIME_MESSAGES = os.getenv("GW_IGNORE_MESSAGES", "True").lower() == "true"
 
   # Validate environment variables
@@ -383,8 +384,8 @@ async def mmdvm_logs_observer():
 
   logging.info("Starting MMDVM log file retrieval...")
 
-  last_event: datetime = None
-  current_log_path: str = None
+  last_event: Optional[datetime] = None
+  current_log_path: Optional[str] = None
 
   try:
     while not shutdown_flag.is_set():
@@ -396,6 +397,10 @@ async def mmdvm_logs_observer():
           current_log_path = latest_log
 
         # Parse the last line of the log file
+        if current_log_path is None:
+            logging.error("No log file path available")
+            await asyncio.sleep(1)
+            continue
         last_line = get_last_line_of_file(current_log_path)
         logging.debug("Last line of log file: %s", last_line)
 
@@ -409,8 +414,8 @@ async def mmdvm_logs_observer():
         parsed_line = MMDVMLogLine(last_line)
         logging.debug("Parsed log line: %s", parsed_line)
 
-        # Check if the timestamp is new
-        if last_event is None or parsed_line.timestamp > last_event:
+        # Check if the timestamp is new (ensure parsed_line.timestamp is not None)
+        if parsed_line.timestamp is not None and (last_event is None or parsed_line.timestamp > last_event):
           logging.info("New log entry: %s", parsed_line)
           last_event = parsed_line.timestamp
 
@@ -459,6 +464,7 @@ async def main():
       logging.error("Error building Telegram application: %s", e)
       await asyncio.sleep(5)
 
+  assert TG_APP is not None
   async with TG_APP:
     tg_app_started = False
     while not tg_app_started:
@@ -466,7 +472,6 @@ async def main():
         logging.info("Starting Telegram bot...")
         await TG_APP.initialize()
         await TG_APP.start()
-        await TG_APP.updater.start_polling()
         tg_app_started = True
         logging.info("Telegram bot started successfully.")
       except Exception as e:
@@ -481,7 +486,6 @@ async def main():
       logging.info("MMDVM logs observer cancelled.")
     finally:
       # Stop the Telegram bot
-      await TG_APP.updater.stop()
       await TG_APP.stop()
 
 
