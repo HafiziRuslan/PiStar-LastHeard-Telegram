@@ -77,7 +77,7 @@ class MMDVMLogLine:
     # Check if it's a DMR data line
     dmr_data_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
-      r"DMR Slot (?P<slot>\d), (?:received|ended) (?P<source>network|RF) (?:Data Preamble CSBK|data header|data transmission) (?:\d+ to follow) "
+      r"DMR Slot (?P<slot>\d), (?:received|ended) (?P<source>network|RF) (?:Data Preamble CSBK|data header|data transmission) \((?:\d+ to follow)\) "
       r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG [\d\w]+)|[\d\w]+)"
       r"(?:, (?P<block>[\d]+) blocks)"
     )
