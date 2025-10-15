@@ -76,7 +76,7 @@ class MMDVMLogLine:
     )
     dmr_data_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
-      r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:data header) "
+      r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) (?:Data Preamble CSBK|data header) (?:\(\d+ to follow\)) "
       r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
       r"(?:, (?P<block>[\d]+) blocks)"
     )
