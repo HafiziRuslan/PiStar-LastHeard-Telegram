@@ -76,7 +76,7 @@ class MMDVMLogLine:
     )
     dmr_data_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
-      r"DMR Slot (?P<slot>\d), (?:received|ended) (?P<source>network|RF) (?:Data Preamble CSBK|data header|data transmission) (?:\(\d+ to follow\)) "
+      r"DMR Slot (?P<slot>\d), (?:received|ended) (?P<source>network|RF) (?:Data Preamble CSBK|data header|data transmission) (?:\d+ to follow) "
       r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
       r"(?:, (?P<block>[\d]+) blocks)"
     )
@@ -142,7 +142,7 @@ class MMDVMLogLine:
 
     match = re.match(dmr_data_pattern, logline)
     if match:
-      self.mode = "DMR"
+      self.mode = "DMR-D"
       self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
       self.slot = match.group("slot")
       self.is_network = match.group("source") == "network"
@@ -158,6 +158,7 @@ class MMDVMLogLine:
       self.mode = "D-Star"
       self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
       self.is_network = match.group("source") == "network"
+      self.is_voice = True
       self.callsign = remove_double_spaces(match.group("callsign").strip())
       self.destination = match.group("destination").strip()
       self.duration = match.group("duration")
@@ -186,6 +187,7 @@ class MMDVMLogLine:
       self.mode = "YSF"
       self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
       self.is_network = match.group("source") == "network"
+      self.is_voice = True
       self.callsign = match.group("callsign").strip()
       self.destination = f"DG-ID {match.group('dgid')}"
       self.duration = match.group("duration")
@@ -196,14 +198,12 @@ class MMDVMLogLine:
 
     match = re.match(ysf_network_data_pattern, logline)
     if match:
-      self.mode = "YSF"
+      self.mode = "YSF-D"
       self.timestamp = datetime.strptime(match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f")
       self.is_network = True  # Always network for this type
+      self.is_voice = False
       self.callsign = match.group("callsign").strip()
       self.destination = f"DG-ID {match.group('dgid')} at {match.group('location').strip()}"
-      self.duration = "N/A"
-      self.packet_loss = "N/A"
-      self.ber = "N/A"
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
       return
 
@@ -214,7 +214,7 @@ class MMDVMLogLine:
     Returns a string representation of the log line.
     """
     base = f"Timestamp: {self.timestamp}, Mode: {self.mode}, Callsign: {self.callsign}, Destination: {self.destination}"
-    if self.mode == "DMR":
+    if self.mode == "DMR" or self.mode == "DMR-D":
       base += f", Slot: {self.slot}"
       if self.is_voice:
         base += ", Type: Voice"
@@ -240,10 +240,14 @@ class MMDVMLogLine:
     # Mode icon
     if self.mode == "DMR":
       mode_icon = "📻"
+    elif self.mode == "DMR-D":
+      mode_icon = "📟"
     elif self.mode == "D-Star":
       mode_icon = "⭐"
     elif self.mode == "YSF":
       mode_icon = "📡"
+    elif self.mode == "YSF-D":
+      mode_icon = "📟"
     else:
       mode_icon = "📶"
 
