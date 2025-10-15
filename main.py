@@ -233,7 +233,7 @@ class MMDVMLogLine:
     if self.mode == "DMR":
       message += f" (Slot {self.slot})"
 
-    message += f"\n🕒 <b>Time</b>: {self.timestamp.strftime('%d-%b-%Y %H:%M:%S %Z') if self.timestamp else 'Unknown'}\n"
+    message += f"\n🕒 <b>Time</b>: {self.timestamp.isoformat(sep='T', timespec='seconds') if self.timestamp else 'Unknown'}\n"
 
     # Add callsign with or without QRZ link
     if self.qrz_url:
@@ -334,7 +334,7 @@ async def logs_to_telegram(tg_message: str):
         chat_id=TG_CHATID,
         text=tg_message,
         parse_mode="HTML",
-        link_preview_options={"disable_web_page_preview": True}
+        disable_web_page_preview=True
       )
     except Exception as e:
       logging.error("Failed to send message to Telegram: %s", e)
