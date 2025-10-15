@@ -60,20 +60,21 @@ class MMDVMLogLine:
     """
     Parses an MMDVM log line and initializes the attributes.
     """
-
-    # Check if it's a DMR line
+    # Check if it's a DMR network voice line
     dmr_gw_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
       r"DMR Slot (?P<slot>\d), received (?P<source>network) (?:late entry|voice header|end of voice transmission) "
       r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG [\d\w]+)|[\d\w]+)"
       r"(?:, (?P<duration>[\d\.]+) seconds, (?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%)"
     )
+    # Check if it's a DMR rf voice line
     dmr_rf_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
       r"DMR Slot (?P<slot>\d), received (?P<source>RF) (?:late entry|voice header|end of voice transmission) "
       r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG [\d\w]+)|[\d\w]+)"
       r"(?:, (?P<duration>[\d\.]+) seconds, BER: (?P<ber>[\d\.]+)%, RSSI: (?P<rssi>[-\d\/]+) dBm)?"
     )
+    # Check if it's a DMR data line
     dmr_data_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
       r"DMR Slot (?P<slot>\d), (?:received|ended) (?P<source>network|RF) (?:Data Preamble CSBK|data header|data transmission) (?:\d+ to follow) "
@@ -81,7 +82,7 @@ class MMDVMLogLine:
       r"(?:, (?P<block>[\d]+) blocks)"
     )
 
-    # Check if it's a D-Star line (with "from...to")
+    # Check if it's a D-Star end of transmission line (with "from...to")
     dstar_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
       r"D-Star, (?:received )?(?P<source>network|RF) end of transmission "
@@ -293,7 +294,6 @@ class MMDVMLogLine:
         message += "\n\nℹ️ <b>Action</b>: Get repeater info"
       elif self.destination.endswith("E"):
         message += "\n\n🔄 <b>Action</b>: Echo test"
-
     return message
 
 
