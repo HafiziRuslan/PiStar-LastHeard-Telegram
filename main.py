@@ -51,7 +51,9 @@ class MMDVMLogLine:
   duration: float = 0.0
   packet_loss: int = 0
   ber: float = 0.0
-  rssi: str = ""
+  rssi: int = 0
+  rssi1: int = 0
+  rssi2: int = 0
   qrz_url: str = ""
   slot: int = 2 # For DMR
   is_voice: bool = True # False for data, True for voice
@@ -74,7 +76,7 @@ class MMDVMLogLine:
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
       r"DMR Slot (?P<slot>\d), received (?P<source>RF) (?:late entry|voice header|end of voice transmission) "
       r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG [\d\w]+)|[\d\w]+)"
-      r"(?:, (?P<duration>[\d\.]+) seconds, BER: (?P<ber>[\d\.]+)%, RSSI: (?P<rssi>[-\d\/]+) dBm)?"
+      r"(?:, (?P<duration>[\d\.]+) seconds, BER: (?P<ber>[\d\.]+)%, RSSI: (?P<rssi>-[\d]+)/(?P<rssi1>-[\d]+)/(?P<rssi2>-[\d]+) dBm)"
     )
     # Check if it's a DMR data line
     dmr_data_pattern = (
@@ -137,7 +139,7 @@ class MMDVMLogLine:
       self.destination = match.group("destination").strip()
       self.duration = float(match.group("duration"))
       self.ber = float(match.group("ber"))
-      self.rssi = match.group("rssi")
+      self.rssi = int(match.group("rssi2").removeprefix("-")) - 1
       self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
       return
 
@@ -222,7 +224,7 @@ class MMDVMLogLine:
           base += f", Duration: {self.duration}s, PL: {self.packet_loss}%, BER: {self.ber}%"
         else:
           base += ", Source: RF"
-          base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi}dBm"
+          base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi}dB"
       else:
         base += ", Type: Data"
         if self.is_network:
@@ -255,7 +257,7 @@ class MMDVMLogLine:
     if self.mode == "DMR" or self.mode == "DMR-D":
       message += f" (Slot {self.slot})"
 
-    message += f"\n🕒 <b>Time</b>: {self.timestamp}\n"
+    message += f"\n🕒 <b>Time</b>: {self.timestamp}"
 
     # Add callsign with or without QRZ link
     if self.qrz_url:
@@ -266,17 +268,17 @@ class MMDVMLogLine:
     message += f" ({'RF' if not self.is_network else 'NET'})"
     message += f"\n🎯 <b>Target</b>: {self.destination}"
     if self.is_voice:
-      message += "\n\n🗣️ <b>Type</b>: Voice"
+      message += "\n🗣️ <b>Type</b>: Voice"
       message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds')}"
       if self.ber > 0:
-        message += f"\n📊 <b>BER</b>: {self.ber} %"
+        message += f"\n📊 <b>BER</b>: {self.ber}%"
       if self.is_network:
         if self.packet_loss > 0:
-          message += f"\n📈 <b>PL</b>: {self.packet_loss} %"
+          message += f"\n📈 <b>PL</b>: {self.packet_loss}%"
       else:
-        message += f"\n📶 <b>RSSI</b>: {self.rssi} dBm"
+        message += f"\n📶 <b>RSSI</b>: {self.rssi}dB"
     else:
-      message += "\n\n💾 <b>Type</b>: Data"
+      message += "\n💾 <b>Type</b>: Data"
       message += f"\n📦 <b>Blocks</b>: {self.block}"
 
     if self.is_watchdog:
