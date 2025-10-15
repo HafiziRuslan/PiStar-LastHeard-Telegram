@@ -65,19 +65,19 @@ class MMDVMLogLine:
     dmr_gw_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
       r"DMR Slot (?P<slot>\d), received (?P<source>network) (?:late entry|voice header|end of voice transmission) "
-      r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
+      r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG [\d\w]+)|[\d\w]+)"
       r"(?:, (?P<duration>[\d\.]+) seconds, (?P<packet_loss>[\d\.]+)% packet loss, BER: (?P<ber>[\d\.]+)%)"
     )
     dmr_rf_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
       r"DMR Slot (?P<slot>\d), received (?P<source>RF) (?:late entry|voice header|end of voice transmission) "
-      r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
+      r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG [\d\w]+)|[\d\w]+)"
       r"(?:, (?P<duration>[\d\.]+) seconds, BER: (?P<ber>[\d\.]+)%, RSSI: (?P<rssi>[-\d\/]+) dBm)?"
     )
     dmr_data_pattern = (
       r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
       r"DMR Slot (?P<slot>\d), (?:received|ended) (?P<source>network|RF) (?:Data Preamble CSBK|data header|data transmission) (?:\d+ to follow) "
-      r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG \d+)|[\d\w]+)"
+      r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG [\d\w]+)|[\d\w]+)"
       r"(?:, (?P<block>[\d]+) blocks)"
     )
 
