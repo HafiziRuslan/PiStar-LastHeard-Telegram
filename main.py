@@ -235,7 +235,7 @@ class MMDVMLogLine:
         self.rssi = "🟥◻️◻️◻️◻️◻️◻️◻️◻️S1"
     else:
         self.rssi = "🟥🟥🟥🟥🟥🟥🟥🟥🟥S0"
-    self.rssi += f"+{-93 - self.rssi3}dB ({self.rssi3}dBm)"
+    self.rssi += f"+{93 + self.rssi3}dB ({self.rssi3}dBm)"
     base = f"Timestamp: {self.timestamp}, Mode: {self.mode}, Callsign: {self.callsign}, Destination: {self.destination}"
     if self.mode == "DMR" or self.mode == "DMR-D":
       base += f", Slot: {self.slot}"
