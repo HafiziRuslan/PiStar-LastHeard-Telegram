@@ -292,7 +292,7 @@ class MMDVMLogLine:
     message += f"\n🎯 <b>Target</b>: {self.destination}"
     if self.is_voice:
       message += "\n🗣️ <b>Type</b>: Voice"
-      message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds')}"
+      message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds', format='%0.0f')}"
       if self.ber > 0:
         message += f"\n📊 <b>BER</b>: {self.ber}%"
       if self.is_network:
