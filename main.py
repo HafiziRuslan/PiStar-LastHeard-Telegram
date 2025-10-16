@@ -223,7 +223,7 @@ class MMDVMLogLine:
     else:
         self.rssi = "🟥S0"
     self.rssi += f"+{93 + self.rssi3}dB ({self.rssi3}dBm)"
-    self.is_kerchunk = True if self.duration < 2.0 else False
+    self.is_kerchunk = True if self.duration < 2 else False
     base = f"Timestamp: {self.timestamp}, Mode: {self.mode}, Callsign: {self.callsign}, Destination: {self.destination}"
     if self.mode == "DMR" or self.mode == "DMR-D":
       base += f", Slot: {self.slot}"
@@ -231,16 +231,10 @@ class MMDVMLogLine:
         base += ", Type: Voice"
         if self.is_network:
           base += ", Source: Network"
-          if not self.is_kerchunk:
-            base += " (Kerchunk)"
-          else:
-            base += f", Duration: {self.duration}s, PL: {self.packet_loss}%, BER: {self.ber}%"
+          base += f", Duration: {self.duration}s, PL: {self.packet_loss}%, BER: {self.ber}%"
         else:
           base += ", Source: RF"
-          if not self.is_kerchunk:
-            base += " (Kerchunk)"
-          else:
-            base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi}"
+          base += f", Duration: {self.duration}s, BER: {self.ber}%, RSSI: {self.rssi}"
       else:
         base += ", Type: Data"
         if self.is_network:
@@ -278,7 +272,7 @@ class MMDVMLogLine:
     message += f"\n🎯 <b>Target</b>: {self.destination}"
     if self.is_voice:
       message += "\n🗣️ <b>Type</b>: Voice"
-      if not self.is_kerchunk:
+      if self.is_kerchunk:
         message += " (Kerchunk)"
       else:
         message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds', format='%0.0f')}"
