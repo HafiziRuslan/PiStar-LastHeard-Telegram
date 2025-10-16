@@ -40,7 +40,7 @@ def configure_logging():
 
 
 class MMDVMLogLine:
-  timestamp: datetime = datetime.now()
+  timestamp: datetime = datetime.now(dt.timezone.utc)
   mode: str = ""
   callsign: str = ""
   destination: str = ""
@@ -201,7 +201,7 @@ class MMDVMLogLine:
     """
     Returns a string representation of the log line.
     """
-    self.timestamp = self.timestamp.replace(tzinfo=dt.timezone.utc)
+    self.timestamp = self.timestamp.astimezone(dt.timezone.utc)
     if self.rssi3 >= -93:
         self.rssi = "🟩S9"
     elif -99 <= self.rssi3 < -93:
