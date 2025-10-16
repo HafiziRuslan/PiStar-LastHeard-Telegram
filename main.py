@@ -215,6 +215,7 @@ class MMDVMLogLine:
     """
     Returns a string representation of the log line.
     """
+    self.timestamp = self.timestamp.replace(tzinfo=dt.timezone.utc)
     if self.rssi3 >= -93:
         self.rssi = "🟩S9"
     elif -99 <= self.rssi3 < -93:
@@ -279,7 +280,7 @@ class MMDVMLogLine:
     if self.mode == "DMR" or self.mode == "DMR-D":
       message += f" (Slot {self.slot})"
 
-    message += f"\n🕒 <b>Time</b>: {self.timestamp}"
+    message += f"\n🕒 <b>Time</b>: {self.timestamp.strftime('%d-%b-%Y %H:%M:%S %Z')}"
 
     # Add callsign with or without QRZ link
     if self.qrz_url:
