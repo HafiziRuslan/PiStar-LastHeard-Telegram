@@ -20,23 +20,24 @@ This project is a Python-based Telegram bot that monitors DStar logs and sends u
 
 1. Clone the repository to your Pi-Star system:
 
-```bash
-git clone https://github.com/HafiziRuslan/pistar-lastheard-telegram
-cd pistar-lastheard-telegram
-```
+    ```bash
+    git clone https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram.git
+    cd PiStar-LastHeard-Telegram
+    ```
 
 2. Create a `.env` file in the project directory and add the following environment variables:
 
-```env
-# Telegram bot token
-TG_BOTTOKEN=<your-telegram-bot-token>
-# Target chat where to send messages
-TG_CHATID=<your-telegram-chat-id>
-# Address of the RP2C device (only for dstar gateway log monitoring)
-GW_ADDRESS=172.16.0.1
-# Ignore the time server messages?
-GW_IGNORE_TIME_MESSAGES=true
-```
+    ```env
+    # Telegram bot token
+    TG_BOTTOKEN=<your-telegram-bot-token>
+    # Target chat where to send messages
+    TG_CHATID=<your-telegram-chat-id>
+    # Address of the RP2C device (only for dstar gateway log monitoring)
+    GW_ADDRESS=172.16.0.1
+    # Ignore the time server messages?
+    GW_IGNORE_TIME_MESSAGES=true
+    ```
+
 <!--
 3. Choose the script you want to use to run the bot:
    - `main-dstargateway.py`: Run the bot which monitors the Dstar Gateway log file (for gateways running ICOM hardware).
@@ -45,10 +46,11 @@ GW_IGNORE_TIME_MESSAGES=true
 4. Rename the chosen script to `main.py`
    - For example, if you want to use the Dstar Gateway log monitoring script:
 
-```bash
-mv main-dstargateway.py main.py
-```
+    ```bash
+    mv main-dstargateway.py main.py
+    ```
  -->
+
 ## Usage
 
 The bot can be launched using the following command:
@@ -81,17 +83,17 @@ To run the script at boot, add an entry in cron:
 ## How It Works
 
 1. **Log Monitoring**:
-    The bot reads the latest DStar log file and extracts the last line. It parses the log line using a regex pattern to extract fields like timestamp, callsigns, and repeaters.
+   The bot reads the latest DStar log file and extracts the last line. It parses the log line using a regex pattern to extract fields like timestamp, callsigns, and repeaters.
 
 2. **Telegram Integration**:
-    The bot formats the parsed log entry into an HTML message and sends it to the specified Telegram chat using the `python-telegram-bot` library.
+   The bot formats the parsed log entry into an HTML message and sends it to the specified Telegram chat using the `python-telegram-bot` library.
 
 3. **Environment Variables**:
-    The bot uses environment variables (`TG_BOTTOKEN` and `TG_CHATID`) to configure the Telegram bot token and chat ID.
+   The bot uses environment variables (`TG_BOTTOKEN` and `TG_CHATID`) to configure the Telegram bot token and chat ID.
 
 ## Dependencies
 
-> [!TIP]
+> [TIP]
 > If using the `main.sh` script, all dependencies and virtual environment are created automatically
 
 The project requires the following Python libraries:
@@ -120,3 +122,7 @@ Feel free to submit issues or pull requests to improve the project.
 ## License
 
 This project is licensed under the GNU GPL v3 License. See the `LICENSE` file for details.
+
+### Source
+
+[iu2frl/pistar-lastheard-telegram](https://github.com/iu2frl/pistar-lastheard-telegram)
