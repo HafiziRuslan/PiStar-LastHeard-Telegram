@@ -115,7 +115,10 @@ class MMDVMLogLine:
       self.duration = float(match.group("duration"))
       self.packet_loss = int(match.group("packet_loss"))
       self.ber = float(match.group("ber"))
-      self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
+      if self.callsign.isnumeric():
+        self.url = f"https://database.radioid.net/database/view?id={self.callsign}"
+      else:
+        self.url = f"https://www.qrz.com/db/{self.callsign}"
       return
 
     match = re.match(dmr_rf_pattern, logline)
@@ -129,7 +132,10 @@ class MMDVMLogLine:
       self.duration = float(match.group("duration"))
       self.ber = float(match.group("ber"))
       self.rssi3 = int(match.group("rssi3"))
-      self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
+      if self.callsign.isnumeric():
+        self.url = f"https://database.radioid.net/database/view?id={self.callsign}"
+      else:
+        self.url = f"https://www.qrz.com/db/{self.callsign}"
       return
 
     match = re.match(dmr_data_pattern, logline)
@@ -142,7 +148,10 @@ class MMDVMLogLine:
       self.callsign = match.group("callsign").strip()
       self.destination = match.group("destination").strip()
       self.block = int(match.group("block"))
-      self.qrz_url = f"https://www.qrz.com/db/{self.callsign}"
+      if self.callsign.isnumeric():
+        self.url = f"https://database.radioid.net/database/view?id={self.callsign}"
+      else:
+        self.url = f"https://www.qrz.com/db/{self.callsign}"
       return
 
     match = re.match(dstar_pattern, logline)
@@ -155,7 +164,10 @@ class MMDVMLogLine:
       self.duration = float(match.group("duration"))
       self.packet_loss = int(match.group("packet_loss"))
       self.ber = float(match.group("ber"))
-      self.qrz_url = f"https://www.qrz.com/db/{self.callsign.split('/')[0].strip()}"
+      if self.callsign.isnumeric():
+        self.url = f"https://database.radioid.net/database/view?id={self.callsign.split('/')[0].strip()}"
+      else:
+        self.url = f"https://www.qrz.com/db/{self.callsign.split('/')[0].strip()}"
       return
 
     match = re.match(dstar_watchdog_pattern, logline)
@@ -167,7 +179,6 @@ class MMDVMLogLine:
       self.packet_loss = int(match.group("packet_loss"))
       self.ber = float(match.group("ber"))
       self.is_watchdog = True
-      self.qrz_url = ""
       return
 
     match = re.match(ysf_pattern, logline)
@@ -181,7 +192,10 @@ class MMDVMLogLine:
       self.duration = float(match.group("duration"))
       self.packet_loss = int(match.group("packet_loss"))
       self.ber = float(match.group("ber"))
-      self.qrz_url = f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
+      if self.callsign.isnumeric():
+        self.url = f"https://database.radioid.net/database/view?id={self.callsign.split('-')[0].strip()}"
+      else:
+        self.url = f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
       return
 
     match = re.match(ysf_network_data_pattern, logline)
@@ -192,7 +206,10 @@ class MMDVMLogLine:
       self.is_voice = False
       self.callsign = match.group("callsign").strip()
       self.destination = f"DG-ID {match.group('dgid')} at {match.group('location').strip()}"
-      self.qrz_url = f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
+      if self.callsign.isnumeric():
+        self.url = f"https://database.radioid.net/database/view?id={self.callsign.split('-')[0].strip()}"
+      else:
+        self.url = f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
       return
 
     raise ValueError(f"Log line does not match expected format: {logline}")
@@ -263,8 +280,8 @@ class MMDVMLogLine:
     if self.mode == "DMR" or self.mode == "DMR-D":
       message += f" (Slot {self.slot})"
     message += f"\n🕒 <b>Time</b>: {datetime.strftime(self.timestamp, '%d-%b-%Y %H:%M:%S %Z') if self.timestamp else dt.datetime.now(dt.timezone.utc).strftime('%d-%b-%Y %H:%M:%S %Z')}"
-    if self.qrz_url:
-      message += f"\n📡 <b>Caller</b>: <a href=\"{self.qrz_url}\">{self.callsign}</a>"
+    if self.url:
+      message += f"\n📡 <b>Caller</b>: <a href=\"{self.url}\">{self.callsign}</a>"
     else:
       message += f"\n📡 <b>Caller</b>: {self.callsign}"
     message += f" ({'RF' if not self.is_network else 'NET'})"
