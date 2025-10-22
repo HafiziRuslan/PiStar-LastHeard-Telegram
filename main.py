@@ -279,7 +279,7 @@ class MMDVMLogLine:
     message = f"{mode_icon} <b>Mode</b>: {self.mode}"
     if self.mode == "DMR" or self.mode == "DMR-D":
       message += f" (Slot {self.slot})"
-    message += f"\n🕒 <b>Time</b>: {datetime.strftime(self.timestamp, '%d-%b-%Y %H:%M:%S %Z') if self.timestamp else dt.datetime.now(dt.timezone.utc).strftime('%d-%b-%Y %H:%M:%S %Z')}"
+    message += f"\n🕒 <b>Time</b>: {datetime.strftime(self.timestamp.astimezone(dt.timezone.utc), '%d-%b-%Y %H:%M:%S %Z') if self.timestamp else dt.datetime.now(dt.timezone.utc).strftime('%d-%b-%Y %H:%M:%S %Z')}"
     if self.url:
       message += f"\n📡 <b>Caller</b>: <a href=\"{self.url}\">{self.callsign}</a>"
     else:
@@ -291,7 +291,7 @@ class MMDVMLogLine:
       if self.is_kerchunk:
         message += " (Kerchunk)"
       else:
-        message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds', format='%0.0f')}"
+        message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds', format='%0.0f').replace('seconds', 'sec').replace(' and', ',').replace('minutes', 'min')}"
         if self.ber > 0:
           message += f"\n📊 <b>BER</b>: {self.ber}%"
         if self.is_network:
