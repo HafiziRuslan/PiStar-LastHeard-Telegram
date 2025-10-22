@@ -279,7 +279,7 @@ class MMDVMLogLine:
     message = f"{mode_icon} <b>Mode</b>: {self.mode}"
     if self.mode == "DMR" or self.mode == "DMR-D":
       message += f" (Slot {self.slot})"
-    message += f"\n🕒 <b>Time</b>: {datetime.strftime(self.timestamp.astimezone(dt.timezone.utc), '%d-%b-%Y %H:%M:%S %Z') if self.timestamp else dt.datetime.now(dt.timezone.utc).strftime('%d-%b-%Y %H:%M:%S %Z')}"
+    message += f"\n🕒 <b>Time</b>: {datetime.strftime(self.timestamp.replace(tzinfo=dt.timezone.utc), '%d-%b-%Y %H:%M:%S %Z') if self.timestamp else dt.datetime.now(dt.timezone.utc).strftime('%d-%b-%Y %H:%M:%S %Z')}"
     if self.url:
       message += f"\n📡 <b>Caller</b>: <a href=\"{self.url}\">{self.callsign}</a>"
     else:
