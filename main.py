@@ -260,6 +260,59 @@ class MMDVMLogLine:
         base += f", Blocks: {self.block}"
     return base
 
+  def get_talkgroup_name(self) -> str:
+    """
+    Returns the talkgroup name based on the destination.
+    """
+    tg_files = ["/usr/local/etc/TGList_ADN.txt",
+                "/usr/local/etc/TGList_ADN-NoPrefix.txt",
+                "/usr/local/etc/TGList_BM.txt",
+                "/usr/local/etc/TGList_DMRp.txt",
+                "/usr/local/etc/TGList_DMRp_NoPrefix.txt",
+                "/usr/local/etc/TGList_FreeDMR.txt",
+                "/usr/local/etc/TGList_FreeStarIPSC.txt",
+                "/usr/local/etc/TGList_NXDN.txt",
+                "/usr/local/etc/TGList_P25.txt",
+                "/usr/local/etc/TGList_QuadNet.txt",
+                "/usr/local/etc/TGList_QuadNet-NoPrefix.txt",
+                "/usr/local/etc/TGList_SystemX.txt",
+                "/usr/local/etc/TGList_TGIF.txt",
+                "/usr/local/etc/TGList_YSF.txt",
+    ]
+    tg_name = ""
+    for tg_file in tg_files:
+      if os.path.isfile(tg_file):
+        try:
+          with open(tg_file, 'r', encoding="UTF-8", errors="replace") as file:
+            for line in file:
+              parts = line.strip().split(';')
+              tg_id = parts[0].strip()
+              if tg_file.endswith("_BM.txt"):
+                tg_name = parts[2].strip()
+              else:
+                tg_name = parts[1].strip()
+              if tg_id == self.destination:
+                return tg_name
+        except Exception as e:
+          logging.error("Error reading talkgroup file %s: %s", tg_file, e)
+    return tg_name
+
+  def get_caller_location(self) -> str:
+    """
+    Returns the location of the caller based on the callsign.
+    """
+    caller_file = "/usr/local/etc/stripped.csv"
+    country = "Unknown"
+    try:
+      with open(caller_file, 'r', encoding="UTF-8", errors="replace") as file:
+        for line in file:
+          parts = line.strip().split(',')
+          if parts[1].strip() == self.callsign:
+            country = parts[parts.count(',') - 1].strip()
+    except Exception as e:
+      logging.error("Error reading caller file %s: %s", caller_file, e)
+    return country
+
   def get_telegram_message(self) -> str:
     """
     Returns a formatted message for Telegram with emojis.
@@ -281,11 +334,11 @@ class MMDVMLogLine:
       message += f" (Slot {self.slot})"
     message += f"\n🕒 <b>Time</b>: {datetime.strftime(self.timestamp.replace(tzinfo=dt.timezone.utc), '%d-%b-%Y %H:%M:%S %Z') if self.timestamp else dt.datetime.now(dt.timezone.utc).strftime('%d-%b-%Y %H:%M:%S %Z')}"
     if self.url:
-      message += f"\n📡 <b>Caller</b>: <a href=\"{self.url}\">{self.callsign}</a>"
+      message += f"\n📡 <b>Caller</b>: <a href=\"{self.url}\">{self.callsign}</a> ({self.get_caller_location()})"
     else:
-      message += f"\n📡 <b>Caller</b>: {self.callsign}"
-    message += f" ({'RF' if not self.is_network else 'NET'})"
-    message += f"\n🎯 <b>Target</b>: {self.destination}"
+      message += f"\n📡 <b>Caller</b>: {self.callsign} ({self.get_caller_location()})"
+    message += f" [{'RF' if not self.is_network else 'NET'}]"
+    message += f"\n🎯 <b>Target</b>: {self.destination} ({self.get_talkgroup_name()})"
     if self.is_voice:
       message += "\n🗣️ <b>Type</b>: Voice"
       if self.is_kerchunk:
