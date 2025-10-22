@@ -266,24 +266,19 @@ class MMDVMLogLine:
     """
     Returns the talkgroup name based on the destination.
     """
-    tg_files = glob.glob("/usr/local/etc/TGList_*.txt")
+    tg_file = "/usr/local/etc/groupsNextion.txt"
     tg_name = ""
-    for tg_file in tg_files:
-      if os.path.isfile(tg_file):
-        try:
-          with open(tg_file, 'r', encoding="UTF-8", errors="replace") as file:
-            for line in file:
-              parts = line.strip().split(';')
-              id = parts[0].strip()
-              if tg_file.endswith("_BM.txt"):
-                name = parts[2].strip()
-              else:
-                name = parts[1].strip()
-              if id == self.destination:
-                tg_name = f" ({name})"
-                break
-        except Exception as e:
-          logging.error("Error reading talkgroup file %s: %s", tg_file, e)
+    try:
+      with open(tg_file, 'r', encoding="UTF-8", errors="replace") as file:
+          for line in file:
+            parts = line.strip().split(',')
+            id = parts[0].strip()
+            name = parts[1].strip()
+            if id == self.destination:
+              tg_name = f" ({name})"
+              break
+    except Exception as e:
+      logging.error("Error reading talkgroup file %s: %s", tg_file, e)
     return tg_name
 
   def get_caller_location(self) -> str:
@@ -296,7 +291,7 @@ class MMDVMLogLine:
       with open(caller_file, 'r', encoding="UTF-8", errors="replace") as file:
         for line in file:
           parts = line.strip().split(',')
-          if len(parts) > 1 and parts[1].strip() == self.callsign:
+          if parts[1].strip() == self.callsign:
             country = parts[-1].strip()
             user_country = f" ({country})"
             break
