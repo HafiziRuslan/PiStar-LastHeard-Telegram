@@ -295,14 +295,14 @@ class MMDVMLogLine:
                 return tg_name
         except Exception as e:
           logging.error("Error reading talkgroup file %s: %s", tg_file, e)
-    return tg_name
+    return f" ({tg_name})"
 
   def get_caller_location(self) -> str:
     """
     Returns the location of the caller based on the callsign.
     """
     caller_file = "/usr/local/etc/stripped.csv"
-    country = "Unknown"
+    country = ""
     try:
       with open(caller_file, 'r', encoding="UTF-8", errors="replace") as file:
         for line in file:
@@ -311,7 +311,7 @@ class MMDVMLogLine:
             country = parts[parts.count(',') - 1].strip()
     except Exception as e:
       logging.error("Error reading caller file %s: %s", caller_file, e)
-    return country
+    return f" ({country})"
 
   def get_telegram_message(self) -> str:
     """
@@ -334,11 +334,11 @@ class MMDVMLogLine:
       message += f" (Slot {self.slot})"
     message += f"\n🕒 <b>Time</b>: {datetime.strftime(self.timestamp.replace(tzinfo=dt.timezone.utc), '%d-%b-%Y %H:%M:%S %Z') if self.timestamp else dt.datetime.now(dt.timezone.utc).strftime('%d-%b-%Y %H:%M:%S %Z')}"
     if self.url:
-      message += f"\n📡 <b>Caller</b>: <a href=\"{self.url}\">{self.callsign}</a> ({self.get_caller_location()})"
+      message += f"\n📡 <b>Caller</b>: <a href=\"{self.url}\">{self.callsign}</a>{self.get_caller_location()}"
     else:
-      message += f"\n📡 <b>Caller</b>: {self.callsign} ({self.get_caller_location()})"
+      message += f"\n📡 <b>Caller</b>: {self.callsign}{self.get_caller_location()}"
     message += f" [{'RF' if not self.is_network else 'NET'}]"
-    message += f"\n🎯 <b>Target</b>: {self.destination} ({self.get_talkgroup_name()})"
+    message += f"\n🎯 <b>Target</b>: {self.destination}{self.get_talkgroup_name()}"
     if self.is_voice:
       message += "\n🗣️ <b>Type</b>: Voice"
       if self.is_kerchunk:
