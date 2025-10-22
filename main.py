@@ -274,16 +274,17 @@ class MMDVMLogLine:
           try:
             with open(tg_file, 'r', encoding="UTF-8", errors="replace") as file:
               for line in file:
-                if line.index(";") >= 0:
-                  parts = line.strip().split(';')
-                  id = parts[0].strip()
-                  if tg_file.endswith("_BM.txt"):
-                    name = parts[2].strip()
-                  else:
-                    name = parts[1].strip()
-                  if id == self.destination.split()[-1]:
-                    tg_name = f" ({name})"
-                    break
+                if line.startswith('#') or len(line.strip()) == 0:
+                  continue
+                parts = line.strip().split(';')
+                id = parts[0].strip()
+                if tg_file.endswith("_BM.txt"):
+                  name = parts[2].strip()
+                else:
+                  name = parts[1].strip()
+                if id == self.destination.split()[-1]:
+                  tg_name = f" ({name})"
+                  break
           except Exception as e:
             logging.error("Error reading talkgroup file %s: %s", tg_file, e)
     return tg_name
