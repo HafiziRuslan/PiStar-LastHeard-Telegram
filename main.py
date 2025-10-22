@@ -279,8 +279,8 @@ class MMDVMLogLine:
                 name = parts[1].strip()
               if id == self.destination:
                 tg_name = f" ({name})"
-        except IndexError:
-          pass
+              if IndexError:
+                pass
         except Exception as e:
           logging.error("Error reading talkgroup file %s: %s", tg_file, e)
     return tg_name
@@ -298,8 +298,8 @@ class MMDVMLogLine:
           if parts[1].strip() == self.callsign:
             country = parts[parts.count(',') - 1].strip()
             user_country = f" ({country})"
-    except IndexError:
-      pass
+          if IndexError:
+            pass
     except Exception as e:
       logging.error("Error reading caller file %s: %s", caller_file, e)
     return user_country
