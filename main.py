@@ -43,7 +43,9 @@ class MMDVMLogLine:
   timestamp: Optional[datetime] = None
   mode: str = ""
   callsign: str = ""
+  user_country: str = ""
   destination: str = ""
+  tg_name: str = ""
   block: int = 0
   duration: float = 0.0
   packet_loss: int = 0
@@ -279,8 +281,7 @@ class MMDVMLogLine:
                 name = parts[1].strip()
               if id == self.destination:
                 tg_name = f" ({name})"
-              if IndexError:
-                pass
+                break
         except Exception as e:
           logging.error("Error reading talkgroup file %s: %s", tg_file, e)
     return tg_name
@@ -295,11 +296,10 @@ class MMDVMLogLine:
       with open(caller_file, 'r', encoding="UTF-8", errors="replace") as file:
         for line in file:
           parts = line.strip().split(',')
-          if parts[1].strip() == self.callsign:
-            country = parts[parts.count(',') - 1].strip()
+          if len(parts) > 1 and parts[1].strip() == self.callsign:
+            country = parts[-1].strip()
             user_country = f" ({country})"
-          if IndexError:
-            pass
+            break
     except Exception as e:
       logging.error("Error reading caller file %s: %s", caller_file, e)
     return user_country
