@@ -43,9 +43,7 @@ class MMDVMLogLine:
   timestamp: Optional[datetime] = None
   mode: str = ""
   callsign: str = ""
-  user_country: str = ""
   destination: str = ""
-  tg_name: str = ""
   block: int = 0
   duration: float = 0.0
   packet_loss: int = 0
@@ -282,7 +280,7 @@ class MMDVMLogLine:
                   name = parts[2].strip()
                 else:
                   name = parts[1].strip()
-                if id == self.destination.split()[-1]:
+                if id == self.destination.split()[-1] and name != "":
                   tg_name = f" ({name})"
                   break
           except IndexError:
@@ -296,18 +294,24 @@ class MMDVMLogLine:
     Returns the location of the caller based on the callsign.
     """
     caller_file = "/usr/local/etc/stripped.csv"
-    user_country = ""
+    caller = ""
     try:
       with open(caller_file, 'r', encoding="UTF-8", errors="replace") as file:
         for line in file:
           parts = line.strip().split(',')
-          if parts[1].strip() == self.callsign:
-            country = parts[-1].strip()
-            user_country = f" ({country})"
+          # id = parts[0].strip()
+          call = parts[1].strip()
+          fname = parts[2].strip()
+          # lname = parts[3].strip()
+          # city = parts[4].strip()
+          # state = parts[5].strip()
+          country = parts[6].strip()
+          if call == self.callsign:
+            caller = f" ({fname}-{country})"
             break
     except Exception as e:
       logging.error("Error reading caller file %s: %s", caller_file, e)
-    return user_country
+    return caller
 
   def get_telegram_message(self) -> str:
     """
@@ -340,7 +344,7 @@ class MMDVMLogLine:
       if self.is_kerchunk:
         message += " (Kerchunk)"
       else:
-        message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds', format='%0.0f').replace(' minutes', 'min').replace(' minute', 'min').replace(' seconds', 'sec').replace(' second', 'sec').replace(' and ', ', ')}"
+        message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds', format='%0.0f')}"
         if self.ber > 0:
           message += f"\n📊 <b>BER</b>: {self.ber}%"
         if self.is_network:
