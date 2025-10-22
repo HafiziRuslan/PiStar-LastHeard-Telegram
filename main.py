@@ -340,7 +340,7 @@ class MMDVMLogLine:
       if self.is_kerchunk:
         message += " (Kerchunk)"
       else:
-        message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds', format='%0.0f').replace('seconds', 'sec').replace(' and', ',').replace('minutes', 'min')}"
+        message += f"\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit='seconds', format='%0.0f').replace(' minutes', 'min').replace(' minute', 'min').replace(' seconds', 'sec').replace(' second', 'sec').replace(' and ', ', ')}"
         if self.ber > 0:
           message += f"\n📊 <b>BER</b>: {self.ber}%"
         if self.is_network:
