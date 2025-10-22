@@ -264,21 +264,7 @@ class MMDVMLogLine:
     """
     Returns the talkgroup name based on the destination.
     """
-    tg_files = ["/usr/local/etc/TGList_ADN.txt",
-                "/usr/local/etc/TGList_ADN-NoPrefix.txt",
-                "/usr/local/etc/TGList_BM.txt",
-                "/usr/local/etc/TGList_DMRp.txt",
-                "/usr/local/etc/TGList_DMRp_NoPrefix.txt",
-                "/usr/local/etc/TGList_FreeDMR.txt",
-                "/usr/local/etc/TGList_FreeStarIPSC.txt",
-                "/usr/local/etc/TGList_NXDN.txt",
-                "/usr/local/etc/TGList_P25.txt",
-                "/usr/local/etc/TGList_QuadNet.txt",
-                "/usr/local/etc/TGList_QuadNet-NoPrefix.txt",
-                "/usr/local/etc/TGList_SystemX.txt",
-                "/usr/local/etc/TGList_TGIF.txt",
-                "/usr/local/etc/TGList_YSF.txt",
-    ]
+    tg_files = glob.glob("/usr/local/etc/TGList_*.txt")
     tg_name = ""
     for tg_file in tg_files:
       if os.path.isfile(tg_file):
@@ -293,6 +279,8 @@ class MMDVMLogLine:
                 tg_name = parts[1].strip()
               if tg_id == self.destination:
                 return tg_name
+              else:
+                pass
         except Exception as e:
           logging.error("Error reading talkgroup file %s: %s", tg_file, e)
     return f" ({tg_name})"
