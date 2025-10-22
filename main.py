@@ -285,6 +285,8 @@ class MMDVMLogLine:
                 if id == self.destination.split()[-1]:
                   tg_name = f" ({name})"
                   break
+          except IndexError:
+            pass
           except Exception as e:
             logging.error("Error reading talkgroup file %s: %s", tg_file, e)
     return tg_name
