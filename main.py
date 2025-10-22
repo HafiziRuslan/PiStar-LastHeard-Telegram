@@ -272,34 +272,37 @@ class MMDVMLogLine:
           with open(tg_file, 'r', encoding="UTF-8", errors="replace") as file:
             for line in file:
               parts = line.strip().split(';')
-              tg_id = parts[0].strip()
+              id = parts[0].strip()
               if tg_file.endswith("_BM.txt"):
-                tg_name = parts[2].strip()
+                name = parts[2].strip()
               else:
-                tg_name = parts[1].strip()
-              if tg_id == self.destination:
-                return tg_name
+                name = parts[1].strip()
+              if id == self.destination:
+                tg_name = f" ({name})"
               else:
                 pass
         except Exception as e:
           logging.error("Error reading talkgroup file %s: %s", tg_file, e)
-    return f" ({tg_name})"
+    return tg_name
 
   def get_caller_location(self) -> str:
     """
     Returns the location of the caller based on the callsign.
     """
     caller_file = "/usr/local/etc/stripped.csv"
-    country = ""
+    user_country = ""
     try:
       with open(caller_file, 'r', encoding="UTF-8", errors="replace") as file:
         for line in file:
           parts = line.strip().split(',')
           if parts[1].strip() == self.callsign:
             country = parts[parts.count(',') - 1].strip()
+            user_country = f" ({country})"
+          else:
+            pass
     except Exception as e:
       logging.error("Error reading caller file %s: %s", caller_file, e)
-    return f" ({country})"
+    return user_country
 
   def get_telegram_message(self) -> str:
     """
