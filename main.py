@@ -274,6 +274,7 @@ class MMDVMLogLine:
           try:
             with open(tg_file, 'r', encoding="UTF-8", errors="replace") as file:
               for line in file:
+                line = line.index(";")>= 0 and line or line.split('#', 1)[0]
                 parts = line.strip().split(';')
                 id = parts[0].strip()
                 if tg_file.endswith("_BM.txt"):
