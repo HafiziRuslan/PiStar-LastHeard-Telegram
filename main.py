@@ -116,7 +116,7 @@ class MMDVMLogLine:
       self.packet_loss = int(match.group("packet_loss"))
       self.ber = float(match.group("ber"))
       if self.callsign.isnumeric():
-        self.url = f"https://database.radioid.net/database/view?id={self.callsign}"
+        self.url = f"https://database.radioid.net/database/view?callsign={self.callsign}"
       else:
         self.url = f"https://www.qrz.com/db/{self.callsign}"
       return
@@ -133,7 +133,7 @@ class MMDVMLogLine:
       self.ber = float(match.group("ber"))
       self.rssi3 = int(match.group("rssi3"))
       if self.callsign.isnumeric():
-        self.url = f"https://database.radioid.net/database/view?id={self.callsign}"
+        self.url = f"https://database.radioid.net/database/view?callsign={self.callsign}"
       else:
         self.url = f"https://www.qrz.com/db/{self.callsign}"
       return
@@ -149,7 +149,7 @@ class MMDVMLogLine:
       self.destination = match.group("destination").strip()
       self.block = int(match.group("block"))
       if self.callsign.isnumeric():
-        self.url = f"https://database.radioid.net/database/view?id={self.callsign}"
+        self.url = f"https://database.radioid.net/database/view?callsign={self.callsign}"
       else:
         self.url = f"https://www.qrz.com/db/{self.callsign}"
       return
@@ -165,7 +165,7 @@ class MMDVMLogLine:
       self.packet_loss = int(match.group("packet_loss"))
       self.ber = float(match.group("ber"))
       if self.callsign.isnumeric():
-        self.url = f"https://database.radioid.net/database/view?id={self.callsign.split('/')[0].strip()}"
+        self.url = f"https://database.radioid.net/database/view?callsign={self.callsign.split('/')[0].strip()}"
       else:
         self.url = f"https://www.qrz.com/db/{self.callsign.split('/')[0].strip()}"
       return
@@ -193,7 +193,7 @@ class MMDVMLogLine:
       self.packet_loss = int(match.group("packet_loss"))
       self.ber = float(match.group("ber"))
       if self.callsign.isnumeric():
-        self.url = f"https://database.radioid.net/database/view?id={self.callsign.split('-')[0].strip()}"
+        self.url = f"https://database.radioid.net/database/view?callsign={self.callsign.split('-')[0].strip()}"
       else:
         self.url = f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
       return
@@ -207,7 +207,7 @@ class MMDVMLogLine:
       self.callsign = match.group("callsign").strip()
       self.destination = f"DG-ID {match.group('dgid')} at {match.group('location').strip()}"
       if self.callsign.isnumeric():
-        self.url = f"https://database.radioid.net/database/view?id={self.callsign.split('-')[0].strip()}"
+        self.url = f"https://database.radioid.net/database/view?callsign={self.callsign.split('-')[0].strip()}"
       else:
         self.url = f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
       return
