@@ -32,6 +32,8 @@ This project is a Python-based Telegram bot that monitors DStar logs and sends u
     TG_BOTTOKEN=<your-telegram-bot-token>
     # Target chat where to send messages
     TG_CHATID=<your-telegram-chat-id>
+    # Telegram topic ID (only for channels)
+    TG_TOPICID=<your-telegram-topic-id>
     # Address of the RP2C device (only for dstar gateway log monitoring)
     GW_ADDRESS=172.16.0.1
     # Ignore the time server messages?

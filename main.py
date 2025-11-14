@@ -18,6 +18,7 @@ from telegram.ext import (ApplicationBuilder, CommandHandler, ContextTypes, filt
 
 TG_BOTTOKEN: str = ""
 TG_CHATID: str = ""
+TG_TOPICID: str = ""
 GW_IGNORE_TIME_MESSAGES: bool = True
 TG_APP: Optional[TelegramApplication] = None
 shutdown_flag = threading.Event()
@@ -410,6 +411,7 @@ async def logs_to_telegram(tg_message: str):
     try:
       await TG_APP.bot.send_message(
         chat_id=TG_CHATID,
+        message_thread_id=TG_TOPICID,
         text=tg_message,
         parse_mode="HTML",
         disable_web_page_preview=True
