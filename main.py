@@ -414,6 +414,7 @@ async def logs_to_telegram(tg_message: str):
         message_thread_id=TG_TOPICID,
         text=tg_message,
         parse_mode="HTML",
+        # link_preview_options={"is_disabled": True},
         disable_web_page_preview=True
       )
     except Exception as e:
@@ -434,9 +435,10 @@ def load_env_variables():
   Load environment variables from .env file.
   """
   load_dotenv()
-  global TG_BOTTOKEN, TG_CHATID, GW_IGNORE_TIME_MESSAGES
+  global TG_BOTTOKEN, TG_CHATID, TG_TOPICID, GW_IGNORE_TIME_MESSAGES
   TG_BOTTOKEN = os.getenv("TG_BOTTOKEN", "")
   TG_CHATID = os.getenv("TG_CHATID", "")
+  TG_TOPICID = os.getenv("TG_TOPICID", "0")
   GW_IGNORE_TIME_MESSAGES = os.getenv("GW_IGNORE_MESSAGES", "True").lower() == "true"
   if not TG_BOTTOKEN:
     raise ValueError("TG_BOTTOKEN is not set in the environment variables.")
