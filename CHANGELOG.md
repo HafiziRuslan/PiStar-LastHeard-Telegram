@@ -2,16 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased] - (2025-12-11T02:17:51.014307527+08:00)
+## [unreleased] - (2025-12-11T02:20:17.061778826+08:00)
 
 ### 📚 Documentation
 
+- 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(README): update installation and prerequisites
 - 📝 docs(changelog): update release note
 
 ### ⚙️ Miscellaneous Tasks
 
+- 🔧 chore(scripts): update venv activation for cross-platform compatibility
 - 🔧 chore(scripts): improve shell script output and activation
 
 ## [beta] - (2025-12-10T23:54:59+08:00)
@@ -163,4 +165,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff - (2025-12-11T02:17:51.019349222+08:00)
+generated using git-cliff - (2025-12-11T02:20:17.066886482+08:00)
