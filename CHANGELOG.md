@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased] - (2025-12-10T23:55:14.930411116+08:00)
+## [unreleased] - (2025-12-11T00:31:56.091539396+08:00)
+
+### 📚 Documentation
+
+- 📝 docs(README): update installation and prerequisites
+- 📝 docs(changelog): update release note
+
+## [beta] - (2025-12-10T23:54:59+08:00)
 
 ### 🚀 Features
 
@@ -151,4 +158,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff - (2025-12-10T23:55:14.935049384+08:00)
+generated using git-cliff - (2025-12-11T00:31:56.096483223+08:00)
