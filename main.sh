@@ -22,13 +22,13 @@ if [ ! -d ".venv" ]; then
   echo $date "Virtual environment not found, creating one."
   uv venv
   echo $date "Activating virtual environment"
-  source ./.venv/Scripts/activate
+  source .venv/bin/activate
   echo $date "Installing dependencies"
   uv sync
 else
   echo -n $date "Virtual environment already exists."
   echo " -> Activating virtual environment"
-  source ./.venv/Scripts/activate
+  source .venv/bin/activate
   echo $date "Updating dependencies"
   uv sync
 fi
