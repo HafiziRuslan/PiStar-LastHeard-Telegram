@@ -1,0 +1,28 @@
+[project]
+name = "PiStar-LastHeard-Telegram"
+version = "0.1-beta.1"
+description = "Telegram bot to monitor the last transmissions of a Pi-Star gateway"
+keywords = ["amateur-radio", "mmdvm", "pi-star", "wpsd"]
+readme = "README.md"
+license = "GNU General Public License v2.0"
+authors = [
+  {name = "Luca"},
+  {name = "Hafizi Ruslan", email = "9w2lgx@mhrtech.my"}
+]
+maintainers = [
+  {name = "Hafizi Ruslan", email = "9w2lgx@mhrtech.my"}
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python"
+]
+requires-python = ">=3.13"
+dependencies = [
+    "humanize>=4.14.0",
+    "python-dotenv>=1.2.1",
+    "python-telegram-bot>=22.5",
+]
+
+[project.urls]
+repository = "https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram"
+changelog = "https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/blob/master/CHANGELOG.md"

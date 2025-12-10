@@ -1,6 +1,5 @@
-venv/*
 .env
-*.jar
-*.log
-*.pyc
-out.txt
+.vscode
+/sample
+.python-version
+*.lock
