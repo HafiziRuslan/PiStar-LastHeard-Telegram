@@ -7,7 +7,7 @@ command_exists() {
 }
 
 if command_exists uv; then
-  echo $date "✅ uv is installed."
+  echo -n $date "✅ uv is installed."
   echo " -> Checking uv update"
   uv self update
 else
@@ -22,13 +22,13 @@ if [ ! -d ".venv" ]; then
   echo $date "Virtual environment not found, creating one."
   uv venv
   echo $date "Activating virtual environment"
-  source .venv/Scripts/activate
+  source ./.venv/Scripts/activate
   echo $date "Installing dependencies"
   uv sync
 else
   echo -n $date "Virtual environment already exists."
   echo " -> Activating virtual environment"
-  source .venv/Scripts/activate
+  source ./.venv/Scripts/activate
   echo $date "Updating dependencies"
   uv sync
 fi
