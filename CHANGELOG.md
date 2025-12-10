@@ -2,10 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased] - (2025-12-10T23:17:17.927176100+08:00)
+## [unreleased] - (2025-12-10T23:55:14.930411116+08:00)
 
 ### 🚀 Features
 
+- ✨ feat(ci): add git cliff for changelog generation
 - ✨ feat(config): add telegram topic id config
 - ✨ feat(telegram): add topic id support for telegram channels
 - ✨ feat(mmdvmlogline): enhance talkgroup name retrieval
@@ -150,4 +151,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff - (2025-12-10T23:17:17.934550600+08:00)
+generated using git-cliff - (2025-12-10T23:55:14.935049384+08:00)
