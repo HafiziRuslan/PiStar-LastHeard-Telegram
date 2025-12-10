@@ -11,7 +11,7 @@ This project is a Python-based Telegram bot that monitors DStar logs and sends u
 
 ## Prerequisites
 
-- Python 3.7 or higher
+- Python 3.13 or higher
 - A Telegram bot token (create one using [BotFather](https://core.telegram.org/bots#botfather)).
 - A Telegram chat ID where the bot will send messages.
 - Access to the DStar log files on your Pi-Star system.
@@ -20,25 +20,17 @@ This project is a Python-based Telegram bot that monitors DStar logs and sends u
 
 1. Clone the repository to your Pi-Star system:
 
-    ```bash
-    git clone https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram.git
-    cd PiStar-LastHeard-Telegram
-    ```
+   ```bash
+   git clone https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram.git ./pslhtg
+   cd pslhtg
+   ```
 
-2. Create a `.env` file in the project directory and add the following environment variables:
+2. Copy the file `default.env` into `.env`, and edit the informations using your favorite editor.
 
-    ```env
-    # Telegram bot token
-    TG_BOTTOKEN=<your-telegram-bot-token>
-    # Target chat where to send messages
-    TG_CHATID=<your-telegram-chat-id>
-    # Telegram topic ID (only for channels)
-    TG_TOPICID=<your-telegram-topic-id>
-    # Address of the RP2C device (only for dstar gateway log monitoring)
-    GW_ADDRESS=172.16.0.1
-    # Ignore the time server messages?
-    GW_IGNORE_TIME_MESSAGES=true
-    ```
+   ```bash
+   cp default.env .env
+   nano .env
+   ```
 
 <!--
 3. Choose the script you want to use to run the bot:
@@ -66,15 +58,17 @@ The script will:
 
 - Create and activate a virtual environment (if not already created).
 - Install the required dependencies.
-- Start the bot and monitor the DStar logs.
+- Start the bot and monitor the logs.
 
 ## Automatic execution
 
 To run the script at boot, add an entry in cron:
 
 ```bash
-@reboot cd /home/pi-star/PiStar-LastHeard-Telegram && ./main.sh > /tmp/lastheard.log 2>&1
+@reboot pi-star cd /home/pi-star/pslhtg && ./main.sh > /tmp/lastheard.log 2>&1
 ```
+
+edit the `pi-star` username into your username
 
 ## File Structure
 
@@ -109,10 +103,6 @@ Install them using:
 pip install -r requirements.txt
 ```
 
-## Tips when running on Pi-Star
-
-As Pi-Star starts the device in read-only mode, I suggest commenting out the `pip install ...` line in `main.sh` to avoid errors due to read-only mode
-
 ## Logging
 
 The bot uses Python's `logging` module to log events and errors. Logs are displayed in the console for easy debugging.
@@ -123,7 +113,7 @@ Feel free to submit issues or pull requests to improve the project.
 
 ## License
 
-This project is licensed under the GNU GPL v3 License. See the `LICENSE` file for details.
+This project is licensed under the GNU GPL v2 License. See the `LICENSE` file for details.
 
 ### Source
 
