@@ -2,10 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased] - (2025-12-11T04:11:09.772527767+08:00)
+## [unreleased] - (2025-12-11T08:53:34.714045399+08:00)
 
 ### 📚 Documentation
 
+- 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
@@ -16,6 +17,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- 🔧 chore(main.sh): improve uv installation message
 - 🔧 chore(uv): remove uv self update
 - 🔧 chore(install): remove uv shell completion from main script
 - 🔧 chore(scripts): improve script output and date formatting
@@ -171,4 +173,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff - (2025-12-11T04:11:09.777873435+08:00)
+generated using git-cliff - (2025-12-11T08:53:34.719335243+08:00)
