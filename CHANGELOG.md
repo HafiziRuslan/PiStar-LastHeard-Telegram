@@ -2,10 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased] - (2025-12-11T09:01:11.330957187+08:00)
+## [unreleased] - (2025-12-17T04:31:12.852629927+08:00)
 
 ### 📚 Documentation
 
+- 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
@@ -175,4 +176,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff - (2025-12-11T09:01:11.340116749+08:00)
+generated using git-cliff - (2025-12-17T04:31:12.861673518+08:00)
