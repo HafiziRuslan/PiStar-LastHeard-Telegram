@@ -307,13 +307,11 @@ class MMDVMLogLine:
                 for line in file:
                     parts = line.strip().split(",")
                     # id = parts[0].strip()
-
                     call = parts[1].strip()
                     fname = parts[2].strip()
                     # lname = parts[3].strip()
                     # city = parts[4].strip()
                     # state = parts[5].strip()
-
                     country = parts[6].strip()
                     if call == self.callsign:
                         caller = f" ({fname}-{country})"
@@ -346,8 +344,8 @@ class MMDVMLogLine:
             message += (
                 f"\n📡 <b>Caller</b>: {self.callsign}{self.get_caller_location()}"
             )
-        message += f" [{'RF' if not self.is_network else 'NET'}]"
         message += f"\n🎯 <b>Target</b>: {self.destination}{self.get_talkgroup_name()}"
+        message += f" [{'RF' if not self.is_network else 'NET'}]"
         if self.is_voice:
             message += "\n🗣️ <b>Type</b>: Voice"
             if self.is_kerchunk:
@@ -389,7 +387,6 @@ def get_latest_mmdvm_log_path() -> str:
     log_files.sort(key=os.path.getmtime, reverse=True)
     latest_log = log_files[0]
     # logging.info("Latest MMDVM log file: %s", latest_log)
-
     return latest_log
 
 
