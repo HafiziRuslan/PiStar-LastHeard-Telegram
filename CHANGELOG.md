@@ -2,10 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased] - (2025-12-17T04:31:12.852629927+08:00)
+## [unreleased] - (2025-12-17T15:44:38.131761255+08:00)
 
 ### 📚 Documentation
 
+- 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
@@ -19,6 +20,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- 👷 ci(workflows): update sync and merge schedule configurations
 - 🔧 chore(main.sh): clear extra spacing in log
 - 🔧 chore(main.sh): improve uv installation message
 - 🔧 chore(uv): remove uv self update
@@ -176,4 +178,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff - (2025-12-17T04:31:12.861673518+08:00)
+generated using git-cliff - (2025-12-17T15:44:38.137271481+08:00)
