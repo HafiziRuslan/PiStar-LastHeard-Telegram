@@ -2,10 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased] - (2025-12-17T16:24:34.027290121+08:00)
+## [unreleased] - (2025-12-17T16:29:20.898724467+08:00)
+
+### 💼 Other
+
+- Merge branch 'master' of https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram
 
 ### 📚 Documentation
 
+- 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
@@ -26,6 +31,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- 👷 ci(sync): add gitlab sync job
 - 👷 ci(sync): update gitlab sync action
 - 👷 ci(sync): update gitlab mirror repository action configuration
 - 👷 ci(sync): update gitlab sync action to cssnr/mirror-repository-action
@@ -190,4 +196,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff - (2025-12-17T16:24:34.033212841+08:00)
+generated using git-cliff - (2025-12-17T16:29:20.904445291+08:00)
