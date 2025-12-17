@@ -110,7 +110,7 @@ class MMDVMLogLine:
 			self.packet_loss = int(match.group("packet_loss"))
 			self.ber = float(match.group("ber"))
 			if self.callsign.isnumeric():
-				self.url = f"https://database.radioid.net/database/view?callsign={self.callsign}"
+				self.url = f"https://database.radioid.net/database/view?id={self.callsign}"
 			else:
 				self.url = f"https://www.qrz.com/db/{self.callsign}"
 			return
@@ -128,13 +128,13 @@ class MMDVMLogLine:
 			self.ber = float(match.group("ber"))
 			self.rssi3 = int(match.group("rssi3"))
 			if self.callsign.isnumeric():
-				self.url = f"https://database.radioid.net/database/view?callsign={self.callsign}"
+				self.url = f"https://database.radioid.net/database/view?id={self.callsign}"
 			else:
 				self.url = f"https://www.qrz.com/db/{self.callsign}"
 			return
 		match = re.match(dmr_data_pattern, logline)
 		if match:
-			self.mode = "DMR-D"
+			self.mode = "DMR"
 			self.timestamp = datetime.strptime(
 				match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f"
 			)
@@ -145,7 +145,7 @@ class MMDVMLogLine:
 			self.destination = match.group("destination").strip()
 			self.block = int(match.group("block"))
 			if self.callsign.isnumeric():
-				self.url = f"https://database.radioid.net/database/view?callsign={self.callsign}"
+				self.url = f"https://database.radioid.net/database/view?id={self.callsign}"
 			else:
 				self.url = f"https://www.qrz.com/db/{self.callsign}"
 			return
@@ -162,7 +162,7 @@ class MMDVMLogLine:
 			self.packet_loss = int(match.group("packet_loss"))
 			self.ber = float(match.group("ber"))
 			if self.callsign.isnumeric():
-				self.url = f"https://database.radioid.net/database/view?callsign={self.callsign.split('/')[0].strip()}"
+				self.url = f"https://database.radioid.net/database/view?id={self.callsign.split('/')[0].strip()}"
 			else:
 				self.url = (
 					f"https://www.qrz.com/db/{self.callsign.split('/')[0].strip()}"
@@ -194,7 +194,7 @@ class MMDVMLogLine:
 			self.packet_loss = int(match.group("packet_loss"))
 			self.ber = float(match.group("ber"))
 			if self.callsign.isnumeric():
-				self.url = f"https://database.radioid.net/database/view?callsign={self.callsign.split('-')[0].strip()}"
+				self.url = f"https://database.radioid.net/database/view?id={self.callsign.split('-')[0].strip()}"
 			else:
 				self.url = (
 					f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
@@ -213,7 +213,7 @@ class MMDVMLogLine:
 				f"DG-ID {match.group('dgid')} at {match.group('location').strip()}"
 			)
 			if self.callsign.isnumeric():
-				self.url = f"https://database.radioid.net/database/view?callsign={self.callsign.split('-')[0].strip()}"
+				self.url = f"https://database.radioid.net/database/view?id={self.callsign.split('-')[0].strip()}"
 			else:
 				self.url = (
 					f"https://www.qrz.com/db/{self.callsign.split('-')[0].strip()}"
@@ -246,7 +246,7 @@ class MMDVMLogLine:
 		self.rssi += f"+{93 + self.rssi3}dB ({self.rssi3}dBm)"
 		self.is_kerchunk = True if self.duration < 2 else False
 		base = f"Timestamp: {self.timestamp}, Mode: {self.mode}, Callsign: {self.callsign}, Destination: {self.destination}"
-		if self.mode == "DMR" or self.mode == "DMR-D":
+		if self.mode == "DMR":
 			base += f", Slot: {self.slot}"
 			if self.is_voice:
 				base += ", Type: Voice"
