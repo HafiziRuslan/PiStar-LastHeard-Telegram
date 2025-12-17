@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta] - (Thu, 18-Dec-2025, 02:16:32.000, +08)
+## [beta] - (Thu, 18-Dec-2025, 02:21:46.000, +08)
 
 ### 🚀 Features
 
@@ -35,6 +35,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes
 
+- 🐛 fix(parser): correctly identify dmr data mode
 - 🐛 fix(logline): update radioid database lookup parameter
 - 🐛 fix(parser): refine dmr log line matching for data headers
 - 🐛 fix(main): correct radio id and qrz url generation
@@ -180,4 +181,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Thu, 18-Dec-2025, 02:19:23.934, +08
+generated using git-cliff at Thu, 18-Dec-2025, 02:22:14.694, +08
