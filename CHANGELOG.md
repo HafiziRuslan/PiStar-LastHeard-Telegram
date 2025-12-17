@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased] - (2025-12-17T16:29:20.898724467+08:00)
+## [unreleased] - (2025-12-17T16:33:40.143979105+08:00)
 
 ### 💼 Other
 
@@ -26,11 +26,13 @@ All notable changes to this project will be documented in this file.
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
+- 📝 docs(changelog): update release note
 - 📝 docs(README): update installation and prerequisites
 - 📝 docs(changelog): update release note
 
 ### ⚙️ Miscellaneous Tasks
 
+- 👷 ci(sync): add auto-merge workflow to trigger
 - 👷 ci(sync): add gitlab sync job
 - 👷 ci(sync): update gitlab sync action
 - 👷 ci(sync): update gitlab mirror repository action configuration
@@ -196,4 +198,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff - (2025-12-17T16:29:20.904445291+08:00)
+generated using git-cliff - (2025-12-17T16:33:40.150844361+08:00)
