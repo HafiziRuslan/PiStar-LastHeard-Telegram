@@ -4,6 +4,7 @@ on:
   workflow_run:
     workflows:
       - Release
+      - Auto-Merge
     types:
       - completed
   schedule:
