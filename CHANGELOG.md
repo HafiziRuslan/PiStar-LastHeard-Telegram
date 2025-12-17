@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta] - (Thu, 18-Dec-2025, 00:15:27.000, +08)
+## [beta] - (Thu, 18-Dec-2025, 01:25:03.000, +08)
 
 ### 🚀 Features
 
@@ -131,6 +131,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🚜 Refactor
 
+- ♻️ refactor(python): standardize python script indentation and shebang
 - ♻️ refactor(log): replace qrz_url with url, support radioid.net
 - ♻️ refactor(main): improve log parsing and message formatting
 - ♻️ refactor(mmdvmlogline): change duration and ber to int
@@ -177,4 +178,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Thu, 18-Dec-2025, 00:16:11.227, +08
+generated using git-cliff at Thu, 18-Dec-2025, 01:26:23.916, +08
