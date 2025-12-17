@@ -22,21 +22,19 @@ jobs:
       - name: 'push to Codeberg'
         uses: cssnr/mirror-repository-action@latest
         with:
-          #url: https://codeberg.org/hafiziruslan/PiStar-LastHeard-Telegram
           host: https://codeberg.org
           owner: hafiziruslan
           repo: PiStar-LastHeard-Telegram
           create: false
           username: hafiziruslan
           password: ${{ secrets.CODEBERG_TOKEN }}
+          summary: false
+          private: false
 
       - name: 'push to GitLab'
-        uses: cssnr/mirror-repository-action@latest
+        uses: keninkujovic/gitlab-sync@main
         with:
-          #url: https://gitlab.com/hafiziruslan/pistar-lastheard-telegram
-          host: https://gitlab.com
-          owner: hafiziruslan
-          repo: pistar-lastheard-telegram
-          create: false
+          gitlab_url: https://gitlab.com/hafiziruslan/pistar-lastheard-telegram
           username: hafiziruslan
-          password: ${{ secrets.GITLAB_TOKEN }}
+          gitlab_pat: ${{ secrets.GITLAB_TOKEN }}
+          force_push: true
