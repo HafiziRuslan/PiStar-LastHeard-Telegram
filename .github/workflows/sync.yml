@@ -26,7 +26,7 @@ jobs:
           host: https://codeberg.org
           owner: hafiziruslan
           repo: PiStar-LastHeard-Telegram
-          create: true
+          create: false
           username: hafiziruslan
           password: ${{ secrets.CODEBERG_TOKEN }}
 
@@ -37,6 +37,6 @@ jobs:
           host: https://gitlab.com
           owner: hafiziruslan
           repo: pistar-lastheard-telegram
-          create: true
+          create: false
           username: hafiziruslan
           password: ${{ secrets.GITLAB_TOKEN }}
