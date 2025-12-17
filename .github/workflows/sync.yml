@@ -4,11 +4,8 @@ on:
   workflow_run:
     workflows:
       - Release
-      - Auto-Merge
     types:
       - completed
-  schedule:
-    - cron: '0 */4 * * *'
 
 jobs:
   codeberg:
