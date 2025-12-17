@@ -34,10 +34,10 @@ jobs:
       - name: 'push to GitLab'
         uses: cssnr/mirror-repository-action@latest
         with:
-          url: 'https://gitlab.com/hafiziruslan/pistar-lastheard-telegram.git'
-          # host: https://gitlab.com
-          # owner: hafiziruslan
-          # repo: pistar-lastheard-telegram
+          # url: 'https://gitlab.com/hafiziruslan/PiStar-LastHeard-Telegram.git'
+          host: https://gitlab.com
+          owner: hafiziruslan
+          repo: PiStar-LastHeard-Telegram
           create: false
           username: hafiziruslan
           password: ${{ secrets.GITLAB_TOKEN }}
