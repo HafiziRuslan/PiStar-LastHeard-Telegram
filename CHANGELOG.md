@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 🚀 Features
+
+- ✨ feat(logging): improve log message format and filtering
+
 ### 💼 Other
 
 - Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
@@ -185,4 +189,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Wed, 17-Dec-2025, 20:48:28.837, +08
+generated using git-cliff at Wed, 17-Dec-2025, 23:30:03.847, +08
