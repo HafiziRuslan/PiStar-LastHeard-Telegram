@@ -134,7 +134,7 @@ class MMDVMLogLine:
 			return
 		match = re.match(dmr_data_pattern, logline)
 		if match:
-			self.mode = "DMR"
+			self.mode = "DMR-D"
 			self.timestamp = datetime.strptime(
 				match.group("timestamp"), "%Y-%m-%d %H:%M:%S.%f"
 			)
@@ -246,7 +246,7 @@ class MMDVMLogLine:
 		self.rssi += f"+{93 + self.rssi3}dB ({self.rssi3}dBm)"
 		self.is_kerchunk = True if self.duration < 2 else False
 		base = f"Timestamp: {self.timestamp}, Mode: {self.mode}, Callsign: {self.callsign}, Destination: {self.destination}"
-		if self.mode == "DMR":
+		if self.mode == "DMR" or self.mode == "DMR-D":
 			base += f", Slot: {self.slot}"
 			if self.is_voice:
 				base += ", Type: Voice"
