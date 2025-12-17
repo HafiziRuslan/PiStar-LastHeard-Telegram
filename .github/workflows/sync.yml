@@ -34,7 +34,7 @@ jobs:
       - name: 'push to GitLab'
         uses: keninkujovic/gitlab-sync@main
         with:
-          gitlab_url: https://gitlab.com/hafiziruslan/pistar-lastheard-telegram
+          gitlab_url: https://gitlab.com/hafiziruslan/pistar-lastheard-telegram.git
           username: hafiziruslan
           gitlab_pat: ${{ secrets.GITLAB_TOKEN }}
           force_push: true
