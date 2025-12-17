@@ -2,10 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased] - (2025-12-17T15:57:33.321614037+08:00)
+## [unreleased] - (2025-12-17T16:09:31.847794028+08:00)
 
 ### 📚 Documentation
 
+- 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
 - 📝 docs(changelog): update release note
@@ -23,6 +24,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- 👷 ci(sync): update gitlab sync action to cssnr/mirror-repository-action
 - 👷 ci(sync): update gitlab_url to include .git extension
 - 👷 ci(sync): update git mirroring actions
 - 👷 ci(sync): disable automatic repository creation
@@ -184,4 +186,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff - (2025-12-17T15:57:33.327421228+08:00)
+generated using git-cliff - (2025-12-17T16:09:31.853391573+08:00)
