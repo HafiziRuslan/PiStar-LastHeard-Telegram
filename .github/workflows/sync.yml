@@ -1,0 +1,42 @@
+name: 'Sync Repo'
+
+on:
+  workflow_run:
+    workflows:
+      - Release
+    types:
+      - completed
+  schedule:
+    - cron: '0 */4 * * *'
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+
+      - name: 'push to Codeberg'
+        uses: cssnr/mirror-repository-action@latest
+        with:
+          #url: https://codeberg.org/hafiziruslan/PiStar-LastHeard-Telegram
+          host: https://codeberg.org
+          owner: hafiziruslan
+          repo: PiStar-LastHeard-Telegram
+          create: true
+          username: hafiziruslan
+          password: ${{ secrets.CODEBERG_TOKEN }}
+
+      - name: 'push to GitLab'
+        uses: cssnr/mirror-repository-action@latest
+        with:
+          #url: https://gitlab.com/hafiziruslan/pistar-lastheard-telegram
+          host: https://gitlab.com
+          owner: hafiziruslan
+          repo: pistar-lastheard-telegram
+          create: true
+          username: hafiziruslan
+          password: ${{ secrets.GITLAB_TOKEN }}
