@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta] - (Thu, 18-Dec-2025, 01:25:03.000, +08)
+## [beta] - (Thu, 18-Dec-2025, 01:59:23.000, +08)
 
 ### 🚀 Features
 
@@ -35,6 +35,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes
 
+- 🐛 fix(parser): refine dmr log line matching for data headers
 - 🐛 fix(main): correct radio id and qrz url generation
 - 🐛 fix(main): correct telegram name and duration formatting
 - 🐛 fix(log): improve duration formatting in log messages
@@ -178,4 +179,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Thu, 18-Dec-2025, 01:26:23.916, +08
+generated using git-cliff at Thu, 18-Dec-2025, 02:00:05.612, +08
