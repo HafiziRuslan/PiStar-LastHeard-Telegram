@@ -32,14 +32,9 @@ jobs:
           private: false
 
       - name: 'push to GitLab'
-        uses: cssnr/mirror-repository-action@latest
+        uses: keninkujovic/gitlab-sync@main
         with:
-          # url: 'https://gitlab.com/hafiziruslan/PiStar-LastHeard-Telegram.git'
-          host: https://gitlab.com
-          owner: hafiziruslan
-          repo: PiStar-LastHeard-Telegram
-          create: false
+          gitlab_url: 'https://gitlab.com/hafiziruslan/PiStar-LastHeard-Telegram.git'
           username: hafiziruslan
-          password: ${{ secrets.GITLAB_TOKEN }}
-          summary: false
-          private: false
+          gitlab_pat: ${{ secrets.GITLAB_TOKEN }}
+          force_push: true
