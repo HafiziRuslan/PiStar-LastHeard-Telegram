@@ -2,35 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased] - (2025-12-17T16:36:10.925026652+08:00)
+## [unreleased]
 
 ### 💼 Other
 
-- Merge branch 'master' of https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram
-- Merge branch 'master' of https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram
+- Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
+- Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
 
 ### 📚 Documentation
 
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
-- 📝 docs(changelog): update release note
+- 📝 docs(changelog): update changelog configuration and workflow
 - 📝 docs(README): update installation and prerequisites
-- 📝 docs(changelog): update release note
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -52,7 +34,9 @@ All notable changes to this project will be documented in this file.
 - 🔧 chore(scripts): update venv activation for cross-platform compatibility
 - 🔧 chore(scripts): improve shell script output and activation
 
-## [beta] - (2025-12-10T23:54:59+08:00)
+---
+
+## [beta] - (Wed, 10-Dec-2025, 23:54:59.000, +08)
 
 ### 🚀 Features
 
@@ -201,4 +185,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff - (2025-12-17T16:36:10.930863064+08:00)
+generated using git-cliff at Wed, 17-Dec-2025, 20:48:28.837, +08
