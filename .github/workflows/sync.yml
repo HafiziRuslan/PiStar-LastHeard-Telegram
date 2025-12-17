@@ -10,7 +10,7 @@ on:
     - cron: '0 */4 * * *'
 
 jobs:
-  push:
+  codeberg:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -31,6 +31,9 @@ jobs:
           summary: false
           private: false
 
+  gitlab:
+    runs-on: ubuntu-latest
+    steps:
       - name: 'push to GitLab'
         uses: keninkujovic/gitlab-sync@main
         with:
