@@ -2,48 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [beta] - (Thu, 18-Dec-2025, 00:15:27.000, +08)
 
 ### 🚀 Features
 
 - ✨ feat(logging): improve log message format and filtering
-
-### 💼 Other
-
-- Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
-- Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
-
-### 📚 Documentation
-
-- 📝 docs(changelog): update changelog configuration and workflow
-- 📝 docs(README): update installation and prerequisites
-
-### ⚙️ Miscellaneous Tasks
-
-- 👷 ci(workflows): adjust release and sync triggers
-- 👷 ci(sync): add auto-merge workflow to trigger
-- 👷 ci(sync): add gitlab sync job
-- 👷 ci(sync): update gitlab sync action
-- 👷 ci(sync): update gitlab mirror repository action configuration
-- 👷 ci(sync): update gitlab sync action to cssnr/mirror-repository-action
-- 👷 ci(sync): update gitlab_url to include .git extension
-- 👷 ci(sync): update git mirroring actions
-- 👷 ci(sync): disable automatic repository creation
-- 👷 ci(workflows): update sync and merge schedule configurations
-- 🔧 chore(main.sh): clear extra spacing in log
-- 🔧 chore(main.sh): improve uv installation message
-- 🔧 chore(uv): remove uv self update
-- 🔧 chore(install): remove uv shell completion from main script
-- 🔧 chore(scripts): improve script output and date formatting
-- 🔧 chore(scripts): update venv activation for cross-platform compatibility
-- 🔧 chore(scripts): improve shell script output and activation
-
----
-
-## [beta] - (Wed, 10-Dec-2025, 23:54:59.000, +08)
-
-### 🚀 Features
-
 - ✨ feat(ci): add git cliff for changelog generation
 - ✨ feat(config): add telegram topic id config
 - ✨ feat(telegram): add topic id support for telegram channels
@@ -149,6 +112,8 @@ All notable changes to this project will be documented in this file.
 
 ### 💼 Other
 
+- Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
+- Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
 - Merge pull request #4 from iu2frl/develop
 - Typo in string contains routine
 - Merge pull request #3 from iu2frl/develop
@@ -174,14 +139,37 @@ All notable changes to this project will be documented in this file.
 
 ### 📚 Documentation
 
+- 📝 docs(changelog): update changelog configuration and workflow
+- 📝 docs(README): update installation and prerequisites
 - 📝 docs(readme): update readme with installation and usage instructions
 
 ### 🎨 Styling
 
 - 💄 style(mmdvmlogline): improve log message formatting
 
+### 🧪 Testing
+
+- 👷 ci(release): add deploy job for beta tag
+
 ### ⚙️ Miscellaneous Tasks
 
+- 👷 ci(workflows): adjust release and sync triggers
+- 👷 ci(sync): add auto-merge workflow to trigger
+- 👷 ci(sync): add gitlab sync job
+- 👷 ci(sync): update gitlab sync action
+- 👷 ci(sync): update gitlab mirror repository action configuration
+- 👷 ci(sync): update gitlab sync action to cssnr/mirror-repository-action
+- 👷 ci(sync): update gitlab_url to include .git extension
+- 👷 ci(sync): update git mirroring actions
+- 👷 ci(sync): disable automatic repository creation
+- 👷 ci(workflows): update sync and merge schedule configurations
+- 🔧 chore(main.sh): clear extra spacing in log
+- 🔧 chore(main.sh): improve uv installation message
+- 🔧 chore(uv): remove uv self update
+- 🔧 chore(install): remove uv shell completion from main script
+- 🔧 chore(scripts): improve script output and date formatting
+- 🔧 chore(scripts): update venv activation for cross-platform compatibility
+- 🔧 chore(scripts): improve shell script output and activation
 - 🔧 chore(scripts): improve virtual environment handling in main.sh
 - 🔧 chore(settings): remove unused vscode settings
 - 🔧 chore(vscode): add vscode settings for pylint
@@ -189,4 +177,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Wed, 17-Dec-2025, 23:30:03.847, +08
+generated using git-cliff at Thu, 18-Dec-2025, 00:16:11.227, +08
