@@ -69,7 +69,7 @@ class MMDVMLogLine:
 		)
 		dmr_data_pattern = (
 			r"^M: (?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+) "
-			r"DMR Slot (?P<slot>\d), (?:received|ended) (?P<source>network|RF) (?:Data Preamble CSBK|data header|data transmission) \((?:\d+ to follow)\) "
+			r"DMR Slot (?P<slot>\d), received (?P<source>network|RF) data header "
 			r"from (?P<callsign>[\w\d]+) to (?P<destination>(TG [\d\w]+)|[\d\w]+)"
 			r"(?:, (?P<block>[\d]+) blocks)"
 		)
@@ -469,10 +469,9 @@ async def mmdvm_logs_observer():
 					for x in [
 						"end of voice transmission",
 						"end of transmission",
-						"ended RF data transmission",
 						"watchdog has expired",
-						"received RF data",
-						"received network data",
+						"received RF data header",
+						"received network data header",
 					]
 				):
 					logging.debug("Line does not contain transmission end marker, skipping.")

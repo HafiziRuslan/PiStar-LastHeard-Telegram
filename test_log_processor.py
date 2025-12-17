@@ -63,10 +63,9 @@ def process_log_file(log_file_path: str, ignore_time_messages: bool=True):
 	relevant_patterns = [
 		"end of voice transmission",
 		"end of transmission",
-		"ended RF data transmission",
 		"watchdog has expired",
-		"received RF data",
-		"received network data",
+		"received RF data header",
+		"received network data header",
 	]
 
 	print("=" * 80)
