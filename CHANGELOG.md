@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta] - (Fri, 19-Dec-2025, 02:54:24.000, +08)
+## [beta] - (Fri, 19-Dec-2025, 03:17:00.000, +08)
 
 ### 🚀 Features
 
@@ -157,6 +157,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- 🔧 chore(git): update .gitignore with templates
 - 🔧 chore(config): add comprehensive python ignore rules
 - 👷 ci(workflows): adjust release and sync triggers
 - 👷 ci(sync): add auto-merge workflow to trigger
@@ -182,4 +183,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Fri, 19-Dec-2025, 02:55:07.781, +08
+generated using git-cliff at Fri, 19-Dec-2025, 03:18:04.674, +08
