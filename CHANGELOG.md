@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta] - (Fri, 19-Dec-2025, 03:17:00.000, +08)
+## [beta] - (Fri, 19-Dec-2025, 03:25:42.000, +08)
 
 ### 🚀 Features
 
@@ -115,6 +115,7 @@ All notable changes to this project will be documented in this file.
 
 ### 💼 Other
 
+- Make script executable
 - Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
 - Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
 - Merge pull request #4 from iu2frl/develop
@@ -183,4 +184,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Fri, 19-Dec-2025, 03:18:04.674, +08
+generated using git-cliff at Fri, 19-Dec-2025, 03:37:11.380, +08
