@@ -107,14 +107,6 @@ pip install -r requirements.txt
 
 The bot uses Python's `logging` module to log events and errors. Logs are displayed in the console for easy debugging.
 
-## Contributing
-
-Feel free to submit issues or pull requests to improve the project.
-
-## License
-
-This project is licensed under the GNU GPL v2 License. See the `LICENSE` file for details.
-
 ### Source
 
 [iu2frl/pistar-lastheard-telegram](https://github.com/iu2frl/pistar-lastheard-telegram)
