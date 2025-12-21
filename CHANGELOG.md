@@ -2,189 +2,199 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta] - (Mon, 22-Dec-2025, 00:23:17.000, +08)
+## Release
 
-### 🚀 Features
+### [beta] - (Mon, 22-Dec-2025, 03:11:31, +08)
 
-- ✨ feat(logging): improve log message format and filtering
-- ✨ feat(ci): add git cliff for changelog generation
-- ✨ feat(config): add telegram topic id config
-- ✨ feat(telegram): add topic id support for telegram channels
-- ✨ feat(mmdvmlogline): enhance talkgroup name retrieval
-- ✨ feat(parser): add user country and talkgroup name to log line
-- ✨ feat(mmdvmlogline): enhance telegram messages with location and talkgroup
-- ✨ feat(ci): add workflow to sync repository to gitlab
-- ✨ feat(mmdvmlogline): enhance rssi display with color coding
-- ✨ feat(mmdvmlogline): enhance log parsing and data representation
-- ✨ feat(deps): add humanize package to requirements
-- ✨ feat(log_processor): enhance MMDVM log parsing and telegram reporting
-- ✨ feat(parser): enhance DMR log parsing
-- ✨ feat(parser): enhance MMDVM log parsing and add DMR data support
-- ✨ feat(parser): add support for YSF network data lines
-- ✨ feat(telegram): enhance telegram bot with log monitoring
-- ✨ feat(core): add d-star support and refactor main script
-- ✨ feat(log): enhance mmdvm log parsing and telegram integration
-- ✨ feat(main): add python shebang and load dotenv
-- ✨ feat(main): add script to generate commit messages from diffs
-- ✨ feat(mmdvmlogline): add dmr data support
-- ✨ feat(parser): add rssi support for dmr rf lines
-- ✨ feat(mmdvmlogline): add data blocks to dmr log parsing
-- ✨ feat(mmdvmlogline): add rssi to MMDVMLogLine
-- ✨ feat(main): enhance MMDVM log parsing and telegram message formatting
-- ♻️ refactor(core): rename and reorganize main scripts
+#### 🚀 Features
 
-### 🐛 Bug Fixes
+- [822eb83](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/822eb838d35df2cb8347bd33d490ef3b3f50ccb5) feat(logging): improve log message format and filtering *by @HafiziRuslan on 2025-12-17*
+- [8c8c164](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/8c8c1643b0e18193880443e50df4e2550a1477bc) feat(ci): add git cliff for changelog generation *by @HafiziRuslan on 2025-12-10*
+- [4b0d87c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/4b0d87ce4774a57b22ca59779e088b56efa69326) feat(config): add telegram topic id config *by @HafiziRuslan on 2025-11-16*
+- [03d5421](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/03d5421799a147bc4a7c7029b71b5dda120562f3) feat(telegram): add topic id support for telegram channels *by @HafiziRuslan on 2025-11-15*
+- [488f2d6](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/488f2d607085cc2a616789b4213e0ff56a9b8ced) feat(mmdvmlogline): enhance talkgroup name retrieval *by @HafiziRuslan on 2025-10-23*
+- [c63e1e7](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/c63e1e759f6fb56cf266c73342c4af0d0b40c9cb) feat(parser): add user country and talkgroup name to log line *by @HafiziRuslan on 2025-10-23*
+- [121b8dc](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/121b8dc1ba4e2886739d5b34eb8bdea0719dc052) feat(mmdvmlogline): enhance telegram messages with location and talkgroup *by @HafiziRuslan on 2025-10-23*
+- [58af24a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/58af24a959978f7ef6093e4f29a1e12b113530e1) feat(ci): add workflow to sync repository to gitlab *by @HafiziRuslan on 2025-10-21*
+- [dca58d0](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/dca58d0e1f563f99fb2fd3ba1cf974b911f93652) feat(mmdvmlogline): enhance rssi display with color coding *by @HafiziRuslan on 2025-10-16*
+- [df04fb3](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/df04fb38e3cb832f5f069850e7aa4da4ec754231) feat(mmdvmlogline): enhance log parsing and data representation *by @HafiziRuslan on 2025-10-16*
+- [414ee3b](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/414ee3b1d9fb32edd85978244d06a8c55bcd8d27) feat(deps): add humanize package to requirements *by @HafiziRuslan on 2025-10-16*
+- [060efd1](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/060efd125ca08837ff6c789b658e4224b2791e14) feat(log_processor): enhance MMDVM log parsing and telegram reporting *by @HafiziRuslan on 2025-10-16*
+- [5fd412d](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/5fd412d85a810f4e8510654471e3b08d39559f7a) feat(parser): enhance DMR log parsing *by @HafiziRuslan on 2025-10-16*
+- [9ee1c46](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/9ee1c46675b63583915205b0fe4fbdef2158fffa) feat(parser): enhance MMDVM log parsing and add DMR data support *by @HafiziRuslan on 2025-10-16*
+- [9e76e45](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/9e76e45e7414a269a6d713b8f81ea687c112ae47) feat(parser): add support for YSF network data lines *by @HafiziRuslan on 2025-10-16*
+- [330bb49](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/330bb49a399cd11fdc33b0f469054d4c8e445d12) feat(telegram): enhance telegram bot with log monitoring *by @HafiziRuslan on 2025-10-15*
+- [f646df5](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/f646df59081e98e4f84bb80a79b5c2b48bf3689d) feat(core): add d-star support and refactor main script *by @HafiziRuslan on 2025-10-15*
+- [a55a12c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a55a12c6bc27d41cfb6dc75f254c72103fd2f88b) feat(log): enhance mmdvm log parsing and telegram integration *by @HafiziRuslan on 2025-10-15*
+- [5b3c4d8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/5b3c4d838c13550ca5da53193c4f581b2cbe74f5) feat(main): add python shebang and load dotenv *by @HafiziRuslan on 2025-10-15*
+- [0115009](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/0115009c0bea1d8d40565feade17173a6b13ae21) feat(main): add script to generate commit messages from diffs *by @HafiziRuslan on 2025-10-15*
+- [6c37d0d](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/6c37d0ddf7a5dd80bbabde36e0cca433f3139151) feat(mmdvmlogline): add dmr data support *by @HafiziRuslan on 2025-10-14*
+- [89da371](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/89da371ddc5aa6417d61405e7131cb2f72a50a50) feat(parser): add rssi support for dmr rf lines *by @HafiziRuslan on 2025-10-14*
+- [5f06411](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/5f0641130031bfeb9318d414718465f55fa022c9) feat(mmdvmlogline): add data blocks to dmr log parsing *by @HafiziRuslan on 2025-10-14*
+- [af08360](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/af0836047483625ac7e552e110a05137bb94126e) feat(mmdvmlogline): add rssi to MMDVMLogLine *by @HafiziRuslan on 2025-10-14*
+- [a9ccaa8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a9ccaa8cb20040a841180aebc613723c77eb134d) feat(main): enhance MMDVM log parsing and telegram message formatting *by @HafiziRuslan on 2025-10-14*
+- [efacaf5](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/efacaf5707939e37bf28ce6c45421fa6f6fb1e60) refactor(core): rename and reorganize main scripts *by @HafiziRuslan on 2025-10-14*
 
-- 🐛 fix(parser): correctly identify dmr data mode
-- 🐛 fix(logline): update radioid database lookup parameter
-- 🐛 fix(parser): refine dmr log line matching for data headers
-- 🐛 fix(main): correct radio id and qrz url generation
-- 🐛 fix(main): correct telegram name and duration formatting
-- 🐛 fix(log): improve duration formatting in log messages
-- 🐛 fix(parser): handle missing talkgroup ID gracefully
-- 🐛 fix(talkgroup): improve talkgroup name retrieval from file
-- 🐛 fix(talkgroup): correct talkgroup name lookup logic
-- 🐛 fix(parser): correct parsing of BM translation files
-- 🐛 fix(main): correct talkgroup and caller id parsing
-- 🐛 fix(log): handle index errors in talkgroup and caller ID lookups
-- 🐛 fix(log): handle index errors when reading files
-- 🐛 fix(main): resolve talkgroup name and caller location
-- 🐛 fix(main): dynamically find talkgroup list files
-- 🐛 fix(main): correct talkgroup and location formatting
-- 🐛 fix(main): correct timestamp timezone handling
-- 🐛 fix(log): correct timestamp timezone and duration format
-- 🐛 fix(README): correct directory name in reboot command
-- 🐛 fix(main): correct timestamp formatting in MMDVMLogLine
-- 🐛 fix(log): correct timestamp formatting in log messages
-- 🐛 fix(log): handle missing timestamp in log lines
-- 🐛 fix(log): correct timezone handling for log entries
-- 🐛 fix(log): correct kerchunk flag logic
-- 🐛 fix(log): correct duration format in voice log
-- 🐛 fix(main): correct timestamp timezone and format
-- 🐛 fix(rssi): correct signal strength indicator display
-- 🐛 fix(rssi): correct rssi display
-- 🐛 fix(dmr): correct rssi calculation in mmdvm log
-- 🐛 fix(log): display BER and PL only when they exist
-- 🐛 fix(parser): correct duration and ber type to float
-- 🐛 fix(log): fix duration format in voice log messages
-- 🐛 fix(regex): correct DMR data line regex
-- 🐛 fix(parser): correct YSF-D log parsing and remove redundant flags
-- 🐛 fix(log): correct data types and improve formatting
-- 🐛 fix(regex): allow alphanumeric chars in destination TG
-- 🐛 fix(parser): correct destination parsing in MMDVMLogLine
-- 🐛 fix(dmr): support dmr-d mode in log messages
-- 🔧 chore: update gitignore and fix duration label
-- 🐛 fix(main): correct timestamp format and disable link previews
-- 🐛 fix(telegram): correct timestamp format and labels
-- 🐛 fix(parser): improve DMR log parsing
-- 🐛 fix(parser): improve DMR data header parsing
-- 🐛 fix(mmdvmlogline): refine DMR log parsing and display
-- 🐛 fix(regex): correct RSSI regex pattern to allow for / in value
-- 🐛 fix(parser): handle missing values in log lines
-- 🐛 fix(log): shorten voice log labels for readability
-- 🐛 fix(parser): sanitize destination and rssi value
-- 🐛 fix(log): correct voice call duration unit
-- 🐛 fix(log): correct voice/data type assignment in log messages
-- 🐛 fix(build): install dependencies after venv activation
-- 🐛 fix(parser): refine DMR log parsing and message filtering
-- 🐛 fix(main): improve error handling and logging
-- 🐛 fix(parser): correct log parsing for D-Star entries
-- 🐛 fix(README): correct path in reboot cron entry
-- 🐛 fix(regex): correct MMDVM log regex for BER matching
-- 🐛 fix(parser): remove rssi from dmr log parsing
-- 🐛 fix(parser): correct parsing and improve log output for DMR lines
-- 🐛 fix(dmr): correct packet loss label in log output
-- 🐛 fix(regex): correct mmdvm log parsing
-- 🐛 fix(regex): correct mmdvmlogline regex
-- 🐛 fix(regex): correct duration matching for DMR logs
-- 🐛 fix(regex): correct log regex
-- 🐛 fix(regex): improve log parsing for MMDVM
-- 🐛 fix(dmr): shorten packet loss label in MMDVM log
-- 🐛 fix(log): correct unit symbols for telegram messages
-- 🐛 fix(logging): correct packet loss percentage format
-- 🐛 fix(regex): correct dmr log parsing and message formatting
-- 🐛 fix(regex): correct rssi regex to allow negative values
-- 🐛 fix(regex): correct mmvm log regex for voice transmissions
-- 🐛 fix(regex): correct log parsing regex
-- 🐛 fix(regex): correct optional group in mmvm log parsing
-- 🐛 fix(regex): correct mmdvm log regex
-- 🐛 fix(log): correct duration display in log messages
-- 🐛 fix(regex): correct destination regex for talk group
-- 🐛 fix(parser): correct DMR destination parsing
-- Fix message formatting in MMDVM log actions and correct requirements.txt syntax
+#### 🐛 Bug Fixes
 
-### 💼 Other
+- [f9e0328](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/f9e032854fad1143a1efa87645af479e49bb41e8) fix(parser): correctly identify dmr data mode *by @HafiziRuslan on 2025-12-18*
+- [97b8f95](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/97b8f95fec0fd0d79bb5d5e6f5db85a11c91c797) fix(logline): update radioid database lookup parameter *by @HafiziRuslan on 2025-12-18*
+- [2eb325f](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/2eb325fc32bebb15a078d657a8518d2fcbd5ca98) fix(parser): refine dmr log line matching for data headers *by @HafiziRuslan on 2025-12-18*
+- [d489a38](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/d489a38a1fdd8ab445529d1eea3e01dcfad9cea2) fix(main): correct radio id and qrz url generation *by @HafiziRuslan on 2025-11-04*
+- [499ab20](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/499ab207394aa0f4e46b07c1f9777ad2d2397135) fix(main): correct telegram name and duration formatting *by @HafiziRuslan on 2025-10-23*
+- [a7a2f8a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a7a2f8a2b4a2f0f0e74990e87af33c687fbc8f3d) fix(log): improve duration formatting in log messages *by @HafiziRuslan on 2025-10-23*
+- [61d86c5](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/61d86c5ebc79f7fc54eb998fafab1aa8600e472a) fix(parser): handle missing talkgroup ID gracefully *by @HafiziRuslan on 2025-10-23*
+- [036bbb0](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/036bbb0f942bc144f47a8c1fc51fa79627f5d8ae) fix(talkgroup): improve talkgroup name retrieval from file *by @HafiziRuslan on 2025-10-23*
+- [c414fed](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/c414fed8c00a068de2923debc58da61424c92afa) fix(talkgroup): correct talkgroup name lookup logic *by @HafiziRuslan on 2025-10-23*
+- [0ac3ffb](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/0ac3ffbc06c686631738e2b5cf25eb82d53cb459) fix(parser): correct parsing of BM translation files *by @HafiziRuslan on 2025-10-23*
+- [4e34d6c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/4e34d6c03858c7b1ca8103837812e9fbb4aa7d19) fix(main): correct talkgroup and caller id parsing *by @HafiziRuslan on 2025-10-23*
+- [1169628](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/1169628c39f48383abddde434a4a6ac6a069dce8) fix(log): handle index errors in talkgroup and caller ID lookups *by @HafiziRuslan on 2025-10-23*
+- [baef3ba](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/baef3bae74798c305696bf49194ecef7c00c29d8) fix(log): handle index errors when reading files *by @HafiziRuslan on 2025-10-23*
+- [5c1939a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/5c1939a35088b704ae3eb8c0f7226fb4eb02303b) fix(main): resolve talkgroup name and caller location *by @HafiziRuslan on 2025-10-23*
+- [7a7dbab](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/7a7dbab5c31ded27ff204a652f6447555e613235) fix(main): dynamically find talkgroup list files *by @HafiziRuslan on 2025-10-23*
+- [4708b4a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/4708b4ae514bb841b62c45c0c489e1eaa06d5805) fix(main): correct talkgroup and location formatting *by @HafiziRuslan on 2025-10-23*
+- [f7e38b1](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/f7e38b1b4ed54c8eedd3329c4eea90ec2b06c74b) fix(main): correct timestamp timezone handling *by @HafiziRuslan on 2025-10-23*
+- [e93f4cc](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/e93f4cc89d471f9ba95e74ff4ce51f1ce2e4196a) fix(log): correct timestamp timezone and duration format *by @HafiziRuslan on 2025-10-23*
+- [35418d6](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/35418d6516c31216b941d71216431af44495c4c5) fix(README): correct directory name in reboot command *by @HafiziRuslan on 2025-10-22*
+- [58b2191](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/58b21917a257329db4516b737cbf002a1ffe9ad8) fix(main): correct timestamp formatting in MMDVMLogLine *by @HafiziRuslan on 2025-10-16*
+- [c6c3842](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/c6c3842b5efacc3605b1f89fd2911099d05ebd2c) fix(log): correct timestamp formatting in log messages *by @HafiziRuslan on 2025-10-16*
+- [ef072c2](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/ef072c2bef124402cb31c5ebc74e67e2b4a5d894) fix(log): handle missing timestamp in log lines *by @HafiziRuslan on 2025-10-16*
+- [a51c596](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a51c5966279be7bdf4a04234f67436ef0b40a780) fix(log): correct timezone handling for log entries *by @HafiziRuslan on 2025-10-16*
+- [953d8d6](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/953d8d6ae981915a6a9d73c50a8bd85c63ab459e) fix(log): correct kerchunk flag logic *by @HafiziRuslan on 2025-10-16*
+- [cb07ac6](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/cb07ac61adb7dba2d63bf91714d4589b7e0345e1) fix(log): correct duration format in voice log *by @HafiziRuslan on 2025-10-16*
+- [300c478](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/300c47890e3d094956c144eaedf5e703e3ceb2b9) fix(main): correct timestamp timezone and format *by @HafiziRuslan on 2025-10-16*
+- [ae07821](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/ae078218ef8c9a732cedcdd384403d6e66178e72) fix(rssi): correct signal strength indicator display *by @HafiziRuslan on 2025-10-16*
+- [dc40158](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/dc401584d0e50f9b76902ce86bde1b99be34c241) fix(rssi): correct rssi display *by @HafiziRuslan on 2025-10-16*
+- [488048e](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/488048eaa88163f6b1c5d2fa14fa3b95114ea2e2) fix(dmr): correct rssi calculation in mmdvm log *by @HafiziRuslan on 2025-10-16*
+- [486fa30](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/486fa30ac0d5d382dfcd5f21271ab49400c05fd4) fix(log): display BER and PL only when they exist *by @HafiziRuslan on 2025-10-16*
+- [888c844](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/888c84475898bfa6dac2920986bcda083d24d476) fix(parser): correct duration and ber type to float *by @HafiziRuslan on 2025-10-16*
+- [1411457](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/141145761c40cbd48dca748e49370cbbc6c55e7f) fix(log): fix duration format in voice log messages *by @HafiziRuslan on 2025-10-16*
+- [19754ab](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/19754ab2ce3a879ace9ec44688c4836da6596797) fix(regex): correct DMR data line regex *by @HafiziRuslan on 2025-10-16*
+- [47e0d3b](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/47e0d3bd5961d47ce150dca810f1708c2d0d923a) fix(parser): correct YSF-D log parsing and remove redundant flags *by @HafiziRuslan on 2025-10-16*
+- [3eecba9](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/3eecba934015503f17c337a84ad8a1ad8105b97a) fix(log): correct data types and improve formatting *by @HafiziRuslan on 2025-10-16*
+- [721b2b9](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/721b2b987f9803691bffc6cc30c13b5bfc16a3b6) fix(regex): allow alphanumeric chars in destination TG *by @HafiziRuslan on 2025-10-16*
+- [91e556b](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/91e556ba685da486953f89d797a17aa8cb268fe9) fix(parser): correct destination parsing in MMDVMLogLine *by @HafiziRuslan on 2025-10-16*
+- [37175a9](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/37175a955f20397d590e19614f0566ffe4476562) fix(dmr): support dmr-d mode in log messages *by @HafiziRuslan on 2025-10-16*
+- [a0f637e](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a0f637e43b6685404ac977d00c52cd5582d5a122) chore: update gitignore and fix duration label *by @HafiziRuslan on 2025-10-16*
+- [63bbfa0](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/63bbfa09b6ef5266ffcad4776cf47c9b27333c8f) fix(main): correct timestamp format and disable link previews *by @HafiziRuslan on 2025-10-15*
+- [2ea4c16](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/2ea4c1638e52ccf9757c275e6117f311adc5904b) fix(telegram): correct timestamp format and labels *by @HafiziRuslan on 2025-10-15*
+- [2246f30](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/2246f3008baf7aec1b9f52811547e3940d438566) fix(parser): improve DMR log parsing *by @HafiziRuslan on 2025-10-15*
+- [24dbb63](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/24dbb63cc9017884db0264d0e84b1335c378fe92) fix(parser): improve DMR data header parsing *by @HafiziRuslan on 2025-10-15*
+- [ca1c239](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/ca1c23918cbe39128a60bab3a2a8b4fa5f4245a6) fix(mmdvmlogline): refine DMR log parsing and display *by @HafiziRuslan on 2025-10-15*
+- [d25e8c6](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/d25e8c6a2643bd5deb821d49e9e2ceb361cdf093) fix(regex): correct RSSI regex pattern to allow for / in value *by @HafiziRuslan on 2025-10-15*
+- [5137799](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/5137799f1f0e03059c90b47112a11f13248c96c6) fix(parser): handle missing values in log lines *by @HafiziRuslan on 2025-10-15*
+- [ffd6f07](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/ffd6f0706e1669e73682931e6ba4a6de6aa9f01d) fix(log): shorten voice log labels for readability *by @HafiziRuslan on 2025-10-15*
+- [18685be](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/18685be185523b76fdbc04f0177889f9f48a6b3b) fix(parser): sanitize destination and rssi value *by @HafiziRuslan on 2025-10-15*
+- [c258b13](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/c258b1337ebc58c72838263196cef778b08a203e) fix(log): correct voice call duration unit *by @HafiziRuslan on 2025-10-15*
+- [4793914](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/47939148bb8fd3ebcbccabbc5f6ea048a98654ca) fix(log): correct voice/data type assignment in log messages *by @HafiziRuslan on 2025-10-15*
+- [fbeee96](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/fbeee961a06c459b3f9f1594fc6b7b4da4a81806) fix(build): install dependencies after venv activation *by @HafiziRuslan on 2025-10-15*
+- [6c1164a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/6c1164a5a0fb6fe64b5fb5306888d58286ae8640) fix(parser): refine DMR log parsing and message filtering *by @HafiziRuslan on 2025-10-15*
+- [05ee2dc](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/05ee2dc6499c35437abd628cd1242becfe0a086c) fix(main): improve error handling and logging *by @HafiziRuslan on 2025-10-14*
+- [6eae51a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/6eae51aa2f020861dfc985166cc5fb6b4ac90125) fix(parser): correct log parsing for D-Star entries *by @HafiziRuslan on 2025-10-14*
+- [ccda630](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/ccda6309459c23ff9444680896e4ab11d8351837) fix(README): correct path in reboot cron entry *by @HafiziRuslan on 2025-10-14*
+- [a2bcb27](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a2bcb27f11844676e525bd8d501e325a1a4ff276) fix(regex): correct MMDVM log regex for BER matching *by @HafiziRuslan on 2025-10-14*
+- [ad179fc](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/ad179fc8f3ba7ede54ee646abb4ff966196ee0a3) fix(parser): remove rssi from dmr log parsing *by @HafiziRuslan on 2025-10-14*
+- [09d4507](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/09d4507bfe53a64c3eac38c320af75aa20864400) fix(parser): correct parsing and improve log output for DMR lines *by @HafiziRuslan on 2025-10-14*
+- [dc8f4eb](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/dc8f4ebd2c8f41d95d5fb3f9098ea8fcdde10d1f) fix(dmr): correct packet loss label in log output *by @HafiziRuslan on 2025-10-14*
+- [e91adac](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/e91adacc18fc9f12536a89eefd1efafec85f8048) fix(regex): correct mmdvm log parsing *by @HafiziRuslan on 2025-10-14*
+- [1061b1c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/1061b1c76f0cc5de9b853bd5c54c06ddb4bf0367) fix(regex): correct mmdvmlogline regex *by @HafiziRuslan on 2025-10-14*
+- [91b0a93](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/91b0a93249059f74542f87303295a056f4b622ff) fix(regex): correct duration matching for DMR logs *by @HafiziRuslan on 2025-10-14*
+- [4a457d6](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/4a457d68be80a31de457e10e8a3a6bdc470f4d9e) fix(regex): correct log regex *by @HafiziRuslan on 2025-10-14*
+- [00a41bf](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/00a41bfd09be0b152c433cc0f0ac10ab472686eb) fix(regex): improve log parsing for MMDVM *by @HafiziRuslan on 2025-10-14*
+- [b5f563e](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/b5f563e984dc1fa06f0232719ab26f885fe14af0) fix(dmr): shorten packet loss label in MMDVM log *by @HafiziRuslan on 2025-10-14*
+- [8a880a2](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/8a880a2ffdf78dd6ba79cace786b9b2fc60f757c) fix(log): correct unit symbols for telegram messages *by @HafiziRuslan on 2025-10-14*
+- [9f78b0d](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/9f78b0defe430e17449fcd2937216b391167c94d) fix(logging): correct packet loss percentage format *by @HafiziRuslan on 2025-10-14*
+- [20b1deb](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/20b1deb6c7d81a4a30dabdb64a0a7b5d82deabec) fix(regex): correct dmr log parsing and message formatting *by @HafiziRuslan on 2025-10-14*
+- [6458ad5](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/6458ad574890a8484ce591244e10206537f6d408) fix(regex): correct rssi regex to allow negative values *by @HafiziRuslan on 2025-10-14*
+- [10e2038](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/10e2038fd5b7a5d9098d2d86edf587a52b956047) fix(regex): correct mmvm log regex for voice transmissions *by @HafiziRuslan on 2025-10-14*
+- [05debba](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/05debbaec40f3c119e3abc3efddc9be773c1dbbe) fix(regex): correct log parsing regex *by @HafiziRuslan on 2025-10-14*
+- [e457caf](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/e457cafd279bb6ae185e580faf3705c35114b611) fix(regex): correct optional group in mmvm log parsing *by @HafiziRuslan on 2025-10-14*
+- [bc55fdb](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/bc55fdb4e42bde8f5c1ef61e9241860bd4b3414d) fix(regex): correct mmdvm log regex *by @HafiziRuslan on 2025-10-14*
+- [281cf8c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/281cf8cdb295b358c9a830f5c477150e375425e2) fix(log): correct duration display in log messages *by @HafiziRuslan on 2025-10-14*
+- [52ea156](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/52ea1564f83386d3f95974e159d310b8be153904) fix(regex): correct destination regex for talk group *by @HafiziRuslan on 2025-10-14*
+- [e4bcbd0](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/e4bcbd031a8b06f2ccb156cb45708b131ab56b0c) fix(parser): correct DMR destination parsing *by @HafiziRuslan on 2025-10-14*
+- [bd21e2f](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/bd21e2fcf4f15ff7983708a71365159ac628f824) Fix message formatting in MMDVM log actions and correct requirements.txt syntax *by @iu2frl on 2025-10-13*
 
-- Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
-- Make script executable
-- Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
-- Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
-- Merge pull request #4 from iu2frl/develop
-- Typo in string contains routine
-- Merge pull request #3 from iu2frl/develop
-- Ignoring time messages with a flag
-- Looping in case of failure
-- Merge pull request #2 from iu2frl/develop
-- Reworking Telegram message
-- Merge pull request #1 from iu2frl/develop
-- Refactor Telegram bot and DStar logs observer to use async/await pattern
-- Testing async processing
-- Adding cron entry
-- Updating readme
-- Adding links and source to messages
-- First commit
+#### 💼 Other
 
-### 🚜 Refactor
+- [54888d4](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/54888d415574abe88d36a178097008db5b8b629c) Merge branch 'master' of https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram *by @HafiziRuslan on 2025-12-22*
+- [769919c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/769919c7e78465a5739bec556ceb6f55b9fbeeb5) Make script executable *by @HafiziRuslan on 2025-12-19*
+- [385ea39](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/385ea395c6ecea655656aa2592bb2f0d3dc5fc66) Merge pull request #4 from iu2frl/develop *by @iu2frl on 2025-05-10*
+- [543324a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/543324a684b8452c3ee39e6e77c390cf1fdf78e1) Typo in string contains routine on 2025-05-10*
+- [3f47a99](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/3f47a99b70d07464a76a6d81be8705721460168c) Merge pull request #3 from iu2frl/develop *by @iu2frl on 2025-05-10*
+- [699d46c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/699d46cd72b9ed0c34c0862c5dba29409296da64) Ignoring time messages with a flag on 2025-05-10*
+- [1f4ffef](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/1f4ffef12b3bebb02b675cbe8c6f95d7246d8cbe) Looping in case of failure on 2025-05-10*
+- [a5df55b](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a5df55b5bc874291cbacf90ea6c3bae8b1638cb6) Merge pull request #2 from iu2frl/develop *by @iu2frl on 2025-05-08*
+- [1cce4e8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/1cce4e825944575ee5a0d0f957b0d6e4de222df2) Reworking Telegram message on 2025-05-08*
+- [718fd54](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/718fd54c71a34181f688b237a132b302bed74c71) Merge pull request #1 from iu2frl/develop *by @iu2frl on 2025-05-08*
+- [364b20c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/364b20ca4f1bac43bfb861431586589cf2717c63) Refactor Telegram bot and DStar logs observer to use async/await pattern on 2025-05-08*
+- [9babe9b](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/9babe9b2c3d4edd045ad089d8eaabc0bed38b4cb) Testing async processing on 2025-05-07*
+- [82e2aaf](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/82e2aaf0ad09e3ca0dc22792571bf53b77eb2010) Adding cron entry on 2025-05-07*
+- [aa27248](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/aa272484a74514b0d26c2c48944043e74b424739) Updating readme on 2025-05-07*
+- [c8aeff9](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/c8aeff924291ce85cbec07b1225e92050e1a2be7) Adding links and source to messages on 2025-05-07*
+- [78646fc](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/78646fc720116732f8251b9e11f1b8b4c8c7e9ab) First commit on 2025-05-06*
 
-- ♻️ refactor(python): standardize python script indentation and shebang
-- ♻️ refactor(log): replace qrz_url with url, support radioid.net
-- ♻️ refactor(main): improve log parsing and message formatting
-- ♻️ refactor(mmdvmlogline): change duration and ber to int
-- ♻️ refactor(test): use main.py instead of main-mmdvm.py
-- ♻️ refactor(main): rename load_dotenv to load_env_variables
+#### 🚜 Refactor
 
-### 📚 Documentation
+- [2625585](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/26255855472137933f0e223ba5bb1cfa10d326e7) refactor(python): standardize python script indentation and shebang *by @HafiziRuslan on 2025-12-18*
+- [6615a3d](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/6615a3de8ba0ebc38736488baa0055cd520877a0) refactor(log): replace qrz_url with url, support radioid.net *by @HafiziRuslan on 2025-10-21*
+- [eedd508](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/eedd508d68ffc1bc507b0103cbd20b60c0c014d4) refactor(main): improve log parsing and message formatting *by @HafiziRuslan on 2025-10-16*
+- [7a996f7](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/7a996f7bdbf1327ca336d648f4b06000ac412bfc) refactor(mmdvmlogline): change duration and ber to int *by @HafiziRuslan on 2025-10-16*
+- [69c38c8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/69c38c832d271085191886808bd77c3c1f0be28a) refactor(test): use main.py instead of main-mmdvm.py *by @HafiziRuslan on 2025-10-16*
+- [558b7b5](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/558b7b50ff148a96a81d343d58b12e4457fc2fb5) refactor(main): rename load_dotenv to load_env_variables *by @HafiziRuslan on 2025-10-15*
 
-- 📝 docs(changelog): update changelog configuration and workflow
-- 📝 docs(README): update installation and prerequisites
-- 📝 docs(readme): update readme with installation and usage instructions
+#### 📚 Documentation
 
-### 🎨 Styling
+- [4711ff7](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/4711ff7ed4bf20d5c8172d375c5bae0f4cdc789f) docs(changelog): update changelog configuration and workflow *by @HafiziRuslan on 2025-12-17*
+- [f5e8672](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/f5e8672561bbdc2b0d04f7c3ccd1417d3374e9d0) docs(README): update installation and prerequisites *by @HafiziRuslan on 2025-12-11*
+- [b0ee282](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/b0ee282c1f14fe4f21db500d030729a2102a5532) docs(readme): update readme with installation and usage instructions *by @HafiziRuslan on 2025-10-21*
 
-- 💄 style(mmdvmlogline): improve log message formatting
+#### 🎨 Styling
 
-### 🧪 Testing
+- [487a643](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/487a643eaba86d3a2054bdad37284cbd754c1fbb) style(mmdvmlogline): improve log message formatting *by @HafiziRuslan on 2025-10-14*
 
-- 👷 ci(release): add deploy job for beta tag
+#### 🧪 Testing
 
-### ⚙️ Miscellaneous Tasks
+- [93a8c1c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/93a8c1ca8262e2e0af90fae802be4fb58e7285d6) ci(release): add deploy job for beta tag *by @HafiziRuslan on 2025-12-18*
 
-- 👷 ci(workflow): update merge schedule cron expression
-- 📦 build(version): bump version to 0.1-beta.2
-- 🔧 chore(git): update .gitignore with templates
-- 🔧 chore(config): add comprehensive python ignore rules
-- 👷 ci(workflows): adjust release and sync triggers
-- 👷 ci(sync): add auto-merge workflow to trigger
-- 👷 ci(sync): add gitlab sync job
-- 👷 ci(sync): update gitlab sync action
-- 👷 ci(sync): update gitlab mirror repository action configuration
-- 👷 ci(sync): update gitlab sync action to cssnr/mirror-repository-action
-- 👷 ci(sync): update gitlab_url to include .git extension
-- 👷 ci(sync): update git mirroring actions
-- 👷 ci(sync): disable automatic repository creation
-- 👷 ci(workflows): update sync and merge schedule configurations
-- 🔧 chore(main.sh): clear extra spacing in log
-- 🔧 chore(main.sh): improve uv installation message
-- 🔧 chore(uv): remove uv self update
-- 🔧 chore(install): remove uv shell completion from main script
-- 🔧 chore(scripts): improve script output and date formatting
-- 🔧 chore(scripts): update venv activation for cross-platform compatibility
-- 🔧 chore(scripts): improve shell script output and activation
-- 🔧 chore(scripts): improve virtual environment handling in main.sh
-- 🔧 chore(settings): remove unused vscode settings
-- 🔧 chore(vscode): add vscode settings for pylint
-- Update README with MMDVM script details, and add main-dstargateway.py and main-mmdvm.py for log monitoring. Adjust requirements.txt for specific package versions.
+#### ⚙️ Miscellaneous Tasks
+
+- [cca4498](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/cca4498997329463f76bcfb0d7e2fd5ca5147df6) chore(cliff): enhance changelog template *by @HafiziRuslan on 2025-12-22*
+- [7e07d57](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/7e07d57e96ee3276a400784ffc0fada50ed500cf) ci(workflow): update merge schedule cron expression *by @HafiziRuslan on 2025-12-22*
+- [0b5657c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/0b5657cef452c82b674f3e5379b3fb67fb21977f) build(version): bump version to 0.1-beta.2 *by @HafiziRuslan on 2025-12-21*
+- [36b5fb4](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/36b5fb45e4c5ed817606aaaee7a029c308c0e346) chore(git): update .gitignore with templates *by @HafiziRuslan on 2025-12-19*
+- [fe16eab](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/fe16eab3cf5eed8f71b6f3c14d30bf1cb1354fbb) chore(config): add comprehensive python ignore rules *by @HafiziRuslan on 2025-12-19*
+- [8292667](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/829266740c00505d4b8d8ff963ef10e6943be563) ci(workflows): adjust release and sync triggers *by @HafiziRuslan on 2025-12-17*
+- [39bdf0d](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/39bdf0db85cb71d4f952e9d010ea1d9d1cc341a6) ci(sync): add auto-merge workflow to trigger *by @HafiziRuslan on 2025-12-17*
+- [1db4a98](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/1db4a988cf6609cd8189fcd59a088511fa3bb6e6) ci(sync): add gitlab sync job *by @HafiziRuslan on 2025-12-17*
+- [d167cf9](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/d167cf9f0581544a78b1ad6eea6e28d5c306f843) ci(sync): update gitlab sync action *by @HafiziRuslan on 2025-12-17*
+- [72691c9](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/72691c9e2c79704f66448a5dba88f68aa346398c) ci(sync): update gitlab mirror repository action configuration *by @HafiziRuslan on 2025-12-17*
+- [4e1e1f6](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/4e1e1f6578dc5b41483c4fc42a13cb3b21155aaf) ci(sync): update gitlab sync action to cssnr/mirror-repository-action *by @HafiziRuslan on 2025-12-17*
+- [6ce9d5b](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/6ce9d5b70709fb06b61e9e51982ef75794907f92) ci(sync): update gitlab_url to include .git extension *by @HafiziRuslan on 2025-12-17*
+- [fd8ee23](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/fd8ee236ad2f7961640056ce6e69383a049759fd) ci(sync): update git mirroring actions *by @HafiziRuslan on 2025-12-17*
+- [24cacb4](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/24cacb4c63ac481e0e78d379e97878f2732a374d) ci(sync): disable automatic repository creation *by @HafiziRuslan on 2025-12-17*
+- [e656ab8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/e656ab8c2864540e9cd62708507e4db1c7867448) ci(workflows): update sync and merge schedule configurations *by @HafiziRuslan on 2025-12-17*
+- [e62fcd3](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/e62fcd38bf5b8083e14e6247959641a6451800cf) chore(main.sh): clear extra spacing in log *by @HafiziRuslan on 2025-12-11*
+- [b035931](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/b035931470f02e25df9fb906cd45a0bbe2271330) chore(main.sh): improve uv installation message *by @HafiziRuslan on 2025-12-11*
+- [20b1a04](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/20b1a04f616795a6538f6137eaaf63fff52d7da7) chore(uv): remove uv self update *by @HafiziRuslan on 2025-12-11*
+- [663a18e](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/663a18e1d2cccf7b2e38dc1d0c2ea11935327ea8) chore(install): remove uv shell completion from main script *by @HafiziRuslan on 2025-12-11*
+- [669817b](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/669817b52d1cdbb3919dde0e2b285e8fb9c7f3c1) chore(scripts): improve script output and date formatting *by @HafiziRuslan on 2025-12-11*
+- [320ad8e](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/320ad8e89ac01e23a2578804696f87f08645028a) chore(scripts): update venv activation for cross-platform compatibility *by @HafiziRuslan on 2025-12-11*
+- [0da102b](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/0da102bb924d45436464d714f820bccf937a89c6) chore(scripts): improve shell script output and activation *by @HafiziRuslan on 2025-12-11*
+- [39ca591](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/39ca591587b334b5d9388ffa7ace54a5c66ea2fd) chore(scripts): improve virtual environment handling in main.sh *by @HafiziRuslan on 2025-10-23*
+- [0044e7a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/0044e7aafd1e1d129646bb376d4f8a9824d26c09) chore(settings): remove unused vscode settings *by @HafiziRuslan on 2025-10-15*
+- [fa90236](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/fa90236091afdff2ab3f655b833a31a81914b514) chore(vscode): add vscode settings for pylint *by @HafiziRuslan on 2025-10-14*
+- [dee5a91](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/dee5a911d0347bd6297fa3f088d3c4ff02e973e2) Update README with MMDVM script details, and add main-dstargateway.py and main-mmdvm.py for log monitoring. Adjust requirements.txt for specific package versions. *by @iu2frl on 2025-10-13*
 
 ---
 
-generated using git-cliff at Mon, 22-Dec-2025, 00:23:49.544, +08
+## Commit Statistics
+
+- 158 commit(s) contributed to the release.
+- 229 day(s) passed between the first and last commit.
+- 0 commit(s) parsed as conventional.
+- 0 linked issue(s) detected in commits.
+
+---
+
+generated using git-cliff at Mon, 22-Dec-2025, 03:12:00.912, +08
