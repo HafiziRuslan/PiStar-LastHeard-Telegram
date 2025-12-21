@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## Release
 
-### [beta] - (Mon, 22-Dec-2025, 03:20:47, +08)
+### [beta] - (Mon, 22-Dec-2025, 03:45:38, +08)
 
 #### 🚀 Features
 
@@ -160,6 +160,7 @@ All notable changes to this project will be documented in this file.
 
 #### ⚙️ Miscellaneous Tasks
 
+- [79a57bf](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/79a57bfbdbbdfaa89d431fc0dae106fd97ef22e4) chore(scripts): update git automation in main script *by @HafiziRuslan on 2025-12-22T03:45:38+08:00*
 - [382e3a6](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/382e3a69e58254219d7ab4671dfbeda23a6e7c0f) chore(cliff): update date format in changelog template *by @HafiziRuslan on 2025-12-22T03:15:09+08:00*
 - [cca4498](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/cca4498997329463f76bcfb0d7e2fd5ca5147df6) chore(cliff): enhance changelog template *by @HafiziRuslan on 2025-12-22T03:11:31+08:00*
 - [7e07d57](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/7e07d57e96ee3276a400784ffc0fada50ed500cf) ci(workflow): update merge schedule cron expression *by @HafiziRuslan on 2025-12-22T00:23:10+08:00*
@@ -192,11 +193,11 @@ All notable changes to this project will be documented in this file.
 
 ## Commit Statistics
 
-- 160 commit(s) contributed to the release.
+- 161 commit(s) contributed to the release.
 - 229 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
 
 ---
 
-generated using git-cliff at Mon, 22-Dec-2025, 03:21:18.996, +08
+generated using git-cliff at Mon, 22-Dec-2025, 03:46:06.115, +08
