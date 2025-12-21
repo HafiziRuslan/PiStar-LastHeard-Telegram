@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta] - (Sun, 21-Dec-2025, 02:56:16.000, +08)
+## [beta] - (Mon, 22-Dec-2025, 00:23:17.000, +08)
 
 ### 🚀 Features
 
@@ -115,6 +115,7 @@ All notable changes to this project will be documented in this file.
 
 ### 💼 Other
 
+- Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
 - Make script executable
 - Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
 - Merge branch 'master' of [PiStar-LastHeard-Telegram](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram)
@@ -158,6 +159,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- 👷 ci(workflow): update merge schedule cron expression
 - 📦 build(version): bump version to 0.1-beta.2
 - 🔧 chore(git): update .gitignore with templates
 - 🔧 chore(config): add comprehensive python ignore rules
@@ -185,4 +187,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Sun, 21-Dec-2025, 16:19:07.083, +08
+generated using git-cliff at Mon, 22-Dec-2025, 00:23:49.544, +08
