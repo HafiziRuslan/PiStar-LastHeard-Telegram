@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 
 ## Release
 
-### [beta] - (Mon, 22-Dec-2025, 03:15:09, +08)
+### [beta] - (Mon, 22-Dec-2025, 03:20:47, +08)
 
 #### 🚀 Features
 
@@ -155,6 +155,7 @@ All notable changes to this project will be documented in this file.
 
 #### 🧪 Testing
 
+- [e17fbb8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/e17fbb8354e7615b93ee08b0603c16635ff1f2c9) chore(script): add git pull to main script *by @HafiziRuslan on 2025-12-22T03:20:47+08:00*
 - [93a8c1c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/93a8c1ca8262e2e0af90fae802be4fb58e7285d6) ci(release): add deploy job for beta tag *by @HafiziRuslan on 2025-12-18T00:15:27+08:00*
 
 #### ⚙️ Miscellaneous Tasks
@@ -191,11 +192,11 @@ All notable changes to this project will be documented in this file.
 
 ## Commit Statistics
 
-- 159 commit(s) contributed to the release.
+- 160 commit(s) contributed to the release.
 - 229 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
 
 ---
 
-generated using git-cliff at Mon, 22-Dec-2025, 03:15:40.515, +08
+generated using git-cliff at Mon, 22-Dec-2025, 03:21:18.996, +08
