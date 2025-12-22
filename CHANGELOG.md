@@ -2,9 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## Commit Statistics
+
+- 163 commit(s) contributed to the release.
+- 230 day(s) passed between the first and last commit.
+- 0 commit(s) parsed as conventional.
+- 0 linked issue(s) detected in commits.
+
 ## Release
 
-### [beta] - (Mon, 22-Dec-2025, 03:46:06, +08)
+### [beta] - (Mon, 22-Dec-2025, 19:29:41, +08)
 
 #### 🚀 Features
 
@@ -117,16 +124,11 @@ All notable changes to this project will be documented in this file.
 
 #### 💼 Other
 
-- [54888d4](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/54888d415574abe88d36a178097008db5b8b629c) Merge branch 'master' of https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram *by @HafiziRuslan on 2025-12-22T00:23:17+08:00*
 - [769919c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/769919c7e78465a5739bec556ceb6f55b9fbeeb5) Make script executable *by @HafiziRuslan on 2025-12-19T03:25:42+08:00*
-- [385ea39](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/385ea395c6ecea655656aa2592bb2f0d3dc5fc66) Merge pull request #4 from iu2frl/develop *by @iu2frl on 2025-05-10T14:23:34+08:00*
 - [543324a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/543324a684b8452c3ee39e6e77c390cf1fdf78e1) Typo in string contains routine on 2025-05-10T14:22:55+08:00*
-- [3f47a99](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/3f47a99b70d07464a76a6d81be8705721460168c) Merge pull request #3 from iu2frl/develop *by @iu2frl on 2025-05-10T14:20:35+08:00*
 - [699d46c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/699d46cd72b9ed0c34c0862c5dba29409296da64) Ignoring time messages with a flag on 2025-05-10T14:19:39+08:00*
 - [1f4ffef](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/1f4ffef12b3bebb02b675cbe8c6f95d7246d8cbe) Looping in case of failure on 2025-05-10T14:17:14+08:00*
-- [a5df55b](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a5df55b5bc874291cbacf90ea6c3bae8b1638cb6) Merge pull request #2 from iu2frl/develop *by @iu2frl on 2025-05-08T01:34:47+08:00*
 - [1cce4e8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/1cce4e825944575ee5a0d0f957b0d6e4de222df2) Reworking Telegram message on 2025-05-08T01:34:02+08:00*
-- [718fd54](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/718fd54c71a34181f688b237a132b302bed74c71) Merge pull request #1 from iu2frl/develop *by @iu2frl on 2025-05-08T00:47:30+08:00*
 - [364b20c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/364b20ca4f1bac43bfb861431586589cf2717c63) Refactor Telegram bot and DStar logs observer to use async/await pattern on 2025-05-08T00:46:03+08:00*
 - [9babe9b](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/9babe9b2c3d4edd045ad089d8eaabc0bed38b4cb) Testing async processing on 2025-05-07T00:58:42+08:00*
 - [82e2aaf](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/82e2aaf0ad09e3ca0dc22792571bf53b77eb2010) Adding cron entry on 2025-05-07T00:17:22+08:00*
@@ -160,6 +162,8 @@ All notable changes to this project will be documented in this file.
 
 #### ⚙️ Miscellaneous Tasks
 
+- [e9af11f](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/e9af11f473880cc29210b163037caa78353316a1) chore(cliff): update changelog template and filtering *by @HafiziRuslan on 2025-12-22T19:29:41+08:00*
+- [0852396](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/08523969e050da3ec2f829d8a5a1fb197b272b1b) build(version): bump version to 0.1b2 *by @HafiziRuslan on 2025-12-22T19:28:39+08:00*
 - [79a57bf](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/79a57bfbdbbdfaa89d431fc0dae106fd97ef22e4) chore(scripts): update git automation in main script *by @HafiziRuslan on 2025-12-22T03:45:38+08:00*
 - [382e3a6](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/382e3a69e58254219d7ab4671dfbeda23a6e7c0f) chore(cliff): update date format in changelog template *by @HafiziRuslan on 2025-12-22T03:15:09+08:00*
 - [cca4498](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/cca4498997329463f76bcfb0d7e2fd5ca5147df6) chore(cliff): enhance changelog template *by @HafiziRuslan on 2025-12-22T03:11:31+08:00*
@@ -191,13 +195,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## Commit Statistics
-
-- 161 commit(s) contributed to the release.
-- 229 day(s) passed between the first and last commit.
-- 0 commit(s) parsed as conventional.
-- 0 linked issue(s) detected in commits.
-
----
-
-generated using git-cliff at Mon, 22-Dec-2025, 17:30:03.965, +08
+generated using git-cliff at Mon, 22-Dec-2025, 19:31:44.938, +08
