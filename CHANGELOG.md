@@ -2,18 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
-## Commit Statistics
+## Commit Statistics [beta]
 
-- 163 commit(s) contributed to the release.
-- 230 day(s) passed between the first and last commit.
+- 164 commit(s) contributed to the release.
+- 231 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
 
-## Release
+## [beta] - (Wed, 24-Dec-2025, 02:47:14, +08)
 
-### [beta] - (Mon, 22-Dec-2025, 19:29:41, +08)
-
-#### 🚀 Features
+### 🚀 Features in beta
 
 - [822eb83](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/822eb838d35df2cb8347bd33d490ef3b3f50ccb5) feat(logging): improve log message format and filtering *by @HafiziRuslan on 2025-12-17T23:29:27+08:00*
 - [8c8c164](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/8c8c1643b0e18193880443e50df4e2550a1477bc) feat(ci): add git cliff for changelog generation *by @HafiziRuslan on 2025-12-10T23:54:59+08:00*
@@ -42,7 +40,7 @@ All notable changes to this project will be documented in this file.
 - [a9ccaa8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a9ccaa8cb20040a841180aebc613723c77eb134d) feat(main): enhance MMDVM log parsing and telegram message formatting *by @HafiziRuslan on 2025-10-14T18:29:28+08:00*
 - [efacaf5](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/efacaf5707939e37bf28ce6c45421fa6f6fb1e60) refactor(core): rename and reorganize main scripts *by @HafiziRuslan on 2025-10-14T17:09:24+08:00*
 
-#### 🐛 Bug Fixes
+### 🐛 Bug Fixes in beta
 
 - [f9e0328](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/f9e032854fad1143a1efa87645af479e49bb41e8) fix(parser): correctly identify dmr data mode *by @HafiziRuslan on 2025-12-18T02:21:46+08:00*
 - [97b8f95](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/97b8f95fec0fd0d79bb5d5e6f5db85a11c91c797) fix(logline): update radioid database lookup parameter *by @HafiziRuslan on 2025-12-18T02:16:32+08:00*
@@ -122,7 +120,7 @@ All notable changes to this project will be documented in this file.
 - [e4bcbd0](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/e4bcbd031a8b06f2ccb156cb45708b131ab56b0c) fix(parser): correct DMR destination parsing *by @HafiziRuslan on 2025-10-14T17:48:44+08:00*
 - [bd21e2f](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/bd21e2fcf4f15ff7983708a71365159ac628f824) Fix message formatting in MMDVM log actions and correct requirements.txt syntax *by @iu2frl on 2025-10-13T15:09:29+08:00*
 
-#### 💼 Other
+### 💼 Other in beta
 
 - [769919c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/769919c7e78465a5739bec556ceb6f55b9fbeeb5) Make script executable *by @HafiziRuslan on 2025-12-19T03:25:42+08:00*
 - [543324a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/543324a684b8452c3ee39e6e77c390cf1fdf78e1) Typo in string contains routine on 2025-05-10T14:22:55+08:00*
@@ -136,7 +134,7 @@ All notable changes to this project will be documented in this file.
 - [c8aeff9](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/c8aeff924291ce85cbec07b1225e92050e1a2be7) Adding links and source to messages on 2025-05-07T00:13:05+08:00*
 - [78646fc](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/78646fc720116732f8251b9e11f1b8b4c8c7e9ab) First commit on 2025-05-06T19:27:46+08:00*
 
-#### 🚜 Refactor
+### 🚜 Refactor in beta
 
 - [2625585](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/26255855472137933f0e223ba5bb1cfa10d326e7) refactor(python): standardize python script indentation and shebang *by @HafiziRuslan on 2025-12-18T01:25:03+08:00*
 - [6615a3d](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/6615a3de8ba0ebc38736488baa0055cd520877a0) refactor(log): replace qrz_url with url, support radioid.net *by @HafiziRuslan on 2025-10-21T17:43:46+08:00*
@@ -145,23 +143,24 @@ All notable changes to this project will be documented in this file.
 - [69c38c8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/69c38c832d271085191886808bd77c3c1f0be28a) refactor(test): use main.py instead of main-mmdvm.py *by @HafiziRuslan on 2025-10-16T02:13:29+08:00*
 - [558b7b5](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/558b7b50ff148a96a81d343d58b12e4457fc2fb5) refactor(main): rename load_dotenv to load_env_variables *by @HafiziRuslan on 2025-10-15T02:07:54+08:00*
 
-#### 📚 Documentation
+### 📚 Documentation in beta
 
 - [4711ff7](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/4711ff7ed4bf20d5c8172d375c5bae0f4cdc789f) docs(changelog): update changelog configuration and workflow *by @HafiziRuslan on 2025-12-17T20:47:48+08:00*
 - [f5e8672](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/f5e8672561bbdc2b0d04f7c3ccd1417d3374e9d0) docs(README): update installation and prerequisites *by @HafiziRuslan on 2025-12-11T00:31:41+08:00*
 - [b0ee282](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/b0ee282c1f14fe4f21db500d030729a2102a5532) docs(readme): update readme with installation and usage instructions *by @HafiziRuslan on 2025-10-21T17:18:36+08:00*
 
-#### 🎨 Styling
+### 🎨 Styling in beta
 
 - [487a643](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/487a643eaba86d3a2054bdad37284cbd754c1fbb) style(mmdvmlogline): improve log message formatting *by @HafiziRuslan on 2025-10-14T17:33:39+08:00*
 
-#### 🧪 Testing
+### 🧪 Testing in beta
 
 - [e17fbb8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/e17fbb8354e7615b93ee08b0603c16635ff1f2c9) chore(script): add git pull to main script *by @HafiziRuslan on 2025-12-22T03:20:47+08:00*
 - [93a8c1c](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/93a8c1ca8262e2e0af90fae802be4fb58e7285d6) ci(release): add deploy job for beta tag *by @HafiziRuslan on 2025-12-18T00:15:27+08:00*
 
-#### ⚙️ Miscellaneous Tasks
+### ⚙️ Miscellaneous Tasks in beta
 
+- [f6cb5be](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/f6cb5be3b31a2068b65603364d3f26233041cea1) chore(cliff): update changelog template headers *by @HafiziRuslan on 2025-12-24T02:47:14+08:00*
 - [e9af11f](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/e9af11f473880cc29210b163037caa78353316a1) chore(cliff): update changelog template and filtering *by @HafiziRuslan on 2025-12-22T19:29:41+08:00*
 - [0852396](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/08523969e050da3ec2f829d8a5a1fb197b272b1b) build(version): bump version to 0.1b2 *by @HafiziRuslan on 2025-12-22T19:28:39+08:00*
 - [79a57bf](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/79a57bfbdbbdfaa89d431fc0dae106fd97ef22e4) chore(scripts): update git automation in main script *by @HafiziRuslan on 2025-12-22T03:45:38+08:00*
@@ -195,4 +194,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Mon, 22-Dec-2025, 19:31:44.938, +08
+generated using git-cliff at Wed, 24-Dec-2025, 02:47:45.687, +08
