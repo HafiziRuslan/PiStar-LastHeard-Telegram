@@ -1,0 +1,145 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.5",
+  "version": 1,
+  "serialNumber": "urn:uuid:09d6b058-c671-4c53-a085-4c1af0ea9ff9",
+  "metadata": {
+    "timestamp": "2025-12-23T18:56:05.704092900Z",
+    "tools": [
+      {
+        "vendor": "Astral Software Inc.",
+        "name": "uv",
+        "version": "0.9.18"
+      }
+    ],
+    "component": {
+      "type": "library",
+      "bom-ref": "pistar-lastheard-telegram-1@0.1b2",
+      "name": "pistar-lastheard-telegram",
+      "version": "0.1b2"
+    }
+  },
+  "components": [
+    {
+      "type": "library",
+      "bom-ref": "anyio-2@4.12.0",
+      "name": "anyio",
+      "version": "4.12.0",
+      "purl": "pkg:pypi/anyio@4.12.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "certifi-3@2025.11.12",
+      "name": "certifi",
+      "version": "2025.11.12",
+      "purl": "pkg:pypi/certifi@2025.11.12"
+    },
+    {
+      "type": "library",
+      "bom-ref": "h11-4@0.16.0",
+      "name": "h11",
+      "version": "0.16.0",
+      "purl": "pkg:pypi/h11@0.16.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "httpcore-5@1.0.9",
+      "name": "httpcore",
+      "version": "1.0.9",
+      "purl": "pkg:pypi/httpcore@1.0.9"
+    },
+    {
+      "type": "library",
+      "bom-ref": "httpx-6@0.28.1",
+      "name": "httpx",
+      "version": "0.28.1",
+      "purl": "pkg:pypi/httpx@0.28.1"
+    },
+    {
+      "type": "library",
+      "bom-ref": "humanize-7@4.15.0",
+      "name": "humanize",
+      "version": "4.15.0",
+      "purl": "pkg:pypi/humanize@4.15.0"
+    },
+    {
+      "type": "library",
+      "bom-ref": "idna-8@3.11",
+      "name": "idna",
+      "version": "3.11",
+      "purl": "pkg:pypi/idna@3.11"
+    },
+    {
+      "type": "library",
+      "bom-ref": "python-dotenv-9@1.2.1",
+      "name": "python-dotenv",
+      "version": "1.2.1",
+      "purl": "pkg:pypi/python-dotenv@1.2.1"
+    },
+    {
+      "type": "library",
+      "bom-ref": "python-telegram-bot-10@22.5",
+      "name": "python-telegram-bot",
+      "version": "22.5",
+      "purl": "pkg:pypi/python-telegram-bot@22.5"
+    }
+  ],
+  "dependencies": [
+    {
+      "ref": "anyio-2@4.12.0",
+      "dependsOn": [
+        "idna-8@3.11"
+      ]
+    },
+    {
+      "ref": "certifi-3@2025.11.12",
+      "dependsOn": []
+    },
+    {
+      "ref": "h11-4@0.16.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "httpcore-5@1.0.9",
+      "dependsOn": [
+        "certifi-3@2025.11.12",
+        "h11-4@0.16.0"
+      ]
+    },
+    {
+      "ref": "httpx-6@0.28.1",
+      "dependsOn": [
+        "anyio-2@4.12.0",
+        "certifi-3@2025.11.12",
+        "httpcore-5@1.0.9",
+        "idna-8@3.11"
+      ]
+    },
+    {
+      "ref": "humanize-7@4.15.0",
+      "dependsOn": []
+    },
+    {
+      "ref": "idna-8@3.11",
+      "dependsOn": []
+    },
+    {
+      "ref": "pistar-lastheard-telegram-1@0.1b2",
+      "dependsOn": [
+        "humanize-7@4.15.0",
+        "python-dotenv-9@1.2.1",
+        "python-telegram-bot-10@22.5"
+      ]
+    },
+    {
+      "ref": "python-dotenv-9@1.2.1",
+      "dependsOn": []
+    },
+    {
+      "ref": "python-telegram-bot-10@22.5",
+      "dependsOn": [
+        "httpx-6@0.28.1"
+      ]
+    }
+  ]
+}
