@@ -1,6 +1,6 @@
 [project]
 name = "PiStar-LastHeard-Telegram"
-version = "0.1-beta.2"
+version = "0.1-beta.3"
 description = "Telegram bot to monitor the last transmissions of a Pi-Star gateway"
 keywords = ["amateur-radio", "mmdvm", "pi-star", "wpsd"]
 readme = "README.md"
