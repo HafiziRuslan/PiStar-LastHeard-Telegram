@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## Commit Statistics [beta3]
+
+- 2 commit(s) contributed to the release.
+- 0 day(s) passed between the first and last commit.
+- 0 commit(s) parsed as conventional.
+- 0 linked issue(s) detected in commits.
+
+## [beta3] - (Wed, 24-Dec-2025, 15:46:05, +08)
+
+### ⚙️ Miscellaneous Tasks in beta3
+
+- [0ab0214](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/0ab0214443db183e964e8528b009461a5bfcd421) chore(release): bump version to v0.1-beta.3 *by @HafiziRuslan on 2025-12-24T15:46:05+08:00*
+- [880b999](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/880b999298dde8224ec75663069858e6162e8f5d) ci(workflow): update auto-merge trigger to pr approval *by @HafiziRuslan on 2025-12-24T15:44:16+08:00*
+
+---
+
 ## Commit Statistics [beta]
 
 - 168 commit(s) contributed to the release.
@@ -198,4 +214,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Wed, 24-Dec-2025, 15:26:56.893, +08
+generated using git-cliff at Wed, 24-Dec-2025, 15:46:31.407, +08
