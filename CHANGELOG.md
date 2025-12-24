@@ -4,12 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## Commit Statistics [beta]
 
-- 166 commit(s) contributed to the release.
-- 231 day(s) passed between the first and last commit.
+- 167 commit(s) contributed to the release.
+- 232 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
 
-## [beta] - (Wed, 24-Dec-2025, 02:57:34, +08)
+## [beta] - (Wed, 24-Dec-2025, 15:16:08, +08)
 
 ### 🚀 Features in beta
 
@@ -160,6 +160,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks in beta
 
+- [52df9b5](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/52df9b55016cd92e2b2d2d3539d5be2df2c0f468) chore(scripts): improve git pull execution logic *by @HafiziRuslan on 2025-12-24T15:16:08+08:00*
 - [74636d3](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/74636d3630b31d9879ce857957dff306beb4312d) build(deps): generate lockfile and sbom *by @HafiziRuslan on 2025-12-24T02:57:34+08:00*
 - [7d1dd3a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/7d1dd3a35f359149c7428e19b0e8fcdc6ebffb96) build(deps): bump humanize to 4.15.0 *by @HafiziRuslan on 2025-12-24T02:52:27+08:00*
 - [f6cb5be](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/f6cb5be3b31a2068b65603364d3f26233041cea1) chore(cliff): update changelog template headers *by @HafiziRuslan on 2025-12-24T02:47:14+08:00*
@@ -196,4 +197,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Wed, 24-Dec-2025, 02:58:02.815, +08
+generated using git-cliff at Wed, 24-Dec-2025, 15:16:42.850, +08
