@@ -4,13 +4,17 @@ All notable changes to this project will be documented in this file.
 
 ## Commit Statistics [beta3]
 
-- 3 commit(s) contributed to the release.
+- 4 commit(s) contributed to the release.
 - 1 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
 - 1 day(s) passed between releases.
 
-## [beta3] - (Thu, 25-Dec-2025, 10:05:19, +08)
+## [beta3] - (Thu, 25-Dec-2025, 10:15:57, +08)
+
+### 📚 Documentation in beta3
+
+- [29dd9b8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/29dd9b8764bb16fbd5d51bc7016d543db0a5b753) docs(license): update license to include bsd-3-clause *by @HafiziRuslan on 2025-12-25T10:15:57+08:00*
 
 ### ⚙️ Miscellaneous Tasks in beta3
 
@@ -216,4 +220,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Thu, 25-Dec-2025, 10:05:57.536, +08
+generated using git-cliff at Thu, 25-Dec-2025, 10:16:35.704, +08
