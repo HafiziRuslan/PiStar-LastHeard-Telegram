@@ -1,10 +1,10 @@
 [project]
 name = "PiStar-LastHeard-Telegram"
 version = "0.1-beta.3"
-description = "Telegram bot to monitor the last transmissions of a Pi-Star gateway"
+description = "Telegram bot to monitor the last transmissions of a Pi-Star/WPSD gateway"
 keywords = ["amateur-radio", "mmdvm", "pi-star", "wpsd"]
 readme = "README.md"
-license = "GNU General Public License v2.0"
+license = "GPL-3.0-only"
 authors = [
   { name = "Luca", email = "61653175+iu2frl@users.noreply.github.com" },
   { name = "Hafizi Ruslan", email = "9w2lgx@mhrtech.my" },
