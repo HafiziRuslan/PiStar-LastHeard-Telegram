@@ -1,13 +1,13 @@
 #!/bin/bash
 set -e
-date=$(date +'%F %T')
+date=$(date +'%FT%T')
 dir_own=$(stat -c '%U' .)
 
 # echo "$date - Mark directory as safe"
 # git config --global --add safe.directory .
 
 echo "$date - Updating files"
-sudo -u $dir_own git pull
+sudo -u $dir_own git pull --autostash
 
 command_exists() {
   command -v "$1" >/dev/null 2>&1
