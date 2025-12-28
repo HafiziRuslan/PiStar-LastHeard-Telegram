@@ -2,13 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta3] - (Sun, 28-Dec-2025, 12:35:39, +08)
+## [beta3] - (Mon, 29-Dec-2025, 05:45:49, +08)
 
-- 9 commit(s) contributed to the release.
+- 10 commit(s) contributed to the release.
 - 4 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
 - 4 day(s) passed between releases.
+
+### 🚜 Refactor in beta3
+
+- [6df93dc](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/6df93dce7f4a005f1d0b9a6b6481e2ee52fae0b5) refactor(log_parser): clean up main.py and test_log_processor.py *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2025-12-29T05:45:49+08:00*
 
 ### 📚 Documentation in beta3
 
@@ -230,4 +234,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Sun, 28-Dec-2025, 12:36:06.552, +08
+generated using git-cliff at Mon, 29-Dec-2025, 05:46:25.654, +08
