@@ -52,6 +52,8 @@ jobs:
           body: "${{ github.event.head_commit.message }}\n\nby: ${{ github.event.head_commit.author.username }} on ${{ github.event.head_commit.timestamp }}"
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Update Tag
         uses: richardsimko/update-tag@latest
