@@ -1,12 +1,12 @@
 name: 'Sync Repo'
-
+permissions:
+  contents: read
 on:
   workflow_run:
     workflows:
       - Changelog
     types:
       - completed
-
 jobs:
   codeberg:
     runs-on: ubuntu-latest
@@ -16,7 +16,6 @@ jobs:
         uses: actions/checkout@main
         with:
           fetch-depth: 0
-
       - name: 'push to Codeberg'
         uses: cssnr/mirror-repository-action@latest
         with:
@@ -28,7 +27,6 @@ jobs:
           password: ${{ secrets.CODEBERG_TOKEN }}
           summary: false
           private: false
-
   gitlab:
     runs-on: ubuntu-latest
     steps:
