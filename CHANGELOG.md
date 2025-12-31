@@ -2,13 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta3] - (Mon, 29-Dec-2025, 05:45:49, +08)
+## [beta3] - (Thu,  1-Jan-2026, 01:41:50, +08)
 
-- 10 commit(s) contributed to the release.
-- 4 day(s) passed between the first and last commit.
+- 12 commit(s) contributed to the release.
+- 7 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
-- 4 day(s) passed between releases.
+- 7 day(s) passed between releases.
 
 ### 🚜 Refactor in beta3
 
@@ -33,6 +33,8 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks in beta3
 
+- [96b991a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/96b991ac3a1324669d7c016168d8bf7bc538c505) ci(github): configure github automation and dependency tools *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T01:41:50+08:00*
+- [b3a8387](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/b3a83873c9a10d646e67edf4935f4fef58b50dd4) chore(license): switch to bsd-3-clause license *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T01:37:40+08:00*
 - [20ae7a8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/20ae7a86021f8b82766e6c499a05786cc400a175) chore(sbom): update serial number and timestamp *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2025-12-25T23:34:27+08:00*
 - [1c8017d](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/1c8017dfa04ca17b67d951accee0de9318fd0b34) chore(license): upgrade to gpl-3.0 *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2025-12-25T10:05:19+08:00*
 - [0ab0214](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/0ab0214443db183e964e8528b009461a5bfcd421) chore(release): bump version to v0.1-beta.3 *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2025-12-24T15:46:05+08:00*
@@ -234,4 +236,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Mon, 29-Dec-2025, 05:46:25.654, +08
+generated using git-cliff at Thu,  1-Jan-2026, 01:42:24.326, +08
