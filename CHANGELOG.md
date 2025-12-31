@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta3] - (Thu,  1-Jan-2026, 01:49:42, +08)
+## [beta3] - (Thu,  1-Jan-2026, 01:56:20, +08)
 
-- 14 commit(s) contributed to the release.
+- 15 commit(s) contributed to the release.
 - 7 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
@@ -20,6 +20,7 @@ All notable changes to this project will be documented in this file.
 
 ### 📚 Documentation in beta3
 
+- [68d7db4](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/68d7db40234b2145aa16ba9b7ff501bf3a84edbf) docs(examples): update log file usage examples *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T01:56:20+08:00*
 - [29dd9b8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/29dd9b8764bb16fbd5d51bc7016d543db0a5b753) docs(license): update license to include bsd-3-clause *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2025-12-25T10:15:57+08:00*
 
 ### ⚡ Performance in beta3
@@ -240,4 +241,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Thu,  1-Jan-2026, 01:50:06.474, +08
+generated using git-cliff at Thu,  1-Jan-2026, 01:56:48.348, +08
