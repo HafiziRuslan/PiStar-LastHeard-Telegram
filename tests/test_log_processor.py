@@ -49,7 +49,7 @@ except Exception as e:
 	sys.exit(1)
 
 
-def process_log_file(log_file_path: str, ignore_time_messages: bool = True):
+def process_log_file(log_file_path: str, ignore_time_messages: bool=True):
 	"""
 	Process a log file and display all entries that would be sent to Telegram.
 
@@ -183,9 +183,9 @@ def main():
 		formatter_class=argparse.RawDescriptionHelpFormatter,
 		epilog="""
 Examples:
- %(prog)s MMDVM-2025-12-25.log
- %(prog)s MMDVM-2025-12-25.log --include-time
- %(prog)s /var/log/pi-star/MMDVM-2025-12-25.log
+ %(prog)s MMDVM-2026-01-01.log
+ %(prog)s MMDVM-2026-01-01.log --include-time
+ %(prog)s /var/log/pi-star/MMDVM-2026-01-01.log
 		""",
 	)
 
@@ -213,18 +213,18 @@ if __name__ == '__main__':
 		print('that would be sent to the Telegram channel.')
 		print()
 		print('Examples:')
-		print(' python test_log_processor.py MMDVM-2025-12-25.log')
-		print(' python test_log_processor.py MMDVM-2025-12-25.log --include-time')
+		print(' python test_log_processor.py MMDVM-2026-01-01.log')
+		print(' python test_log_processor.py MMDVM-2026-01-01.log --include-time')
 		print()
 
-		# If MMDVM-2025-12-25.log exists in current directory, use it as default
-		default_log = 'MMDVM-2025-12-25.log'
+		# If MMDVM-2026-01-01.log exists in current directory, use it as default
+		default_log = 'MMDVM-2026-01-01.log'
 		if os.path.exists(default_log):
 			print(f'ℹ️ Found log file: {default_log}')
 			print('  Processing it now...\n')
 			process_log_file(default_log)
 		else:
-			print('❌ No log file specified and MMDVM-2025-12-25.log not found.')
+			print('❌ No log file specified and MMDVM-2026-01-01.log not found.')
 			print()
 			sys.exit(1)
 	else:
