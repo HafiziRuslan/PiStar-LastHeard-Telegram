@@ -2,13 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta3] - (Thu,  1-Jan-2026, 01:42:25, +08)
+## [beta3] - (Thu,  1-Jan-2026, 01:49:42, +08)
 
-- 12 commit(s) contributed to the release.
+- 14 commit(s) contributed to the release.
 - 7 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
 - 7 day(s) passed between releases.
+
+### 🐛 Bug Fixes in beta3
+
+- [695eee5](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/695eee5dc1b34c4480e9a3af98fbfa13584afbea) Potential fix for code scanning alert no. 1: Workflow does not contain permissions *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T01:48:17+08:00*
 
 ### 🚜 Refactor in beta3
 
@@ -236,4 +240,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Thu,  1-Jan-2026, 01:48:40.707, +08
+generated using git-cliff at Thu,  1-Jan-2026, 01:50:06.474, +08
