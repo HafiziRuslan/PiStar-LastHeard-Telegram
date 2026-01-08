@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta3] - (Thu,  8-Jan-2026, 23:11:29, +08)
+## [beta3] - (2026-01-08T23:13:36+08:00)
 
-- 19 commit(s) contributed to the release.
+- 20 commit(s) contributed to the release.
 - 15 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
@@ -41,6 +41,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks in beta3
 
+- [fb293dc](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/fb293dc93e9e2521029da6608296806893db9173) build(changelog): use iso 8601 format for timestamps *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-08T23:13:36+08:00*
 - [a99c6af](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a99c6af64a83c3f70ab7a1de4a65e8bbab1e2946) chore(script): improve script robustness and dependency handling *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-08T23:05:50+08:00*
 - [96b991a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/96b991ac3a1324669d7c016168d8bf7bc538c505) ci(github): configure github automation and dependency tools *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T01:41:50+08:00*
 - [b3a8387](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/b3a83873c9a10d646e67edf4935f4fef58b50dd4) chore(license): switch to bsd-3-clause license *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T01:37:40+08:00*
@@ -51,7 +52,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [beta] - (Wed, 24-Dec-2025, 15:26:30, +08)
+## [beta] - (2025-12-24T15:26:30+08:00)
 
 - 168 commit(s) contributed to the release.
 - 232 day(s) passed between the first and last commit.
@@ -245,4 +246,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Thu,  8-Jan-2026, 23:12:06.894, +08
+generated using git-cliff at 2026-01-08T23:14:06.977453660+08:00
