@@ -2,13 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta3] - (Fri,  2-Jan-2026, 04:20:13, +08)
+## [beta3] - (Thu,  8-Jan-2026, 23:05:56, +08)
 
-- 17 commit(s) contributed to the release.
-- 8 day(s) passed between the first and last commit.
+- 19 commit(s) contributed to the release.
+- 15 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
-- 8 day(s) passed between releases.
+- 15 day(s) passed between releases.
 
 ### 🐛 Bug Fixes in beta3
 
@@ -31,6 +31,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🎨 Styling in beta3
 
+- [fa524dd](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/fa524dde8ed5d441c9ed176405f20a21e6e9fb76) style(logging): standardize logging output delimiter *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-08T23:05:56+08:00*
 - [2690110](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/26901103eefe061fda5fa0033cb22942b9f437e4) style(formatting): apply consistent indentation and formatting *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2025-12-25T23:30:24+08:00*
 
 ### 🧪 Testing in beta3
@@ -40,6 +41,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks in beta3
 
+- [a99c6af](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a99c6af64a83c3f70ab7a1de4a65e8bbab1e2946) chore(script): improve script robustness and dependency handling *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-08T23:05:50+08:00*
 - [96b991a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/96b991ac3a1324669d7c016168d8bf7bc538c505) ci(github): configure github automation and dependency tools *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T01:41:50+08:00*
 - [b3a8387](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/b3a83873c9a10d646e67edf4935f4fef58b50dd4) chore(license): switch to bsd-3-clause license *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T01:37:40+08:00*
 - [20ae7a8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/20ae7a86021f8b82766e6c499a05786cc400a175) chore(sbom): update serial number and timestamp *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2025-12-25T23:34:27+08:00*
@@ -243,4 +245,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at Fri,  2-Jan-2026, 04:20:47.057, +08
+generated using git-cliff at Thu,  8-Jan-2026, 23:06:49.416, +08
