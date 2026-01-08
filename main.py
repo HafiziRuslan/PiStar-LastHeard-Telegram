@@ -27,7 +27,7 @@ shutdown_flag = threading.Event()
 
 def configure_logging():
 	logging.basicConfig(
-		level=logging.INFO, datefmt='%Y-%m-%dT%H:%M:%S', format='%(asctime)s - %(levelname)s - %(message)s'
+		level=logging.INFO, datefmt='%Y-%m-%dT%H:%M:%S', format='%(asctime)s | %(levelname)s | %(message)s'
 	)
 
 
