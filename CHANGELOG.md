@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta3] - (2026-01-20T02:01:14+08:00)
+## [beta3] - (2026-01-20T02:33:10+08:00)
 
-- 22 commit(s) contributed to the release.
+- 23 commit(s) contributed to the release.
 - 26 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
@@ -46,6 +46,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks in beta3
 
+- [2e91574](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/2e915742772bb7e46bae4ab045f29692ed1fea70) chore(github): expand workflow permissions and add gitlab sync *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T02:33:10+08:00*
 - [fb293dc](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/fb293dc93e9e2521029da6608296806893db9173) build(changelog): use iso 8601 format for timestamps *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-08T23:13:36+08:00*
 - [a99c6af](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a99c6af64a83c3f70ab7a1de4a65e8bbab1e2946) chore(script): improve script robustness and dependency handling *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-08T23:05:50+08:00*
 - [96b991a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/96b991ac3a1324669d7c016168d8bf7bc538c505) ci(github): configure github automation and dependency tools *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T01:41:50+08:00*
@@ -251,4 +252,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-01-20T02:01:49.137051294+08:00
+generated using git-cliff at 2026-01-20T02:33:44.364071703+08:00
