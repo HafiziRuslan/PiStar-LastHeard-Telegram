@@ -2,13 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta3] - (2026-01-17T14:51:12+08:00)
+## [beta3] - (2026-01-20T02:01:14+08:00)
 
-- 21 commit(s) contributed to the release.
-- 24 day(s) passed between the first and last commit.
+- 22 commit(s) contributed to the release.
+- 26 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
-- 24 day(s) passed between releases.
+- 26 day(s) passed between releases.
+
+### 🚀 Features in beta3
+
+- [904b720](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/904b720472427a0e9a9b7ff4d7e9721138d13234) feat(chore): rename workflow and adjust trigger to schedule *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T02:01:14+08:00*
 
 ### 🐛 Bug Fixes in beta3
 
@@ -247,4 +251,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-01-17T14:52:04.601592915+08:00
+generated using git-cliff at 2026-01-20T02:01:49.137051294+08:00
