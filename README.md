@@ -25,6 +25,11 @@ This project is a Python-based Telegram bot that monitors DStar logs and sends u
    cd pslhtg
    ```
 
+   Mirror Repositories (delayed daily update):
+   - GitLab: <https://gitlab.com/hafiziruslan/PiStar-LastHeard-Telegram>
+   - Codeberg: <https://codeberg.org/hafiziruslan/PiStar-LastHeard-Telegram>
+   - Gitea: <https://gitea.com/HafiziRuslan/PiStar-LastHeard-Telegram>
+
 2. Copy the file `default.env` into `.env`, and edit the informations using your favorite editor.
 
    ```bash
