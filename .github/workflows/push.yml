@@ -1,12 +1,9 @@
-name: 'Sync Repo'
+name: 'Push Repo'
 permissions:
   contents: read
 on:
-  workflow_run:
-    workflows:
-      - Changelog
-    types:
-      - completed
+  schedule:
+    - cron: '0 0 * * *'
 jobs:
   codeberg:
     runs-on: ubuntu-latest
