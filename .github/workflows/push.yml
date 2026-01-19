@@ -1,9 +1,12 @@
-name: 'Push Repo'
+name: 'Push Out Repo'
+
 permissions:
   contents: read
+
 on:
   schedule:
     - cron: '0 0 * * *'
+
 jobs:
   codeberg:
     runs-on: ubuntu-latest
@@ -13,6 +16,7 @@ jobs:
         uses: actions/checkout@main
         with:
           fetch-depth: 0
+
       - name: 'push to Codeberg'
         uses: cssnr/mirror-repository-action@latest
         with:
@@ -24,9 +28,16 @@ jobs:
           password: ${{ secrets.CODEBERG_TOKEN }}
           summary: false
           private: false
+
   gitlab:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@main
+        with:
+          fetch-depth: 0
+
       - name: 'push to GitLab'
         uses: keninkujovic/gitlab-sync@main
         with:
