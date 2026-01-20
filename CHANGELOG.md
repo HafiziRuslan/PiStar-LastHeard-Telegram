@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-01-20T19:02:31+08:00)
+## [beta4] - (2026-01-20T19:05:25+08:00)
 
-- 2 commit(s) contributed to the release.
+- 3 commit(s) contributed to the release.
 - 0 day(s) passed between the first and last commit.
 
 ### 🚀 Features in beta4
@@ -14,6 +14,10 @@ All notable changes to this project will be documented in this file.
 ### 🐛 Bug Fixes in beta4
 
 - [034e33b](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/034e33b82cf07c7126c34f70ba6f32e11754fb48) Workflow does not contain permissions *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:02:08+08:00*
+
+### ⚙️ Miscellaneous Tasks in beta4
+
+- [8e6c36a](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/8e6c36a04ec07fa4b7705018a09973657eb1bb0d) chore(config): grant write access to contents in release workflow *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:05:25+08:00*
 
 ---
 
@@ -269,4 +273,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-01-20T19:02:58.566096611+08:00
+generated using git-cliff at 2026-01-20T19:05:56.341180338+08:00
