@@ -2,19 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta3] - (2026-01-20T08:02:54+08:00)
+## [beta3] - (2026-01-20T09:06:34+08:00)
 
-- 26 commit(s) contributed to the release.
+- 29 commit(s) contributed to the release.
 - 27 day(s) passed between the first and last commit.
 - 27 day(s) passed between releases.
 
 ### 🚀 Features in beta3
 
+- [03031ce](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/03031ce01a21520368d4f7903eddb93f8d230cbd) feat(readme): restructure installation and usage sections *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T09:06:34+08:00*
+- [6437584](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/6437584920024004bcfc37931181c0b2ca9d6293) feat(main): move main module to src/main.py *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T09:04:46+08:00*
 - [436a5de](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/436a5def85e3138ace4adf56c6e8c342c0d7f839) feat(github): add gitea mirror workflow for repository synchronization *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T08:01:45+08:00*
 - [904b720](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/904b720472427a0e9a9b7ff4d7e9721138d13234) feat(chore): rename workflow and adjust trigger to schedule *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T02:01:14+08:00*
 
 ### 🐛 Bug Fixes in beta3
 
+- [4d45dff](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/4d45dff705e126c5cff2dd762f50b14451c19456) fix(main): update repository log label and fix script paths *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T09:05:40+08:00*
 - [ca45382](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/ca4538229f9b2ccb6c58083df7c37d2f6800f6a8) fix(config): guard conventional and links sections in cliff template *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T08:02:54+08:00*
 - [a2eb7e7](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a2eb7e7b8b02f0333712fffd9ed516448b6b5a99) docs(SECURITY): update security policy contact and formatting *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-02T04:20:13+08:00*
 - [9d49596](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/9d495961c7f07343fe95d90dc85bded4c533fc91) docs(policy): add security policy documentation *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T03:44:27+08:00*
@@ -251,4 +254,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-01-20T08:03:21.545508902+08:00
+generated using git-cliff at 2026-01-20T09:07:13.365920902+08:00
