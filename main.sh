@@ -14,6 +14,21 @@ log_msg() {
   echo "$(date +'%FT%T') | $level | $*"
 }
 
+LOCK_FILE="/var/run/mmdvmlhbot.pid"
+if [ -e "$LOCK_FILE" ]; then
+  PID=$(cat "$LOCK_FILE")
+  if ps -p "$PID" > /dev/null; then
+    log_msg ERROR "Script is already running with PID $PID."
+    exit 1
+  else
+    log_msg WARN "Stale lock file found for PID $PID. Removing."
+    rm -f "$LOCK_FILE"
+  fi
+fi
+
+trap 'rm -f "$LOCK_FILE"' EXIT
+echo $$ > "$LOCK_FILE"
+
 check_internet() {
   local output
   if output=$(timeout 5 ping -q -c 3 -W 1 8.8.8.8 2>&1); then
@@ -40,7 +55,7 @@ check_disk_space() {
 #   rm -rf /tmp/mmdvmlhbot
 #   rm -rf /var/log/mmdvmlhbot
 # }
-# trap cleanup EXIT
+# cleanup
 #
 # if [ ! -d "/tmp/mmdvmlhbot" ]; then
 #   mkdir -p /tmp/mmdvmlhbot
