@@ -37,19 +37,19 @@ check_disk_space() {
 }
 
 # cleanup() {
-#   rm -rf /tmp/pslhtg
-#   rm -rf /var/log/pslhtg
+#   rm -rf /tmp/mmdvmlhbot
+#   rm -rf /var/log/mmdvmlhbot
 # }
 # trap cleanup EXIT
 #
-# if [ ! -d "/tmp/pslhtg" ]; then
-#   mkdir -p /tmp/pslhtg
-#   chown -hR $dir_own:$dir_own /tmp/pslhtg
+# if [ ! -d "/tmp/mmdvmlhbot" ]; then
+#   mkdir -p /tmp/mmdvmlhbot
+#   chown -hR $dir_own:$dir_own /tmp/mmdvmlhbot
 # fi
 #
-# if [ ! -d "/var/log/pslhtg" ]; then
-#   mkdir -p /var/log/pslhtg
-#   chown -hR $dir_own:$dir_own /var/log/pslhtg
+# if [ ! -d "/var/log/mmdvmlhbot" ]; then
+#   mkdir -p /var/log/mmdvmlhbot
+#   chown -hR $dir_own:$dir_own /var/log/mmdvmlhbot
 # fi
 
 if check_internet; then
@@ -78,7 +78,7 @@ if [ "$INTERNET_AVAILABLE" = true ] && check_disk_space; then
     REMOTE=$(sudo -u $dir_own git rev-parse @{u})
 
     if [ "$LOCAL" != "$REMOTE" ]; then
-      log_msg INFO "Updating PiStar-LastHeard-Telegram repository"
+      log_msg INFO "Updating MMDVM-Last-Heard repository"
       if sudo -u $dir_own timeout 60 git pull --autostash -q; then
         if [ "$(sudo -u $dir_own git rev-parse HEAD)" = "$REMOTE" ]; then
           log_msg INFO "Verifying repository integrity..."
@@ -139,26 +139,26 @@ else
 fi
 
 if [ ! -d ".venv" ]; then
-  log_msg INFO "PiStar-LastHeard-Telegram environment not found, creating one."
+  log_msg INFO "MMDVM-Last-Heard environment not found, creating one."
   uv venv
-  log_msg INFO "Activating PiStar-LastHeard-Telegram environment"
+  log_msg INFO "Activating MMDVM-Last-Heard environment"
   source .venv/bin/activate
   if [ "$INTERNET_AVAILABLE" = true ]; then
-    log_msg INFO "Installing PiStar-LastHeard-Telegram dependencies"
+    log_msg INFO "Installing MMDVM-Last-Heard dependencies"
     uv sync -q
   else
     log_msg WARN "Internet unavailable. Skipping dependency installation."
   fi
 else
-  log_msg INFO "PiStar-LastHeard-Telegram environment already exists. -> Activating PiStar-LastHeard-Telegram environment"
+  log_msg INFO "MMDVM-Last-Heard environment already exists. -> Activating MMDVM-Last-Heard environment"
   source .venv/bin/activate
   if [ "$INTERNET_AVAILABLE" = true ]; then
-    log_msg INFO "Updating PiStar-LastHeard-Telegram dependencies"
+    log_msg INFO "Updating MMDVM-Last-Heard dependencies"
     uv sync -q
   fi
 fi
 
-log_msg INFO "Running PiStar-LastHeard-Telegram"
+log_msg INFO "Running MMDVM-Last-Heard"
 RESTART_DELAY=5
 MAX_DELAY=300
 
@@ -175,9 +175,9 @@ while true; do
   fi
 
   if [ $exit_code -ne 0 ]; then
-    log_msg ERROR "PiStar-LastHeard-Telegram exited with code $exit_code. Re-run in ${RESTART_DELAY} seconds."
+    log_msg ERROR "MMDVM-Last-Heard exited with code $exit_code. Re-run in ${RESTART_DELAY} seconds."
   else
-    log_msg INFO "PiStar-LastHeard-Telegram exited with code $exit_code. Re-run in ${RESTART_DELAY} seconds."
+    log_msg INFO "MMDVM-Last-Heard exited with code $exit_code. Re-run in ${RESTART_DELAY} seconds."
   fi
   sleep $RESTART_DELAY
 

@@ -6,6 +6,9 @@ permissions:
 on:
   schedule:
     - cron: '0 0 * * *'
+  release:
+    types:
+      - created
 
 jobs:
   codeberg:
@@ -22,7 +25,7 @@ jobs:
         with:
           host: https://codeberg.org
           owner: hafiziruslan
-          repo: PiStar-LastHeard-Telegram
+          repo: MMDVM-Last-Heard
           create: false
           username: hafiziruslan
           password: ${{ secrets.CODEBERG_TOKEN }}
@@ -43,7 +46,7 @@ jobs:
         with:
           host: https://gitlab.com
           owner: hafiziruslan
-          repo: PiStar-LastHeard-Telegram
+          repo: MMDVM-Last-Heard
           create: false
           username: hafiziruslan
           password: ${{ secrets.GITLAB_TOKEN }}
@@ -64,7 +67,7 @@ jobs:
         with:
           host: https://gitea.com
           owner: hafiziruslan
-          repo: PiStar-LastHeard-Telegram
+          repo: MMDVM-Last-Heard
           create: false
           username: hafiziruslan
           password: ${{ secrets.GITEA_TOKEN }}

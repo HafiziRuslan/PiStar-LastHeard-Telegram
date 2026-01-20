@@ -1,6 +1,6 @@
 [project]
-name = "PiStar-LastHeard-Telegram"
-version = "0.1-beta.3"
+name = "MMDVM-Last-Heard"
+version = "0.1-beta.4"
 description = "Telegram bot to monitor the last transmissions of a Pi-Star/WPSD gateway"
 keywords = ["amateur-radio", "mmdvm", "pi-star", "wpsd"]
 readme = "README.md"
@@ -22,11 +22,11 @@ dependencies = [
 ]
 
 [project.urls]
-repository = "https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram"
-changelog = "https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/blob/master/CHANGELOG.md"
+repository = "https://github.com/HafiziRuslan/MMDVM-Last-Heard"
+changelog = "https://github.com/HafiziRuslan/MMDVM-Last-Heard/blob/master/CHANGELOG.md"
 
 [tool.ruff]
-line-length = 120
+line-length = 150
 
 [tool.ruff.analyze]
 detect-string-imports = true

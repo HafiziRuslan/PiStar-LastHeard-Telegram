@@ -279,10 +279,9 @@ class MMDVMLogLine:
 					# id = parts[0].strip()
 					call = parts[1].strip()
 					fname = parts[2].strip()
-					# lname = parts[3].strip()
-					# city = parts[4].strip()
-					# state = parts[5].strip()
-					country = parts[6].strip()
+					# city = parts[3].strip()
+					# state = parts[4].strip()
+					country = parts[5].strip()
 					if call == self.callsign:
 						caller = f' ({fname}-{country})'
 						break

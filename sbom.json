@@ -2,21 +2,21 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "version": 1,
-  "serialNumber": "urn:uuid:0f25cd1b-c307-4a93-87ed-5e5c92455cbc",
+  "serialNumber": "urn:uuid:01eeb6d3-bef1-4024-b93f-06b612f62d1c",
   "metadata": {
-    "timestamp": "2026-01-08T15:10:48.392666300Z",
+    "timestamp": "2026-01-20T10:41:20.891690200Z",
     "tools": [
       {
         "vendor": "Astral Software Inc.",
         "name": "uv",
-        "version": "0.9.22"
+        "version": "0.9.26"
       }
     ],
     "component": {
       "type": "library",
-      "bom-ref": "pistar-lastheard-telegram-1@0.1b3",
-      "name": "pistar-lastheard-telegram",
-      "version": "0.1b3"
+      "bom-ref": "mmdvm-last-heard-1@0.1b4",
+      "name": "mmdvm-last-heard",
+      "version": "0.1b4"
     }
   },
   "components": [
@@ -124,7 +124,7 @@
       "dependsOn": []
     },
     {
-      "ref": "pistar-lastheard-telegram-1@0.1b3",
+      "ref": "mmdvm-last-heard-1@0.1b4",
       "dependsOn": [
         "humanize-7@4.15.0",
         "python-dotenv-9@1.2.1",

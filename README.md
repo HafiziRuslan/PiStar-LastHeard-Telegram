@@ -1,10 +1,10 @@
-# Pi-Star Last Heard Telegram Bot
+# MMDVM Last Heard Bot
 
-This project is a Python-based Telegram bot that monitors DStar logs and sends updates to a specified Telegram chat. It uses the `python-telegram-bot` library to interact with Telegram and parses DStar or MMDVM log files to extract relevant information.
+This project is a Python-based Telegram bot that monitors MMDVM logs and sends updates to a specified Telegram chat. It uses the `python-telegram-bot` library to interact with Telegram and parses MMDVM log files to extract relevant information.
 
 ## Features
 
-- Monitors DStar/MMDVM log files for new entries.
+- Monitors MMDVM log files for new entries.
 - Parses log entries and formats them into readable messages.
 - Sends updates to a Telegram chat using a bot.
 - Configurable via environment variables.
@@ -19,15 +19,15 @@ This project is a Python-based Telegram bot that monitors DStar logs and sends u
 ## 🛠️ Installation
 
 ```bash
-git clone https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram.git pslhtg
-cd pslhtg
+git clone https://github.com/HafiziRuslan/MMDVM-Last-Heard.git mmdvmlhbot
+cd mmdvmlhbot
 ```
 
 Mirror Repositories (delayed daily update):
 
-- GitLab: <https://gitlab.com/hafiziruslan/PiStar-LastHeard-Telegram>
-- Codeberg: <https://codeberg.org/hafiziruslan/PiStar-LastHeard-Telegram>
-- Gitea: <https://gitea.com/HafiziRuslan/PiStar-LastHeard-Telegram>
+- GitLab: <https://gitlab.com/hafiziruslan/MMDVM-Last-Heard>
+- Codeberg: <https://codeberg.org/hafiziruslan/MMDVM-Last-Heard>
+- Gitea: <https://gitea.com/HafiziRuslan/MMDVM-Last-Heard>
 
 ## ⚙️ Configuration
 
@@ -38,12 +38,12 @@ cp default.env .env
 nano .env
 ```
 
-## AutoStart PiStar-LastHeard-Telegram
+## AutoStart MMDVM Last Heard Bot
 
 Copy & Paste this line into last line (before blank line) of `/etc/crontab` or any other cron program that you're using.
 
 ```bash
-@reboot pi-star cd /home/pi-star/pslhtg && ./main.sh > /var/log/pslhtg.log 2>&1
+@reboot pi-star cd /home/pi-star/mmdvmlhbot && ./main.sh > /var/log/lastheard.log 2>&1
 ```
 
 change the `pi-star` username into your username
