@@ -16,96 +16,69 @@ This project is a Python-based Telegram bot that monitors DStar logs and sends u
 - A Telegram chat ID where the bot will send messages.
 - Access to the DStar log files on your Pi-Star system.
 
-## Preparation
-
-1. Clone the repository to your Pi-Star system:
-
-   ```bash
-   git clone https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram.git ./pslhtg
-   cd pslhtg
-   ```
-
-   Mirror Repositories (delayed daily update):
-   - GitLab: <https://gitlab.com/hafiziruslan/PiStar-LastHeard-Telegram>
-   - Codeberg: <https://codeberg.org/hafiziruslan/PiStar-LastHeard-Telegram>
-   - Gitea: <https://gitea.com/HafiziRuslan/PiStar-LastHeard-Telegram>
-
-2. Copy the file `default.env` into `.env`, and edit the informations using your favorite editor.
-
-   ```bash
-   cp default.env .env
-   nano .env
-   ```
-
-<!--
-3. Choose the script you want to use to run the bot:
-   - `main-dstargateway.py`: Run the bot which monitors the Dstar Gateway log file (for gateways running ICOM hardware).
-   - `main-mmdvm.py`: Run the bot which monitors the MMDVM log file (for gateways running MMDVM hardware).
-
-4. Rename the chosen script to `main.py`
-   - For example, if you want to use the Dstar Gateway log monitoring script:
-
-    ```bash
-    mv main-dstargateway.py main.py
-    ```
- -->
-
-## Usage
-
-The bot can be launched using the following command:
+## 🛠️ Installation
 
 ```bash
-sudo chmod a+x ./main.sh
-./main.sh
+git clone https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram.git pslhtg
+cd pslhtg
 ```
 
-The script will:
+Mirror Repositories (delayed daily update):
 
-- Create and activate a virtual environment (if not already created).
-- Install the required dependencies.
-- Start the bot and monitor the logs.
+- GitLab: <https://gitlab.com/hafiziruslan/PiStar-LastHeard-Telegram>
+- Codeberg: <https://codeberg.org/hafiziruslan/PiStar-LastHeard-Telegram>
+- Gitea: <https://gitea.com/HafiziRuslan/PiStar-LastHeard-Telegram>
 
-## Automatic execution
+## ⚙️ Configuration
 
-To run the script at boot, add an entry in cron:
+Copy the file `default.env` into `.env`, and edit the configuration using your favorite editor.
 
 ```bash
-@reboot pi-star cd /home/pi-star/pslhtg && ./main.sh > /tmp/lastheard.log 2>&1
+cp default.env .env
+nano .env
 ```
 
-edit the `pi-star` username into your username
+## AutoStart PiStar-LastHeard-Telegram
 
-## File Structure
-
-- `main.py`: The main script that contains the bot logic and log monitoring functionality.
-- `main.sh`: A shell script to set up the environment and run the bot.
-- `requirements.txt`: A list of Python dependencies required for the project.
-
-## How It Works
-
-1. **Log Monitoring**:
-   The bot reads the latest DStar log file and extracts the last line. It parses the log line using a regex pattern to extract fields like timestamp, callsigns, and repeaters.
-
-2. **Telegram Integration**:
-   The bot formats the parsed log entry into an HTML message and sends it to the specified Telegram chat using the `python-telegram-bot` library.
-
-3. **Environment Variables**:
-   The bot uses environment variables (`TG_BOTTOKEN` and `TG_CHATID`) to configure the Telegram bot token and chat ID.
-
-## Dependencies
-
-> [TIP]
-> If using the `main.sh` script, all dependencies and virtual environment are created automatically
-
-The project requires the following Python libraries:
-
-- `python-telegram-bot`: For interacting with the Telegram Bot API.
-- `python-dotenv`: For loading environment variables from a `.env` file.
-
-Install them using:
+Copy & Paste this line into last line (before blank line) of `/etc/crontab` or any other cron program that you're using.
 
 ```bash
-pip install -r requirements.txt
+@reboot pi-star cd /home/pi-star/pslhtg && ./main.sh > /var/log/pslhtg.log 2>&1
+```
+
+change the `pi-star` username into your username
+
+## Update RasPiAPRS
+
+Manual update are **NOT REQUIRED** as it has integrated into `main.sh`.
+
+Use this command for manual update:-
+
+```bash
+git pull --autostash
+```
+
+## 🚀 Usage
+
+Run the main script with root privileges. This script automatically:
+
+- Checks for and installs system dependencies (`gcc`, `git`, `python3-dev`, `wget`).
+- Installs `uv` and sets up the Python virtual environment.
+- Updates the repository to the latest version.
+- Runs the application in a monitoring loop.
+
+```bash
+sudo ./main.sh
+```
+
+Note: to install uv using `apt`, you may use `debian.griffo.io` repository.
+
+```bash
+curl -sS https://debian.griffo.io/EA0F721D231FDD3A0A17B9AC7808B4DD62C41256.asc | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/debian.griffo.io.gpg
+
+echo "deb https://debian.griffo.io/apt $(lsb_release -sc 2>/dev/null) main" | sudo tee /etc/apt/sources.list.d/debian.griffo.io.list
+
+sudo apt update && sudo apt install uv
 ```
 
 ## Logging
