@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-01-20T19:32:22+08:00)
+## [beta4] - (2026-01-20T20:50:34+08:00)
 
-- 8 commit(s) contributed to the release.
+- 10 commit(s) contributed to the release.
 - 0 day(s) passed between the first and last commit.
 
 ### 🚀 Features in beta4
@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes in beta4
 
+- [48afbbe](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/48afbbeab810552320b315f0042a08d0c34de695) fix(main): add lock file mechanism to prevent concurrent runs *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T20:50:34+08:00*
 - [275b8c9](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/275b8c9878ce4dae414a0f3cb7ec29183c4ca92e) fix(release): include markdown files in release exclusions *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:32:22+08:00*
 - [3356bd8](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/3356bd84069172fa4e629ae94038a82681680286) fix(release): normalize zip filename and exclusions in release workflow *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:26:01+08:00*
 - [a1c13cf](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/a1c13cfdfe7c0469fb367ba968b515a54ca21c85) chore(release): adjust release workflow exclusions and metadata *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:20:14+08:00*
@@ -22,6 +23,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks in beta4
 
+- [7541555](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/75415558a807a8beaf298b8526165549da45bafc) chore(workflow): update release trigger to published *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T20:50:20+08:00*
 - [8e6c36a](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/8e6c36a04ec07fa4b7705018a09973657eb1bb0d) chore(config): grant write access to contents in release workflow *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:05:25+08:00*
 
 ---
@@ -278,4 +280,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-01-20T19:32:46.116183715+08:00
+generated using git-cliff at 2026-01-20T20:51:02.620535211+08:00
