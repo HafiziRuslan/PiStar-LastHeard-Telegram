@@ -2,12 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta3] - (2026-01-20T08:01:45+08:00)
+## [beta3] - (2026-01-20T08:02:54+08:00)
 
-- 25 commit(s) contributed to the release.
+- 26 commit(s) contributed to the release.
 - 27 day(s) passed between the first and last commit.
-- 0 commit(s) parsed as conventional.
-- 0 linked issue(s) detected in commits.
 - 27 day(s) passed between releases.
 
 ### 🚀 Features in beta3
@@ -17,6 +15,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes in beta3
 
+- [ca45382](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/ca4538229f9b2ccb6c58083df7c37d2f6800f6a8) fix(config): guard conventional and links sections in cliff template *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T08:02:54+08:00*
 - [a2eb7e7](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/a2eb7e7b8b02f0333712fffd9ed516448b6b5a99) docs(SECURITY): update security policy contact and formatting *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-02T04:20:13+08:00*
 - [9d49596](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/9d495961c7f07343fe95d90dc85bded4c533fc91) docs(policy): add security policy documentation *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T03:44:27+08:00*
 - [695eee5](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/695eee5dc1b34c4480e9a3af98fbfa13584afbea) Potential fix for code scanning alert no. 1: Workflow does not contain permissions *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T01:48:17+08:00*
@@ -64,8 +63,6 @@ All notable changes to this project will be documented in this file.
 
 - 168 commit(s) contributed to the release.
 - 232 day(s) passed between the first and last commit.
-- 0 commit(s) parsed as conventional.
-- 0 linked issue(s) detected in commits.
 
 ### 🚀 Features in beta
 
@@ -254,4 +251,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-01-20T08:02:14.856939224+08:00
+generated using git-cliff at 2026-01-20T08:03:21.545508902+08:00
