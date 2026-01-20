@@ -2,16 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta3] - (2026-01-20T02:33:10+08:00)
+## [beta3] - (2026-01-20T08:01:45+08:00)
 
-- 23 commit(s) contributed to the release.
-- 26 day(s) passed between the first and last commit.
+- 25 commit(s) contributed to the release.
+- 27 day(s) passed between the first and last commit.
 - 0 commit(s) parsed as conventional.
 - 0 linked issue(s) detected in commits.
-- 26 day(s) passed between releases.
+- 27 day(s) passed between releases.
 
 ### 🚀 Features in beta3
 
+- [436a5de](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/436a5def85e3138ace4adf56c6e8c342c0d7f839) feat(github): add gitea mirror workflow for repository synchronization *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T08:01:45+08:00*
 - [904b720](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/904b720472427a0e9a9b7ff4d7e9721138d13234) feat(chore): rename workflow and adjust trigger to schedule *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T02:01:14+08:00*
 
 ### 🐛 Bug Fixes in beta3
@@ -27,6 +28,7 @@ All notable changes to this project will be documented in this file.
 
 ### 📚 Documentation in beta3
 
+- [c37978a](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/c37978ade59a354705bf257b42ac2322afac8775) docs(readme): add mirror repositories section *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T07:56:33+08:00*
 - [68d7db4](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/68d7db40234b2145aa16ba9b7ff501bf3a84edbf) docs(examples): update log file usage examples *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-01T01:56:20+08:00*
 - [29dd9b8](https://github.com/HafiziRuslan/PiStar-LastHeard-Telegram/commit/29dd9b8764bb16fbd5d51bc7016d543db0a5b753) docs(license): update license to include bsd-3-clause *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2025-12-25T10:15:57+08:00*
 
@@ -252,4 +254,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-01-20T02:33:44.364071703+08:00
+generated using git-cliff at 2026-01-20T08:02:14.856939224+08:00
