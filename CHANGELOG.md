@@ -2,13 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-01-20T19:05:25+08:00)
+## [beta4] - (2026-01-20T19:11:48+08:00)
 
-- 3 commit(s) contributed to the release.
+- 4 commit(s) contributed to the release.
 - 0 day(s) passed between the first and last commit.
 
 ### 🚀 Features in beta4
 
+- [cefcf1a](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/cefcf1abca532b83727a617462ef5768192b9d0c) feat(release): adjust release workflow exclusions and quoting *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:11:48+08:00*
 - [008782e](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/008782e2f581b565585b76fc86348266fbc081fe) feat(global): rename project to mmdvm-last-heard and update references *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T18:55:42+08:00*
 
 ### 🐛 Bug Fixes in beta4
@@ -273,4 +274,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-01-20T19:05:56.341180338+08:00
+generated using git-cliff at 2026-01-20T19:12:17.384256064+08:00
