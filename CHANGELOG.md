@@ -2,14 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-01-20T18:55:42+08:00)
+## [beta4] - (2026-01-20T19:02:08+08:00)
 
-- 1 commit(s) contributed to the release.
+- 2 commit(s) contributed to the release.
 - 0 day(s) passed between the first and last commit.
 
 ### 🚀 Features in beta4
 
 - [008782e](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/008782e2f581b565585b76fc86348266fbc081fe) feat(global): rename project to mmdvm-last-heard and update references *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T18:55:42+08:00*
+
+### 🐛 Bug Fixes in beta4
+
+- [034e33b](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/034e33b82cf07c7126c34f70ba6f32e11754fb48) Workflow does not contain permissions *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:02:08+08:00*
 
 ---
 
@@ -265,4 +269,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-01-20T18:56:15.409313812+08:00
+generated using git-cliff at 2026-01-20T19:02:30.740430755+08:00
