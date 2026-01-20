@@ -19,7 +19,7 @@ jobs:
         with:
           type: 'zip'
           filename: 'mmdvmlhbot-0.1b4.zip'
-          exclusions: '*.git* /.git* LICENSE /tests* *lock* sbom*'
+          exclusions: '*.git* /.git* LICENSE /tests* *lock* sbom* *.md'
           recursive_exclusions: '*.md'
 
       - name: Upload Release
