@@ -78,7 +78,7 @@ if [ "$INTERNET_AVAILABLE" = true ] && check_disk_space; then
     REMOTE=$(sudo -u $dir_own git rev-parse @{u})
 
     if [ "$LOCAL" != "$REMOTE" ]; then
-      log_msg INFO "Updating RaspiAPRS repository"
+      log_msg INFO "Updating PiStar-LastHeard-Telegram repository"
       if sudo -u $dir_own timeout 60 git pull --autostash -q; then
         if [ "$(sudo -u $dir_own git rev-parse HEAD)" = "$REMOTE" ]; then
           log_msg INFO "Verifying repository integrity..."
@@ -124,7 +124,7 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
-ensure_apt_packages gcc git python3-dev
+ensure_apt_packages gcc git python3-dev wget
 
 if command_exists uv; then
   log_msg INFO "✅ uv is installed."
@@ -165,7 +165,7 @@ MAX_DELAY=300
 while true; do
   START_TIME=$(date +%s)
   set +e
-  uv run -s ./main.py
+  uv run -s ./src/main.py
   exit_code=$?
   set -e
   END_TIME=$(date +%s)
