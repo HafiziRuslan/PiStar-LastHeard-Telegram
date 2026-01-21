@@ -31,6 +31,51 @@ def configure_logging():
 	)
 
 
+COUNTRY_CODES = {
+	'United States': 'US', 'USA': 'US', 'United Kingdom': 'GB', 'UK': 'GB', 'Great Britain': 'GB',
+	'Canada': 'CA', 'Germany': 'DE', 'Australia': 'AU', 'Japan': 'JP', 'France': 'FR',
+	'Italy': 'IT', 'Spain': 'ES', 'China': 'CN', 'Russia': 'RU', 'Russian Federation': 'RU',
+	'Brazil': 'BR', 'Argentina': 'AR', 'Mexico': 'MX', 'Netherlands': 'NL', 'The Netherlands': 'NL',
+	'Belgium': 'BE', 'Switzerland': 'CH', 'Sweden': 'SE', 'Norway': 'NO', 'Finland': 'FI',
+	'Denmark': 'DK', 'Poland': 'PL', 'Austria': 'AT', 'South Korea': 'KR', 'Korea, Republic of': 'KR',
+	'India': 'IN', 'Indonesia': 'ID', 'Philippines': 'PH', 'Thailand': 'TH', 'Vietnam': 'VN',
+	'South Africa': 'ZA', 'New Zealand': 'NZ', 'Chile': 'CL', 'Colombia': 'CO', 'Venezuela': 'VE',
+	'Peru': 'PE', 'Turkey': 'TR', 'Greece': 'GR', 'Portugal': 'PT', 'Ireland': 'IE',
+	'Czech Republic': 'CZ', 'Czechia': 'CZ', 'Hungary': 'HU', 'Romania': 'RO', 'Ukraine': 'UA',
+	'Israel': 'IL', 'Saudi Arabia': 'SA', 'United Arab Emirates': 'AE', 'Malaysia': 'MY',
+	'Singapore': 'SG', 'Taiwan': 'TW', 'Hong Kong': 'HK', 'Croatia': 'HR', 'Slovenia': 'SI',
+	'Slovakia': 'SK', 'Bulgaria': 'BG', 'Serbia': 'RS', 'Bosnia and Herzegovina': 'BA',
+	'Montenegro': 'ME', 'Macedonia': 'MK', 'North Macedonia': 'MK', 'Albania': 'AL',
+	'Estonia': 'EE', 'Latvia': 'LV', 'Lithuania': 'LT', 'Belarus': 'BY', 'Moldova': 'MD',
+	'Iceland': 'IS', 'Luxembourg': 'LU', 'Malta': 'MT', 'Cyprus': 'CY', 'Andorra': 'AD',
+	'Liechtenstein': 'LI', 'San Marino': 'SM', 'Monaco': 'MC', 'Vatican City': 'VA',
+	'Puerto Rico': 'PR', 'Dominican Republic': 'DO', 'Cuba': 'CU', 'Jamaica': 'JM',
+	'Costa Rica': 'CR', 'Panama': 'PA', 'Guatemala': 'GT', 'El Salvador': 'SV', 'Honduras': 'HN',
+	'Nicaragua': 'NI', 'Ecuador': 'EC', 'Bolivia': 'BO', 'Paraguay': 'PY', 'Uruguay': 'UY',
+	'Morocco': 'MA', 'Algeria': 'DZ', 'Tunisia': 'TN', 'Egypt': 'EG', 'Kenya': 'KE',
+	'Nigeria': 'NG', 'Ghana': 'GH', 'Pakistan': 'PK', 'Bangladesh': 'BD', 'Sri Lanka': 'LK',
+	'Nepal': 'NP', 'Qatar': 'QA', 'Kuwait': 'KW', 'Bahrain': 'BH', 'Oman': 'OM', 'Jordan': 'JO',
+	'Lebanon': 'LB', 'Iraq': 'IQ', 'Iran': 'IR', 'Kazakhstan': 'KZ', 'Uzbekistan': 'UZ',
+	'Kyrgyzstan': 'KG', 'Tajikistan': 'TJ', 'Turkmenistan': 'TM', 'Georgia': 'GE',
+	'Armenia': 'AM', 'Azerbaijan': 'AZ', 'Mongolia': 'MN', 'Cambodia': 'KH', 'Laos': 'LA',
+	'Myanmar': 'MM', 'Brunei': 'BN', 'Timor-Leste': 'TL', 'Papua New Guinea': 'PG',
+	'Fiji': 'FJ', 'Solomon Islands': 'SB', 'Vanuatu': 'VU', 'Samoa': 'WS', 'Tonga': 'TO'
+}
+
+
+def get_flag_emoji(country_name: str) -> str:
+	"""Returns the flag emoji for a given country name."""
+	code = COUNTRY_CODES.get(country_name)
+	if not code:
+		for name, c in COUNTRY_CODES.items():
+			if name.lower() == country_name.lower():
+				code = c
+				break
+	if code:
+		return "".join(chr(ord(c) + 127397) for c in code.upper())
+	return ''
+
+
 class MMDVMLogLine:
 	timestamp: Optional[datetime] = None
 	mode: str = ''
@@ -283,7 +328,8 @@ class MMDVMLogLine:
 					# state = parts[4].strip()
 					country = parts[5].strip()
 					if call == self.callsign:
-						caller = f' ({fname}-{country})'
+						flag = get_flag_emoji(country)
+						caller = f'({fname}-{flag} {country})' if flag else f' ({fname}-{country})'
 						break
 		except Exception as e:
 			logging.error('Error reading caller file %s: %s', caller_file, e)
@@ -353,7 +399,7 @@ def get_latest_mmdvm_log_path() -> str:
 		raise ValueError(f'No MMDVM log files found in {logdir}')
 	log_files.sort(key=os.path.getmtime, reverse=True)
 	latest_log = log_files[0]
-	# logging.info("Latest MMDVM log file: %s", latest_log)
+	logging.debug("Latest MMDVM log file: %s", latest_log)
 	return latest_log
 
 
