@@ -2,9 +2,9 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "version": 1,
-  "serialNumber": "urn:uuid:01eeb6d3-bef1-4024-b93f-06b612f62d1c",
+  "serialNumber": "urn:uuid:9d63c88b-37c4-4d52-8b34-90a5461843ec",
   "metadata": {
-    "timestamp": "2026-01-20T10:41:20.891690200Z",
+    "timestamp": "2026-01-26T07:24:29.253321000Z",
     "tools": [
       {
         "vendor": "Astral Software Inc.",
@@ -78,10 +78,10 @@
     },
     {
       "type": "library",
-      "bom-ref": "python-telegram-bot-10@22.5",
+      "bom-ref": "python-telegram-bot-10@22.6",
       "name": "python-telegram-bot",
-      "version": "22.5",
-      "purl": "pkg:pypi/python-telegram-bot@22.5"
+      "version": "22.6",
+      "purl": "pkg:pypi/python-telegram-bot@22.6"
     }
   ],
   "dependencies": [
@@ -128,7 +128,7 @@
       "dependsOn": [
         "humanize-7@4.15.0",
         "python-dotenv-9@1.2.1",
-        "python-telegram-bot-10@22.5"
+        "python-telegram-bot-10@22.6"
       ]
     },
     {
@@ -136,8 +136,9 @@
       "dependsOn": []
     },
     {
-      "ref": "python-telegram-bot-10@22.5",
+      "ref": "python-telegram-bot-10@22.6",
       "dependsOn": [
+        "httpcore-5@1.0.9",
         "httpx-6@0.28.1"
       ]
     }
