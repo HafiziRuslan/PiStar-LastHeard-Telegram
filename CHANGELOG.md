@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-01-29T08:19:29+08:00)
+## [beta4] - (2026-01-29T08:52:07+08:00)
 
-- 14 commit(s) contributed to the release.
+- 15 commit(s) contributed to the release.
 - 9 day(s) passed between the first and last commit.
 - 9 day(s) passed between releases.
 
@@ -19,6 +19,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes in beta4
 
+- [7c6e6c7](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/7c6e6c7d996fe7b92a13a0219a2ca838fad218d0) fix(main): adjust caller formatting with country flag and code *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-29T08:52:07+08:00*
 - [288c74e](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/288c74e7aef9905fedbb33befdda3966f5ea033c) fix(config): update env sample keys and placeholders *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-29T08:18:13+08:00*
 - [48afbbe](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/48afbbeab810552320b315f0042a08d0c34de695) fix(main): add lock file mechanism to prevent concurrent runs *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T20:50:34+08:00*
 - [275b8c9](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/275b8c9878ce4dae414a0f3cb7ec29183c4ca92e) fix(release): include markdown files in release exclusions *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:32:22+08:00*
@@ -285,4 +286,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-01-29T08:21:16.132539485+08:00
+generated using git-cliff at 2026-01-29T08:52:37.950578916+08:00
