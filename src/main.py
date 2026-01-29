@@ -299,9 +299,9 @@ class MMDVMLogLine:
 						code = get_country_code(country)
 						if code:
 							flag = "".join(chr(ord(c) + 127397) for c in code.upper())
-							caller = f'({fname}-{flag} {code})'
+							caller = f' ({fname}) [{flag} {code}]'
 						else:
-							caller = f' ({fname}-{country})'
+							caller = f' ({fname}) [{country}]'
 						break
 		except Exception as e:
 			logging.error('Error reading caller file %s: %s', caller_file, e)
