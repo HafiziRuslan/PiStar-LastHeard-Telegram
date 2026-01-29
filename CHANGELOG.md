@@ -2,14 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-01-26T15:27:45+08:00)
+## [beta4] - (2026-01-29T08:19:29+08:00)
 
-- 12 commit(s) contributed to the release.
-- 6 day(s) passed between the first and last commit.
-- 6 day(s) passed between releases.
+- 14 commit(s) contributed to the release.
+- 9 day(s) passed between the first and last commit.
+- 9 day(s) passed between releases.
 
 ### 🚀 Features in beta4
 
+- [3f0ab04](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/3f0ab040321029889a63c3cbdf69e5b297a9ef31) feat(country-codes): add COUNTRY_CODES and country code lookup *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-29T08:19:29+08:00*
 - [f643dcd](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/f643dcd1a4474c731759a240b8ae0b6fdd5f2197) feat(chore): update python-telegram-bot to 22.6 across lockfiles and configs *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-26T15:27:45+08:00*
 - [c609c20](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/c609c204d97f29201a30dbedd4266c4dc4ebd5b2) feat(main): add country flag emoji mapping and usage in caller info *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-21T12:48:42+08:00*
 - [d2ce936](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/d2ce936569e3614a8f6574dd1272c6744ecf9a8a) feat(release): update release artifact naming and exclusions *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:30:03+08:00*
@@ -18,6 +19,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes in beta4
 
+- [288c74e](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/288c74e7aef9905fedbb33befdda3966f5ea033c) fix(config): update env sample keys and placeholders *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-29T08:18:13+08:00*
 - [48afbbe](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/48afbbeab810552320b315f0042a08d0c34de695) fix(main): add lock file mechanism to prevent concurrent runs *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T20:50:34+08:00*
 - [275b8c9](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/275b8c9878ce4dae414a0f3cb7ec29183c4ca92e) fix(release): include markdown files in release exclusions *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:32:22+08:00*
 - [3356bd8](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/3356bd84069172fa4e629ae94038a82681680286) fix(release): normalize zip filename and exclusions in release workflow *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:26:01+08:00*
@@ -283,4 +285,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-01-26T15:28:15.141252627+08:00
+generated using git-cliff at 2026-01-29T08:21:16.132539485+08:00
