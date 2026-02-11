@@ -2,21 +2,27 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "version": 1,
-  "serialNumber": "urn:uuid:9d63c88b-37c4-4d52-8b34-90a5461843ec",
+  "serialNumber": "urn:uuid:7bbf642a-a820-42fc-8410-387d8634d35a",
   "metadata": {
-    "timestamp": "2026-01-26T07:24:29.253321000Z",
+    "timestamp": "2026-02-11T08:35:39.961354000Z",
     "tools": [
       {
         "vendor": "Astral Software Inc.",
         "name": "uv",
-        "version": "0.9.26"
+        "version": "0.10.2"
       }
     ],
     "component": {
       "type": "library",
       "bom-ref": "mmdvm-last-heard-1@0.1b4",
       "name": "mmdvm-last-heard",
-      "version": "0.1b4"
+      "version": "0.1b4",
+      "properties": [
+        {
+          "name": "uv:package:is_project_root",
+          "value": "true"
+        }
+      ]
     }
   },
   "components": [
