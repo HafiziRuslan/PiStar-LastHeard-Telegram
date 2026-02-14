@@ -2,14 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-02-11T16:37:35+08:00)
+## [beta4] - (2026-02-15T01:55:32+08:00)
 
-- 16 commit(s) contributed to the release.
-- 22 day(s) passed between the first and last commit.
-- 22 day(s) passed between releases.
+- 17 commit(s) contributed to the release.
+- 25 day(s) passed between the first and last commit.
+- 25 day(s) passed between releases.
 
 ### 🚀 Features in beta4
 
+- [8d7bc7e](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/8d7bc7e4d248b9dda3ad72dfae43e88c3f275ed4) feat(gitattributes): add initial python repo attributes *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-15T01:55:32+08:00*
 - [669a456](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/669a456e0b04f9a4238b7c953f78159deae4d619) feat(sbom): update cyclonedx sbom metadata and uv tool version *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-11T16:37:35+08:00*
 - [3f0ab04](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/3f0ab040321029889a63c3cbdf69e5b297a9ef31) feat(country-codes): add COUNTRY_CODES and country code lookup *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-29T08:19:29+08:00*
 - [f643dcd](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/f643dcd1a4474c731759a240b8ae0b6fdd5f2197) feat(chore): update python-telegram-bot to 22.6 across lockfiles and configs *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-26T15:27:45+08:00*
@@ -287,4 +288,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-02-11T16:38:19.415957671+08:00
+generated using git-cliff at 2026-02-15T01:55:58.408431234+08:00
