@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-02-22T06:04:22+08:00)
+## [beta4] - (2026-02-22T06:08:02+08:00)
 
-- 31 commit(s) contributed to the release.
+- 33 commit(s) contributed to the release.
 - 32 day(s) passed between the first and last commit.
 - 32 day(s) passed between releases.
 
@@ -26,6 +26,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes in beta4
 
+- [c6cb51f](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/c6cb51f5b0b4629df0f598b53ccde533ca525478) fix(toml): standardize quotes and formatting in pyproject.toml *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T06:07:51+08:00*
 - [57bc835](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/57bc835a55b4994022955b4261d07c07ae8cbfbf) fix(country_codes): correct and expand country codes list *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T06:04:04+08:00*
 - [3cd20c2](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/3cd20c252a04e4b1ea8e9ded4dd5e5779360adce) fix(core): adjust talkgroup name parsing for spacing *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T05:05:39+08:00*
 - [b67a071](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/b67a0712fecdbd4350b29182f789062cea35dc83) fix(test): update log line parsing method in test_log_processor *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T04:57:36+08:00*
@@ -302,4 +303,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-02-22T06:04:51.597982983+08:00
+generated using git-cliff at 2026-02-22T06:08:28.851426401+08:00
