@@ -2,14 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-02-22T05:20:42+08:00)
+## [beta4] - (2026-02-22T06:04:22+08:00)
 
-- 29 commit(s) contributed to the release.
+- 31 commit(s) contributed to the release.
 - 32 day(s) passed between the first and last commit.
 - 32 day(s) passed between releases.
 
 ### 🚀 Features in beta4
 
+- [f858c87](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/f858c873bb460e533f387ca9f4ce79fcd3063ddc) feat(main): add difflib-based country code fallback and read caller file with encoding fallback *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T06:04:22+08:00*
 - [be30006](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/be300067d65f56b4cfc3d1efe439a3d3d52090a7) feat(main): add suffix support to talkgroup file reader *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T05:20:42+08:00*
 - [d5920e1](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/d5920e195d79e2ac062429e65e8178f4d0c123e1) feat(main): integrate cache-backed talkgroup/user data and async telegram worker *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T04:59:10+08:00*
 - [70e0b8f](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/70e0b8f13362d21d86b71001b835a6ddcc0efe1f) feat(main): integrate app metadata and telegram message augmentation *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T02:23:54+08:00*
@@ -25,6 +26,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes in beta4
 
+- [57bc835](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/57bc835a55b4994022955b4261d07c07ae8cbfbf) fix(country_codes): correct and expand country codes list *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T06:04:04+08:00*
 - [3cd20c2](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/3cd20c252a04e4b1ea8e9ded4dd5e5779360adce) fix(core): adjust talkgroup name parsing for spacing *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T05:05:39+08:00*
 - [b67a071](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/b67a0712fecdbd4350b29182f789062cea35dc83) fix(test): update log line parsing method in test_log_processor *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T04:57:36+08:00*
 - [41d3f12](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/41d3f12541c44adaa341b92995b7e9433269f3ea) fix(README): update dependencies note to curl instead of wget *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T02:23:34+08:00*
@@ -300,4 +302,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-02-22T05:21:08.250733297+08:00
+generated using git-cliff at 2026-02-22T06:04:51.597982983+08:00
