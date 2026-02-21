@@ -2,14 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-02-15T01:55:32+08:00)
+## [beta4] - (2026-02-22T01:11:29+08:00)
 
-- 17 commit(s) contributed to the release.
-- 25 day(s) passed between the first and last commit.
-- 25 day(s) passed between releases.
+- 22 commit(s) contributed to the release.
+- 32 day(s) passed between the first and last commit.
+- 32 day(s) passed between releases.
 
 ### 🚀 Features in beta4
 
+- [a90d748](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/a90d748de1e4536b1a1cf835f5a53526ab9ef6ef) feat(country_codes): standardize and expand country code mappings *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:02:04+08:00*
 - [8d7bc7e](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/8d7bc7e4d248b9dda3ad72dfae43e88c3f275ed4) feat(gitattributes): add initial python repo attributes *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-15T01:55:32+08:00*
 - [669a456](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/669a456e0b04f9a4238b7c953f78159deae4d619) feat(sbom): update cyclonedx sbom metadata and uv tool version *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-11T16:37:35+08:00*
 - [3f0ab04](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/3f0ab040321029889a63c3cbdf69e5b297a9ef31) feat(country-codes): add COUNTRY_CODES and country code lookup *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-29T08:19:29+08:00*
@@ -21,6 +22,9 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes in beta4
 
+- [a79930e](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/a79930e987490d96450f0841e6ecc10a3618ad61) fix(main): clean up destination extraction and tg file parsing *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:04:47+08:00*
+- [3793656](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/37936566f1bfe8995f49e59a1aead4c14f128aea) fix(py): clean up logging and string handling in main.py *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:02:15+08:00*
+- [31cbd10](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/31cbd101617484f28fa67c1efc9f9f6d9011f28b) fix(test): format test_log_processor for readability *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:01:45+08:00*
 - [7c6e6c7](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/7c6e6c7d996fe7b92a13a0219a2ca838fad218d0) fix(main): adjust caller formatting with country flag and code *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-29T08:52:07+08:00*
 - [288c74e](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/288c74e7aef9905fedbb33befdda3966f5ea033c) fix(config): update env sample keys and placeholders *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-29T08:18:13+08:00*
 - [48afbbe](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/48afbbeab810552320b315f0042a08d0c34de695) fix(main): add lock file mechanism to prevent concurrent runs *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T20:50:34+08:00*
@@ -31,6 +35,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks in beta4
 
+- [96991d6](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/96991d6c5e75ab4074d035ae2cf1a039a5e31a2b) chore(release): align project metadata and dependencies *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:11:29+08:00*
 - [7541555](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/75415558a807a8beaf298b8526165549da45bafc) chore(workflow): update release trigger to published *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T20:50:20+08:00*
 - [8e6c36a](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/8e6c36a04ec07fa4b7705018a09973657eb1bb0d) chore(config): grant write access to contents in release workflow *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:05:25+08:00*
 
@@ -288,4 +293,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-02-15T01:55:58.408431234+08:00
+generated using git-cliff at 2026-02-22T01:11:56.026413241+08:00
