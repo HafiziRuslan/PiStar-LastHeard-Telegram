@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-"""PiStar LastHeard Telegram - Telegram bot to monitor the last transmissions of a Pi-Star gateway"""
+"""MMDVM LastHeard Telegram - Telegram bot to monitor the last transmissions of a MMDVM gateway"""
 
 import asyncio
 import datetime as dt

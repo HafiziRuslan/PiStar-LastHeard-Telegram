@@ -1,7 +1,7 @@
 [project]
 name = "MMDVM-Last-Heard"
-version = "0.1-beta.4"
-description = "Telegram bot to monitor the last transmissions of a Pi-Star/WPSD gateway"
+version = "0.1beta4"
+description = "Telegram bot to monitor the last transmissions of a MMDVM gateway"
 keywords = ["amateur-radio", "mmdvm", "pi-star", "wpsd"]
 readme = "README.md"
 license = "BSD-3-Clause"
@@ -14,31 +14,26 @@ classifiers = [
   "Development Status :: 4 - Beta",
   "Programming Language :: Python",
 ]
-requires-python = ">=3.13"
+urls.github = 'https://github.com/HafiziRuslan/MMDVM-Last-Heard'
+urls.repository = 'https://github.com/HafiziRuslan/MMDVM-Last-Heard.git'
+urls.sourcecode = 'https://github.com/0x9900/aprstar.git'
+urls.history = 'https://github.com/HafiziRuslan/MMDVM-Last-Heard/blob/master/CHANGELOG.md'
+urls.issuetracker = 'https://github.com/HafiziRuslan/MMDVM-Last-Heard/issues'
+requires-python = ">=3.10"
 dependencies = [
   "humanize>=4.15.0",
   "python-dotenv>=1.2.1",
   "python-telegram-bot>=22.6",
 ]
 
-[project.urls]
-repository = "https://github.com/HafiziRuslan/MMDVM-Last-Heard"
-changelog = "https://github.com/HafiziRuslan/MMDVM-Last-Heard/blob/master/CHANGELOG.md"
-
 [tool.ruff]
 line-length = 150
-
-[tool.ruff.analyze]
-detect-string-imports = true
-
-[tool.ruff.format]
-quote-style = "single"
-indent-style = "tab"
-docstring-code-format = true
-line-ending = "lf"
-skip-magic-trailing-comma = true
-
-[tool.ruff.lint.isort]
-combine-as-imports = true
-default-section = "first-party"
-force-single-line = true
+analyze.detect-string-imports = true
+format.quote-style = 'single'
+format.indent-style = 'tab'
+format.docstring-code-format = true
+format.line-ending = 'lf'
+format.skip-magic-trailing-comma = true
+lint.isort.combine-as-imports = true
+lint.isort.default-section = 'first-party'
+lint.isort.force-single-line = true
