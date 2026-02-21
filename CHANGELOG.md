@@ -2,14 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-02-22T01:16:03+08:00)
+## [beta4] - (2026-02-22T02:23:54+08:00)
 
-- 23 commit(s) contributed to the release.
+- 25 commit(s) contributed to the release.
 - 32 day(s) passed between the first and last commit.
 - 32 day(s) passed between releases.
 
 ### 🚀 Features in beta4
 
+- [70e0b8f](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/70e0b8f13362d21d86b71001b835a6ddcc0efe1f) feat(main): integrate app metadata and telegram message augmentation *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T02:23:54+08:00*
 - [a90d748](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/a90d748de1e4536b1a1cf835f5a53526ab9ef6ef) feat(country_codes): standardize and expand country code mappings *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:02:04+08:00*
 - [8d7bc7e](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/8d7bc7e4d248b9dda3ad72dfae43e88c3f275ed4) feat(gitattributes): add initial python repo attributes *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-15T01:55:32+08:00*
 - [669a456](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/669a456e0b04f9a4238b7c953f78159deae4d619) feat(sbom): update cyclonedx sbom metadata and uv tool version *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-11T16:37:35+08:00*
@@ -22,6 +23,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes in beta4
 
+- [41d3f12](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/41d3f12541c44adaa341b92995b7e9433269f3ea) fix(README): update dependencies note to curl instead of wget *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T02:23:34+08:00*
 - [a79930e](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/a79930e987490d96450f0841e6ecc10a3618ad61) fix(main): clean up destination extraction and tg file parsing *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:04:47+08:00*
 - [3793656](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/37936566f1bfe8995f49e59a1aead4c14f128aea) fix(py): clean up logging and string handling in main.py *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:02:15+08:00*
 - [31cbd10](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/31cbd101617484f28fa67c1efc9f9f6d9011f28b) fix(test): format test_log_processor for readability *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:01:45+08:00*
@@ -294,4 +296,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-02-22T01:16:31.897993859+08:00
+generated using git-cliff at 2026-02-22T02:24:26.671574594+08:00
