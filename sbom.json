@@ -2,9 +2,9 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "version": 1,
-  "serialNumber": "urn:uuid:117ecaf9-2f1e-48b9-9a15-69314d51d6c6",
+  "serialNumber": "urn:uuid:1c585894-f715-432c-bf55-b67588d56784",
   "metadata": {
-    "timestamp": "2026-02-21T17:11:07.693538200Z",
+    "timestamp": "2026-02-21T17:15:03.894996100Z",
     "tools": [
       {
         "vendor": "Astral Software Inc.",
@@ -42,87 +42,59 @@
     },
     {
       "type": "library",
-      "bom-ref": "exceptiongroup-4@1.3.1",
-      "name": "exceptiongroup",
-      "version": "1.3.1",
-      "purl": "pkg:pypi/exceptiongroup@1.3.1",
-      "properties": [
-        {
-          "name": "uv:package:marker",
-          "value": "python_full_version < '3.11'"
-        }
-      ]
-    },
-    {
-      "type": "library",
-      "bom-ref": "h11-5@0.16.0",
+      "bom-ref": "h11-4@0.16.0",
       "name": "h11",
       "version": "0.16.0",
       "purl": "pkg:pypi/h11@0.16.0"
     },
     {
       "type": "library",
-      "bom-ref": "httpcore-6@1.0.9",
+      "bom-ref": "httpcore-5@1.0.9",
       "name": "httpcore",
       "version": "1.0.9",
       "purl": "pkg:pypi/httpcore@1.0.9"
     },
     {
       "type": "library",
-      "bom-ref": "httpx-7@0.28.1",
+      "bom-ref": "httpx-6@0.28.1",
       "name": "httpx",
       "version": "0.28.1",
       "purl": "pkg:pypi/httpx@0.28.1"
     },
     {
       "type": "library",
-      "bom-ref": "humanize-8@4.15.0",
+      "bom-ref": "humanize-7@4.15.0",
       "name": "humanize",
       "version": "4.15.0",
       "purl": "pkg:pypi/humanize@4.15.0"
     },
     {
       "type": "library",
-      "bom-ref": "idna-9@3.11",
+      "bom-ref": "idna-8@3.11",
       "name": "idna",
       "version": "3.11",
       "purl": "pkg:pypi/idna@3.11"
     },
     {
       "type": "library",
-      "bom-ref": "python-dotenv-10@1.2.1",
+      "bom-ref": "python-dotenv-9@1.2.1",
       "name": "python-dotenv",
       "version": "1.2.1",
       "purl": "pkg:pypi/python-dotenv@1.2.1"
     },
     {
       "type": "library",
-      "bom-ref": "python-telegram-bot-11@22.6",
+      "bom-ref": "python-telegram-bot-10@22.6",
       "name": "python-telegram-bot",
       "version": "22.6",
       "purl": "pkg:pypi/python-telegram-bot@22.6"
-    },
-    {
-      "type": "library",
-      "bom-ref": "typing-extensions-12@4.15.0",
-      "name": "typing-extensions",
-      "version": "4.15.0",
-      "purl": "pkg:pypi/typing-extensions@4.15.0",
-      "properties": [
-        {
-          "name": "uv:package:marker",
-          "value": "python_full_version < '3.13'"
-        }
-      ]
     }
   ],
   "dependencies": [
     {
       "ref": "anyio-2@4.12.1",
       "dependsOn": [
-        "exceptiongroup-4@1.3.1",
-        "idna-9@3.11",
-        "typing-extensions-12@4.15.0"
+        "idna-8@3.11"
       ]
     },
     {
@@ -130,61 +102,51 @@
       "dependsOn": []
     },
     {
-      "ref": "exceptiongroup-4@1.3.1",
-      "dependsOn": [
-        "typing-extensions-12@4.15.0"
-      ]
-    },
-    {
-      "ref": "h11-5@0.16.0",
+      "ref": "h11-4@0.16.0",
       "dependsOn": []
     },
     {
-      "ref": "httpcore-6@1.0.9",
+      "ref": "httpcore-5@1.0.9",
       "dependsOn": [
         "certifi-3@2026.1.4",
-        "h11-5@0.16.0"
+        "h11-4@0.16.0"
       ]
     },
     {
-      "ref": "httpx-7@0.28.1",
+      "ref": "httpx-6@0.28.1",
       "dependsOn": [
         "anyio-2@4.12.1",
         "certifi-3@2026.1.4",
-        "httpcore-6@1.0.9",
-        "idna-9@3.11"
+        "httpcore-5@1.0.9",
+        "idna-8@3.11"
       ]
     },
     {
-      "ref": "humanize-8@4.15.0",
+      "ref": "humanize-7@4.15.0",
       "dependsOn": []
     },
     {
-      "ref": "idna-9@3.11",
+      "ref": "idna-8@3.11",
       "dependsOn": []
     },
     {
       "ref": "mmdvm-last-heard-1@0.1b4",
       "dependsOn": [
-        "humanize-8@4.15.0",
-        "python-dotenv-10@1.2.1",
-        "python-telegram-bot-11@22.6"
+        "humanize-7@4.15.0",
+        "python-dotenv-9@1.2.1",
+        "python-telegram-bot-10@22.6"
       ]
     },
     {
-      "ref": "python-dotenv-10@1.2.1",
+      "ref": "python-dotenv-9@1.2.1",
       "dependsOn": []
     },
     {
-      "ref": "python-telegram-bot-11@22.6",
+      "ref": "python-telegram-bot-10@22.6",
       "dependsOn": [
-        "httpcore-6@1.0.9",
-        "httpx-7@0.28.1"
+        "httpcore-5@1.0.9",
+        "httpx-6@0.28.1"
       ]
-    },
-    {
-      "ref": "typing-extensions-12@4.15.0",
-      "dependsOn": []
     }
   ]
 }
