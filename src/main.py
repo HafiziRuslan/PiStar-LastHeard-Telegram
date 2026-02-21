@@ -402,7 +402,7 @@ class MMDVMLogLine:
 	def get_talkgroup_name(self) -> str:
 		"""Returns the talkgroup name based on the destination."""
 		tg_name = ''
-		if self.destination.startswith('TG'):
+		if self.destination.startswith('TG '):
 			tg_id = self.destination.split()[-1]
 			tg_map = get_talkgroup_ids()
 			name = tg_map.get(tg_id)
