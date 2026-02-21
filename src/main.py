@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""MMDVM LastHeard Telegram - Telegram bot to monitor the last transmissions of a MMDVM gateway"""
+"""MMDVM LastHeard - Telegram bot to monitor the last transmissions of a MMDVM gateway"""
 
 import asyncio
 import configparser
@@ -48,7 +48,7 @@ def get_app_metadata():
 			git_sha = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], cwd=repo_path).decode('ascii').strip()
 		except Exception:
 			pass
-	meta = {'name': 'MMDVM-Last-Heard', 'version': '0.0.0', 'github': 'https://github.com/HafiziRuslan/MMDVM-Last-Heard'}
+	meta = {'name': 'MMDVM_LastHeard', 'version': '0.0.0', 'github': 'https://github.com/HafiziRuslan/MMDVM-Last-Heard'}
 	try:
 		with open(os.path.join(repo_path, 'pyproject.toml'), 'rb') as f:
 			data = tomllib.load(f).get('project', {})

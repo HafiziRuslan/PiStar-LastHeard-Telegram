@@ -83,7 +83,7 @@ wheels = [
 ]
 
 [[package]]
-name = "mmdvm-last-heard"
+name = "mmdvm-lastheard"
 version = "0.1b4"
 source = { virtual = "." }
 dependencies = [

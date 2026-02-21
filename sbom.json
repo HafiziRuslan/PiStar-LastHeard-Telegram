@@ -2,9 +2,9 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "version": 1,
-  "serialNumber": "urn:uuid:1c585894-f715-432c-bf55-b67588d56784",
+  "serialNumber": "urn:uuid:bbf2c248-5be1-4070-9cad-7c74727c3a71",
   "metadata": {
-    "timestamp": "2026-02-21T17:15:03.894996100Z",
+    "timestamp": "2026-02-21T22:13:36.045654500Z",
     "tools": [
       {
         "vendor": "Astral Software Inc.",
@@ -14,8 +14,8 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "mmdvm-last-heard-1@0.1b4",
-      "name": "mmdvm-last-heard",
+      "bom-ref": "mmdvm-lastheard-1@0.1b4",
+      "name": "mmdvm-lastheard",
       "version": "0.1b4",
       "properties": [
         {
@@ -130,7 +130,7 @@
       "dependsOn": []
     },
     {
-      "ref": "mmdvm-last-heard-1@0.1b4",
+      "ref": "mmdvm-lastheard-1@0.1b4",
       "dependsOn": [
         "humanize-7@4.15.0",
         "python-dotenv-9@1.2.1",

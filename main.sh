@@ -25,7 +25,7 @@ get_env_var() {
 }
 
 send_notification() {
-  local message="⚠️ MMDVM-Last-Heard Alert: $1"
+  local message="⚠️ MMDVM_LastHeard Alert: $1"
   local log_file="/var/log/mmdvmlhbot.log"
 
   if [ -f "$log_file" ]; then
@@ -159,7 +159,7 @@ if [ "$INTERNET_AVAILABLE" = true ] && check_disk_space; then
     REMOTE=$(sudo -u $dir_own git rev-parse @{u})
 
     if [ "$LOCAL" != "$REMOTE" ]; then
-      log_msg INFO "Updating MMDVM-Last-Heard repository"
+      log_msg INFO "Updating MMDVM_LastHeard repository"
       UPDATE_SUCCESS=false
       if sudo -u $dir_own timeout 60 git pull --autostash -q; then
         UPDATE_SUCCESS=true
@@ -234,7 +234,7 @@ fi
 sync_dependencies() {
   local action=$1
   if [ "$INTERNET_AVAILABLE" = true ]; then
-    log_msg INFO "$action MMDVM-Last-Heard dependencies"
+    log_msg INFO "$action MMDVM_LastHeard dependencies"
     sudo -u $dir_own uv sync -q
   elif [ "$action" = "Installing" ]; then
     log_msg WARN "Internet unavailable. Skipping dependency installation."
@@ -249,16 +249,16 @@ if [ -d ".venv" ]; then
 fi
 
 if [ ! -d ".venv" ]; then
-  log_msg INFO "MMDVM-Last-Heard environment not found, creating one."
+  log_msg INFO "MMDVM_LastHeard environment not found, creating one."
   sudo -u $dir_own uv venv
-  log_msg INFO "Activating MMDVM-Last-Heard environment"
+  log_msg INFO "Activating MMDVM_LastHeard environment"
   sync_dependencies "Installing"
 else
-  log_msg INFO "MMDVM-Last-Heard environment exists. -> Activating MMDVM-Last-Heard environment"
+  log_msg INFO "MMDVM_LastHeard environment exists. -> Activating MMDVM_LastHeard environment"
   sync_dependencies "Updating"
 fi
 
-log_msg INFO "Running MMDVM-Last-Heard"
+log_msg INFO "Running MMDVM_LastHeard"
 RESTART_DELAY=5
 MAX_DELAY=300
 MAX_RETRIES=10
@@ -266,7 +266,7 @@ RETRY_COUNT=0
 
 while true; do
   if [ ! -f .env ]; then
-    log_msg ERROR "❌ .env file not found! Cannot start MMDVM-Last-Heard. Exiting."
+    log_msg ERROR "❌ .env file not found! Cannot start MMDVM_LastHeard. Exiting."
     send_notification ".env file not found! Service stopping."
     exit 1
   fi
@@ -298,8 +298,8 @@ while true; do
       exit 1
     fi
 
-    log_msg ERROR "MMDVM-Last-Heard exited with code $exit_code. Retry $RETRY_COUNT/$MAX_RETRIES. Re-run in ${RESTART_DELAY} seconds."
-    send_notification "MMDVM-Last-Heard exited with code $exit_code. Restarting (Retry $RETRY_COUNT/$MAX_RETRIES)..."
+    log_msg ERROR "MMDVM_LastHeard exited with code $exit_code. Retry $RETRY_COUNT/$MAX_RETRIES. Re-run in ${RESTART_DELAY} seconds."
+    send_notification "MMDVM_LastHeard exited with code $exit_code. Restarting (Retry $RETRY_COUNT/$MAX_RETRIES)..."
     sleep $RESTART_DELAY
 
     RESTART_DELAY=$((RESTART_DELAY * 2))
@@ -307,10 +307,10 @@ while true; do
       RESTART_DELAY=$MAX_DELAY
     fi
   elif [ "$exit_code" -eq 0 ]; then
-    log_msg INFO "MMDVM-Last-Heard exited normally. Stopping."
+    log_msg INFO "MMDVM_LastHeard exited normally. Stopping."
     break
   else
-    log_msg ERROR "MMDVM-Last-Heard exited with unrecoverable code $exit_code. Stopping."
+    log_msg ERROR "MMDVM_LastHeard exited with unrecoverable code $exit_code. Stopping."
     send_notification "Script exited with unrecoverable code $exit_code. Service stopping."
     exit "$exit_code"
   fi

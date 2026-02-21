@@ -38,7 +38,7 @@ cp default.env .env
 nano .env
 ```
 
-## AutoStart MMDVM Last Heard Bot
+## AutoStart
 
 Copy & Paste this line into last line (before blank line) of `/etc/crontab` or any other cron program that you're using.
 
@@ -48,7 +48,7 @@ Copy & Paste this line into last line (before blank line) of `/etc/crontab` or a
 
 change the `pi-star` username into your username
 
-## Update RasPiAPRS
+## Update
 
 Manual update are **NOT REQUIRED** as it has integrated into `main.sh`.
 
