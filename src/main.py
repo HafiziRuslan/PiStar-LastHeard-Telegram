@@ -27,9 +27,7 @@ shutdown_flag = threading.Event()
 
 
 def configure_logging():
-	logging.basicConfig(
-		level=logging.INFO, datefmt='%Y-%m-%dT%H:%M:%S', format='%(asctime)s | %(levelname)s | %(message)s'
-	)
+	logging.basicConfig(level=logging.INFO, datefmt='%Y-%m-%dT%H:%M:%S', format='%(asctime)s | %(levelname)s | %(message)s')
 
 
 def get_country_code(country_name: str) -> str:
@@ -113,7 +111,7 @@ class MMDVMLogLine:
 			self.slot = int(match.group('slot'))
 			self.is_network = match.group('source') == 'network'
 			self.callsign = match.group('callsign').strip()
-			self.destination = match.group('destination').strip()
+			self.destination = match.group('destination').replace('/\s/g', '').strip()
 			self.duration = float(match.group('duration'))
 			self.packet_loss = int(match.group('packet_loss'))
 			self.ber = float(match.group('ber'))
@@ -129,7 +127,7 @@ class MMDVMLogLine:
 			self.slot = int(match.group('slot'))
 			self.is_network = match.group('source') == 'network'
 			self.callsign = match.group('callsign').strip()
-			self.destination = match.group('destination').strip()
+			self.destination = match.group('destination').replace('/\s/g', '').strip()
 			self.duration = float(match.group('duration'))
 			self.ber = float(match.group('ber'))
 			self.rssi3 = int(match.group('rssi3'))
@@ -146,7 +144,7 @@ class MMDVMLogLine:
 			self.is_network = match.group('source') == 'network'
 			self.is_voice = False
 			self.callsign = match.group('callsign').strip()
-			self.destination = match.group('destination').strip()
+			self.destination = match.group('destination').replace('/\s/g', '').strip()
 			self.block = int(match.group('block'))
 			if self.callsign.isnumeric():
 				self.url = f'https://database.radioid.net/database/view?id={self.callsign}'
@@ -257,7 +255,7 @@ class MMDVMLogLine:
 		"""Returns the talkgroup name based on the destination."""
 		tg_files = glob.glob('/usr/local/etc/TGList_*.txt')
 		tg_name = ''
-		if self.destination.startswith('TG '):
+		if self.destination.startswith('TG'):
 			for tg_file in tg_files:
 				if os.path.isfile(tg_file):
 					try:
@@ -298,7 +296,7 @@ class MMDVMLogLine:
 					if call == self.callsign:
 						code = get_country_code(country)
 						if code:
-							flag = "".join(chr(ord(c) + 127397) for c in code.upper())
+							flag = ''.join(chr(ord(c) + 127397) for c in code.upper())
 							caller = f' ({fname}) [{flag} {code}]'
 						else:
 							caller = f' ({fname}) [{country}]'
@@ -336,7 +334,9 @@ class MMDVMLogLine:
 			if self.is_kerchunk:
 				message += ' (Kerchunk)'
 			else:
-				message += f'\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit="seconds", format="%0.0f")}'
+				message += (
+					f'\n⏰ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit="seconds", format="%0.0f")}'
+				)
 				if self.ber > 0:
 					message += f'\n📊 <b>BER</b>: {self.ber}%'
 				if self.is_network:
@@ -371,7 +371,7 @@ def get_latest_mmdvm_log_path() -> str:
 		raise ValueError(f'No MMDVM log files found in {logdir}')
 	log_files.sort(key=os.path.getmtime, reverse=True)
 	latest_log = log_files[0]
-	logging.debug("Latest MMDVM log file: %s", latest_log)
+	logging.debug('Latest MMDVM log file: %s', latest_log)
 	return latest_log
 
 
