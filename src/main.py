@@ -4,6 +4,7 @@
 import asyncio
 import configparser
 import datetime as dt
+import difflib
 import glob
 import logging
 import os
@@ -12,8 +13,8 @@ import shutil
 import signal
 import subprocess
 import tomllib
-from datetime import datetime
 from dataclasses import dataclass
+from datetime import datetime
 from functools import lru_cache
 from typing import Optional
 
@@ -65,6 +66,7 @@ def configure_logging():
 	logging.basicConfig(level=logging.INFO, datefmt='%Y-%m-%dT%H:%M:%S', format='%(asctime)s | %(levelname)s | %(message)s')
 
 
+@lru_cache(maxsize=128)
 def get_country_code(country_name: str) -> str:
 	"""Returns the country code for a given country name."""
 	code = COUNTRY_CODES.get(country_name)
@@ -73,6 +75,10 @@ def get_country_code(country_name: str) -> str:
 			if name.lower() == country_name.lower():
 				code = c
 				break
+		if not code:
+			matches = difflib.get_close_matches(country_name, COUNTRY_CODES.keys(), n=1, cutoff=0.8)
+			if matches:
+				code = COUNTRY_CODES[matches[0]]
 	return code if code else ''
 
 
@@ -144,17 +150,25 @@ def get_user_csv_data() -> dict:
 	user_map = {}
 	caller_file = '/usr/local/etc/user.csv'
 	if os.path.isfile(caller_file):
-		try:
-			with open(caller_file, 'r', encoding='UTF-8', errors='replace') as file:
-				for line in file:
-					parts = line.strip().split(',')
-					if len(parts) >= 7:
-						call = parts[1].strip()
-						fname = parts[2].strip()
-						country = parts[6].strip()
-						user_map[call] = (fname, country)
-		except Exception as e:
-			logging.error('Error reading caller file %s: %s', caller_file, e)
+		encodings = ['utf-8', 'latin-1']
+		for encoding in encodings:
+			try:
+				temp_map = {}
+				with open(caller_file, 'r', encoding=encoding) as file:
+					for line in file:
+						parts = line.strip().split(',')
+						if len(parts) >= 7:
+							call = parts[1].strip()
+							fname = parts[2].strip()
+							country = parts[6].strip()
+							temp_map[call] = (fname, country)
+				user_map = temp_map
+				break
+			except UnicodeDecodeError:
+				continue
+			except Exception as e:
+				logging.error('Error reading caller file %s: %s', caller_file, e)
+				break
 	return user_map
 
 
