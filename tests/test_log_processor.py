@@ -103,7 +103,7 @@ def process_log_file(log_file_path: str, ignore_time_messages: bool = True):
 
 				try:
 					# Parse the log line
-					parsed = MMDVMLogLine(line)
+					parsed = MMDVMLogLine.from_logline(line)
 					parsed_entries += 1
 
 					# Check if this is a duplicate timestamp (same as last processed)
