@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-02-22T04:59:10+08:00)
+## [beta4] - (2026-02-22T05:05:39+08:00)
 
-- 27 commit(s) contributed to the release.
+- 28 commit(s) contributed to the release.
 - 32 day(s) passed between the first and last commit.
 - 32 day(s) passed between releases.
 
@@ -24,6 +24,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes in beta4
 
+- [3cd20c2](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/3cd20c252a04e4b1ea8e9ded4dd5e5779360adce) fix(core): adjust talkgroup name parsing for spacing *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T05:05:39+08:00*
 - [b67a071](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/b67a0712fecdbd4350b29182f789062cea35dc83) fix(test): update log line parsing method in test_log_processor *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T04:57:36+08:00*
 - [41d3f12](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/41d3f12541c44adaa341b92995b7e9433269f3ea) fix(README): update dependencies note to curl instead of wget *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T02:23:34+08:00*
 - [a79930e](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/a79930e987490d96450f0841e6ecc10a3618ad61) fix(main): clean up destination extraction and tg file parsing *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:04:47+08:00*
@@ -298,4 +299,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-02-22T04:59:40.189309203+08:00
+generated using git-cliff at 2026-02-22T05:06:03.949236344+08:00
