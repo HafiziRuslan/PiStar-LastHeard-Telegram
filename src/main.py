@@ -76,7 +76,7 @@ def get_country_code(country_name: str) -> str:
 	return code if code else ''
 
 
-def read_talkgroup_file(file_path: str, delimiter: str, id_idx: int, name_idx: int, tg_map: dict, overwrite: bool = True):
+def read_talkgroup_file(file_path: str, delimiter: str, id_idx: int, name_idx: int, tg_map: dict, suffix: str = '', overwrite: bool = True):
 	"""Helper to read a talkgroup file and update the map."""
 	if not os.path.isfile(file_path):
 		return
@@ -92,8 +92,9 @@ def read_talkgroup_file(file_path: str, delimiter: str, id_idx: int, name_idx: i
 						tgid = parts[id_idx].strip()
 						name = parts[name_idx].strip()
 						if tgid and name:
+							display_name = f'{suffix}: {name}' if suffix else name
 							if overwrite or tgid not in tg_map:
-								tg_map[tgid] = name
+								tg_map[tgid] = display_name
 				except IndexError:
 					continue
 	except Exception as e:
@@ -124,10 +125,16 @@ def get_talkgroup_ids() -> dict:
 		files = glob.glob(pattern)
 		for tg_file in files:
 			processed_files.add(tg_file)
-			read_talkgroup_file(tg_file, delimiter, id_idx, name_idx, tg_map, overwrite=True)
+			filename = os.path.basename(tg_file)
+			name_part = os.path.splitext(filename)[0]
+			suffix = name_part[7:] if name_part.startswith('TGList_') else name_part
+			read_talkgroup_file(tg_file, delimiter, id_idx, name_idx, tg_map, suffix=suffix, overwrite=True)
 	for tg_file in glob.glob('/usr/local/etc/TGList_*.txt'):
 		if tg_file not in processed_files:
-			read_talkgroup_file(tg_file, ';', 0, 1, tg_map, overwrite=False)
+			filename = os.path.basename(tg_file)
+			name_part = os.path.splitext(filename)[0]
+			suffix = name_part[7:] if name_part.startswith('TGList_') else name_part
+			read_talkgroup_file(tg_file, ';', 0, 1, tg_map, suffix=suffix, overwrite=False)
 	return tg_map
 
 
