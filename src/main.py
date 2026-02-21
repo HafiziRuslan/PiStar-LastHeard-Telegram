@@ -8,7 +8,10 @@ import glob
 import logging
 import os
 import re
+import shutil
+import subprocess
 import threading
+import tomllib
 from datetime import datetime
 from typing import Optional
 
@@ -24,6 +27,30 @@ TG_TOPICID: str = ''
 GW_IGNORE_TIME_MESSAGES: bool = True
 TG_APP: Optional[TelegramApplication] = None
 shutdown_flag = threading.Event()
+
+
+def get_app_metadata():
+	repo_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+	git_sha = 'unknown'
+	if shutil.which('git'):
+		try:
+			git_sha = subprocess.check_output(['git', 'rev-parse', '--short', 'HEAD'], cwd=repo_path).decode('ascii').strip()
+		except Exception:
+			pass
+
+	meta = {'name': 'MMDVM-Last-Heard', 'version': '0.0.0', 'github': 'https://github.com/HafiziRuslan/MMDVM-Last-Heard'}
+	try:
+		with open(os.path.join(repo_path, 'pyproject.toml'), 'rb') as f:
+			data = tomllib.load(f).get('project', {})
+			meta.update({k: data.get(k, meta[k]) for k in ['name', 'version']})
+			meta['github'] = data.get('urls', {}).get('github', meta['github'])
+	except Exception as e:
+		logging.warning('Failed to load project metadata: %s', e)
+
+	return f'{meta["name"]}-v{meta["version"]}-{git_sha}', meta['github']
+
+
+APP_NAME, PROJECT_URL = get_app_metadata()
 
 
 def configure_logging():
@@ -392,12 +419,13 @@ def get_last_line_of_file(file_path: str) -> str:
 async def logs_to_telegram(tg_message: str):
 	"""Sends the log line to the Telegram bot."""
 	global TG_APP
+	message = f'{tg_message}\n\n{APP_NAME}'
 	if TG_APP:
 		try:
 			botmsg = await TG_APP.bot.send_message(
 				chat_id=TG_CHATID,
 				message_thread_id=TG_TOPICID,
-				text=tg_message,
+				text=message,
 				parse_mode='HTML',
 				link_preview_options={'is_disabled': True, 'prefer_small_media': True, 'show_above_text': True},
 			)
