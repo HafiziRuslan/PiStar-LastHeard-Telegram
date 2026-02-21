@@ -6,6 +6,7 @@ This script loads the MMDVMLogLine class from main.py and processes log entries.
 
 import os
 import sys
+
 # Mock telegram modules before importing main
 import unittest.mock as mock
 
@@ -49,7 +50,7 @@ except Exception as e:
 	sys.exit(1)
 
 
-def process_log_file(log_file_path: str, ignore_time_messages: bool=True):
+def process_log_file(log_file_path: str, ignore_time_messages: bool = True):
 	"""
 	Process a log file and display all entries that would be sent to Telegram.
 
@@ -191,9 +192,7 @@ Examples:
 
 	parser.add_argument('logfile', help='Path to the MMDVM log file to process')
 
-	parser.add_argument(
-		'--include-time', action='store_true', help='Include /TIME messages (by default they are ignored)'
-	)
+	parser.add_argument('--include-time', action='store_true', help='Include /TIME messages (by default they are ignored)')
 
 	args = parser.parse_args()
 
