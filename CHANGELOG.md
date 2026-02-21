@@ -2,14 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-02-22T05:05:39+08:00)
+## [beta4] - (2026-02-22T05:20:42+08:00)
 
-- 28 commit(s) contributed to the release.
+- 29 commit(s) contributed to the release.
 - 32 day(s) passed between the first and last commit.
 - 32 day(s) passed between releases.
 
 ### 🚀 Features in beta4
 
+- [be30006](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/be300067d65f56b4cfc3d1efe439a3d3d52090a7) feat(main): add suffix support to talkgroup file reader *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T05:20:42+08:00*
 - [d5920e1](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/d5920e195d79e2ac062429e65e8178f4d0c123e1) feat(main): integrate cache-backed talkgroup/user data and async telegram worker *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T04:59:10+08:00*
 - [70e0b8f](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/70e0b8f13362d21d86b71001b835a6ddcc0efe1f) feat(main): integrate app metadata and telegram message augmentation *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T02:23:54+08:00*
 - [a90d748](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/a90d748de1e4536b1a1cf835f5a53526ab9ef6ef) feat(country_codes): standardize and expand country code mappings *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:02:04+08:00*
@@ -299,4 +300,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-02-22T05:06:03.949236344+08:00
+generated using git-cliff at 2026-02-22T05:21:08.250733297+08:00
