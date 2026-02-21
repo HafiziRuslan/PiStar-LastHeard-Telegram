@@ -111,7 +111,7 @@ class MMDVMLogLine:
 			self.slot = int(match.group('slot'))
 			self.is_network = match.group('source') == 'network'
 			self.callsign = match.group('callsign').strip()
-			self.destination = match.group('destination').replace('/\s/g', '').strip()
+			self.destination = match.group('destination').strip()
 			self.duration = float(match.group('duration'))
 			self.packet_loss = int(match.group('packet_loss'))
 			self.ber = float(match.group('ber'))
@@ -127,7 +127,7 @@ class MMDVMLogLine:
 			self.slot = int(match.group('slot'))
 			self.is_network = match.group('source') == 'network'
 			self.callsign = match.group('callsign').strip()
-			self.destination = match.group('destination').replace('/\s/g', '').strip()
+			self.destination = match.group('destination').strip()
 			self.duration = float(match.group('duration'))
 			self.ber = float(match.group('ber'))
 			self.rssi3 = int(match.group('rssi3'))
@@ -144,7 +144,7 @@ class MMDVMLogLine:
 			self.is_network = match.group('source') == 'network'
 			self.is_voice = False
 			self.callsign = match.group('callsign').strip()
-			self.destination = match.group('destination').replace('/\s/g', '').strip()
+			self.destination = match.group('destination').strip()
 			self.block = int(match.group('block'))
 			if self.callsign.isnumeric():
 				self.url = f'https://database.radioid.net/database/view?id={self.callsign}'
@@ -263,7 +263,7 @@ class MMDVMLogLine:
 							for line in file:
 								if line.startswith('#') or len(line.strip()) == 0:
 									continue
-								parts = line.strip().split(';')
+								parts = line.split(';')
 								tgid = parts[0].strip()
 								if tg_file.endswith('_BM.txt'):
 									name = parts[2].strip()
