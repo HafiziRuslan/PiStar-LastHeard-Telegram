@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta4] - (2026-02-22T01:11:29+08:00)
+## [beta4] - (2026-02-22T01:16:03+08:00)
 
-- 22 commit(s) contributed to the release.
+- 23 commit(s) contributed to the release.
 - 32 day(s) passed between the first and last commit.
 - 32 day(s) passed between releases.
 
@@ -35,6 +35,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks in beta4
 
+- [72a5062](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/72a5062cc8056004752f02d477d42c9e792de55d) chore(core): update python constraints and lockfile alignments *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:16:03+08:00*
 - [96991d6](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/96991d6c5e75ab4074d035ae2cf1a039a5e31a2b) chore(release): align project metadata and dependencies *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-02-22T01:11:29+08:00*
 - [7541555](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/75415558a807a8beaf298b8526165549da45bafc) chore(workflow): update release trigger to published *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T20:50:20+08:00*
 - [8e6c36a](https://github.com/HafiziRuslan/MMDVM-Last-Heard/commit/8e6c36a04ec07fa4b7705018a09973657eb1bb0d) chore(config): grant write access to contents in release workflow *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-01-20T19:05:25+08:00*
@@ -293,4 +294,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-02-22T01:11:56.026413241+08:00
+generated using git-cliff at 2026-02-22T01:16:31.897993859+08:00
