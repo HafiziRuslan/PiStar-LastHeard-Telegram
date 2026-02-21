@@ -6,6 +6,9 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
+# Ensure we are in the script directory
+cd "$(dirname "$0")"
+
 dir_own=$(stat -c '%U' .)
 
 log_msg() {
@@ -14,52 +17,115 @@ log_msg() {
   echo "$(date +'%FT%T') | $level | $*"
 }
 
-LOCK_FILE="/var/run/mmdvmlhbot.pid"
-if [ -e "$LOCK_FILE" ]; then
-  PID=$(cat "$LOCK_FILE")
-  if ps -p "$PID" > /dev/null; then
-    log_msg ERROR "Script is already running with PID $PID."
-    exit 1
-  else
-    log_msg WARN "Stale lock file found for PID $PID. Removing."
-    rm -f "$LOCK_FILE"
-  fi
-fi
-
-trap 'rm -f "$LOCK_FILE"' EXIT
-echo $$ > "$LOCK_FILE"
-
-check_internet() {
-  local output
-  if output=$(timeout 5 ping -q -c 3 -W 1 8.8.8.8 2>&1); then
-    return 0
-  else
-    log_msg WARN "Internet check failed. Ping statistics: $output"
-    return 1
+get_env_var() {
+  local var_name="$1"
+  if [ -f .env ]; then
+    grep "^${var_name}=" .env | cut -d '=' -f2- | cut -d '#' -f1 | sed 's/^"//;s/"$//;s/^'"'"'//;s/'"'"'$//'
   fi
 }
 
-check_disk_space() {
-  local required_space_kb=102400 # 100MB
-  local available_space_kb
-  available_space_kb=$(df -kP . | awk 'NR==2 {print $4}')
+send_notification() {
+  local message="⚠️ MMDVM-Last-Heard Alert: $1"
+  local log_file="/var/log/mmdvmlhbot.log"
 
-  if [ "$available_space_kb" -lt "$required_space_kb" ]; then
-    log_msg WARN "⚠️ Insufficient disk space for update. Required: ${required_space_kb}KB, Available: ${available_space_kb}KB."
+  if [ -f "$log_file" ]; then
+    local log_tail=$(tail -n 10 "$log_file")
+    if [ -n "$log_tail" ]; then
+      message="$message"$'\n\n'"Last 10 log lines:"$'\n'"$log_tail"
+    fi
+  fi
+
+  if [ -f .env ]; then
+    local token=$(get_env_var "TG_TOKEN" | tr -d '[:space:]')
+    local chat_id=$(get_env_var "TG_CHATID" | tr -d '[:space:]')
+    local topic_id=$(get_env_var "TG_TOPICID" | tr -d '[:space:]')
+
+    if [ -z "$token" ] || [ -z "$chat_id" ]; then
+      return
+    fi
+
+    local curl_args=()
+    local json_data
+    local data
+
+    # Prefer jq for JSON construction
+    if command -v jq >/dev/null 2>&1; then
+      local jq_args=(--arg chat_id "$chat_id" --arg text "$message")
+      local jq_filter='{chat_id: $chat_id, text: $text}'
+      if [ -n "$topic_id" ]; then
+        jq_args+=(--arg topic_id "$topic_id")
+        jq_filter='{chat_id: $chat_id, text: $text, message_thread_id: ($topic_id | tonumber)}'
+      fi
+
+      if json_data=$(jq -n "${jq_args[@]}" "$jq_filter" 2>/dev/null); then
+        curl_args=("-H" "Content-Type: application/json" "-d" "$json_data")
+      fi
+    fi
+
+    # If jq method failed or is not available, use python fallback
+    if [ ${#curl_args[@]} -eq 0 ]; then
+      local encoded_message=$(python3 -c "import urllib.parse, sys; print(urllib.parse.quote(sys.argv[1]))" "$message")
+      data="chat_id=$chat_id"
+      if [ -n "$topic_id" ]; then
+        data="$data&message_thread_id=$topic_id"
+      fi
+      data="$data&text=$encoded_message"
+      curl_args=("--data" "$data")
+    fi
+
+    local url="https://api.telegram.org/bot$token/sendMessage"
+    for i in {1..3}; do
+      if curl -s --fail "${curl_args[@]}" "$url" >/dev/null 2>&1; then
+        return 0 # Success
+      fi
+      log_msg WARN "Failed to send notification (attempt $i/3). Retrying in 2 seconds..."
+      sleep 2
+    done
+
+    log_msg ERROR "Failed to send notification after 3 attempts."
+  fi
+}
+
+check_internet() {
+  local hosts=("1.1.1.1" "8.8.8.8" "github.com" "pypi.org")
+  for host in "${hosts[@]}"; do
+    if timeout 5 ping -q -c 1 -W 1 "$host" >/dev/null 2>&1; then
+      return 0
+    fi
+  done
+
+  log_msg WARN "Internet check failed. Could not reach any of: ${hosts[*]}"
+  return 1
+}
+
+check_disk_space() {
+  local required_space_mb=100 # 100MB
+  local available_space_mb
+  # Get the last line of df output to be robust against outputs with or without a header.
+  available_space_mb=$(df -mP . | tail -n 1 | awk '{print $4}')
+
+  # Validate that we received a numeric value before comparison.
+  if ! [[ "$available_space_mb" =~ ^[0-9]+$ ]]; then
+    log_msg WARN "⚠️ Could not determine available disk space."
+    return 1
+  fi
+
+  if [ "$available_space_mb" -lt "$required_space_mb" ]; then
+    log_msg WARN "⚠️ Insufficient disk space for update. Required: ${required_space_mb}MB, Available: ${available_space_mb}MB."
     return 1
   fi
   return 0
 }
 
 # cleanup() {
-#   rm -rf /tmp/mmdvmlhbot
-#   rm -rf /var/log/mmdvmlhbot
+#   rm -rf /var/tmp/mmdvmlhbot
+#   # rm -rf /var/log/mmdvmlhbot
 # }
 # cleanup
 #
-# if [ ! -d "/tmp/mmdvmlhbot" ]; then
-#   mkdir -p /tmp/mmdvmlhbot
-#   chown -hR $dir_own:$dir_own /tmp/mmdvmlhbot
+# if [ ! -d "/var/tmp/mmdvmlhbot" ]; then
+#   mkdir -p /var/tmp/mmdvmlhbot
+#   chown -hR $dir_own:$dir_own /var/tmp/mmdvmlhbot
 # fi
 #
 # if [ ! -d "/var/log/mmdvmlhbot" ]; then
@@ -94,20 +160,27 @@ if [ "$INTERNET_AVAILABLE" = true ] && check_disk_space; then
 
     if [ "$LOCAL" != "$REMOTE" ]; then
       log_msg INFO "Updating MMDVM-Last-Heard repository"
+      UPDATE_SUCCESS=false
       if sudo -u $dir_own timeout 60 git pull --autostash -q; then
-        if [ "$(sudo -u $dir_own git rev-parse HEAD)" = "$REMOTE" ]; then
-          log_msg INFO "Verifying repository integrity..."
-          if sudo -u $dir_own git fsck --full >/dev/null 2>&1; then
-            log_msg INFO "Update applied and verified. Restarting script..."
-            exec "$0" "$@"
-          else
-            log_msg ERROR "Repository integrity check failed! Skipping restart."
-          fi
+        UPDATE_SUCCESS=true
+      else
+        log_msg WARN "Git pull failed. Attempting to resolve conflicts by resetting to remote..."
+        if sudo -u $dir_own git reset --hard @{u}; then
+          UPDATE_SUCCESS=true
+          log_msg INFO "Reset to remote successful."
+        fi
+      fi
+
+      if [ "$UPDATE_SUCCESS" = true ] && [ "$(sudo -u $dir_own git rev-parse HEAD)" = "$REMOTE" ]; then
+        log_msg INFO "Verifying repository integrity..."
+        if sudo -u $dir_own git fsck --full >/dev/null 2>&1; then
+          log_msg INFO "Update applied and verified. Restarting script..."
+          exec "$0" "$@"
         else
-          log_msg WARN "Update completed but HEAD does not match remote. Skipping restart."
+          log_msg ERROR "Repository integrity check failed! Skipping restart."
         fi
       else
-        log_msg WARN "Git pull failed. Skipping restart."
+        log_msg WARN "Update failed or HEAD does not match remote. Skipping restart."
       fi
     else
       log_msg INFO "Repository is up to date."
@@ -139,65 +212,106 @@ command_exists() {
   command -v "$1" >/dev/null 2>&1
 }
 
-ensure_apt_packages gcc git python3-dev wget
+ensure_apt_packages gcc git python3-dev curl
 
 if command_exists uv; then
   log_msg INFO "✅ uv is installed."
 else
   if [ "$INTERNET_AVAILABLE" = true ]; then
     log_msg WARN "❌ uv is NOT installed. -> Installing uv"
-    wget -qO- https://astral.sh/uv/install.sh | sh
+    curl -LsSf https://astral.sh/uv/install.sh | sh
   else
     log_msg ERROR "❌ uv is NOT installed and cannot be installed without internet."
     exit 1
   fi
 fi
 
-if [ ! -d ".venv" ]; then
-  log_msg INFO "MMDVM-Last-Heard environment not found, creating one."
-  uv venv
-  log_msg INFO "Activating MMDVM-Last-Heard environment"
-  source .venv/bin/activate
+if [ ! -f .env ]; then
+  log_msg ERROR "❌ .env file not found! Please copy .env.sample to .env and configure it."
+  exit 1
+fi
+
+sync_dependencies() {
+  local action=$1
   if [ "$INTERNET_AVAILABLE" = true ]; then
-    log_msg INFO "Installing MMDVM-Last-Heard dependencies"
-    uv sync -q
-  else
+    log_msg INFO "$action MMDVM-Last-Heard dependencies"
+    sudo -u $dir_own uv sync -q
+  elif [ "$action" = "Installing" ]; then
     log_msg WARN "Internet unavailable. Skipping dependency installation."
   fi
-else
-  log_msg INFO "MMDVM-Last-Heard environment already exists. -> Activating MMDVM-Last-Heard environment"
-  source .venv/bin/activate
-  if [ "$INTERNET_AVAILABLE" = true ]; then
-    log_msg INFO "Updating MMDVM-Last-Heard dependencies"
-    uv sync -q
+}
+
+if [ -d ".venv" ]; then
+  if ! sudo -u $dir_own ./.venv/bin/python3 -c "import sys" >/dev/null 2>&1; then
+    log_msg WARN "⚠️ Virtual environment appears corrupted. Removing it..."
+    rm -rf .venv
   fi
+fi
+
+if [ ! -d ".venv" ]; then
+  log_msg INFO "MMDVM-Last-Heard environment not found, creating one."
+  sudo -u $dir_own uv venv
+  log_msg INFO "Activating MMDVM-Last-Heard environment"
+  sync_dependencies "Installing"
+else
+  log_msg INFO "MMDVM-Last-Heard environment exists. -> Activating MMDVM-Last-Heard environment"
+  sync_dependencies "Updating"
 fi
 
 log_msg INFO "Running MMDVM-Last-Heard"
 RESTART_DELAY=5
 MAX_DELAY=300
+MAX_RETRIES=10
+RETRY_COUNT=0
 
 while true; do
+  if [ ! -f .env ]; then
+    log_msg ERROR "❌ .env file not found! Cannot start MMDVM-Last-Heard. Exiting."
+    send_notification ".env file not found! Service stopping."
+    exit 1
+  fi
+
   START_TIME=$(date +%s)
   set +e
-  uv run -s ./src/main.py
+  sudo -u $dir_own uv run -s ./src/main.py
   exit_code=$?
   set -e
   END_TIME=$(date +%s)
 
   if [ $((END_TIME - START_TIME)) -gt 60 ]; then
     RESTART_DELAY=5
+    RETRY_COUNT=0
   fi
 
-  if [ $exit_code -ne 0 ]; then
-    log_msg ERROR "MMDVM-Last-Heard exited with code $exit_code. Re-run in ${RESTART_DELAY} seconds."
+  # Restart on any error code except 0 (success), 130 (SIGINT), 143 (SIGTERM)
+  if [ "$exit_code" -ne 0 ] && [ "$exit_code" -ne 130 ] && [ "$exit_code" -ne 143 ]; then
+    should_restart=true
   else
-    log_msg INFO "MMDVM-Last-Heard exited with code $exit_code. Re-run in ${RESTART_DELAY} seconds."
+    should_restart=false
   fi
-  sleep $RESTART_DELAY
 
-  RESTART_DELAY=$((RESTART_DELAY * 2))
-  if [ "$RESTART_DELAY" -gt "$MAX_DELAY" ]; then
-    RESTART_DELAY=$MAX_DELAY
+  if [ "$should_restart" = true ]; then
+    RETRY_COUNT=$((RETRY_COUNT + 1))
+    if [ "$RETRY_COUNT" -gt "$MAX_RETRIES" ]; then
+      log_msg ERROR "Maximum retries ($MAX_RETRIES) reached. Exiting."
+      send_notification "Maximum retries ($MAX_RETRIES) reached. Service stopping."
+      exit 1
+    fi
+
+    log_msg ERROR "MMDVM-Last-Heard exited with code $exit_code. Retry $RETRY_COUNT/$MAX_RETRIES. Re-run in ${RESTART_DELAY} seconds."
+    send_notification "MMDVM-Last-Heard exited with code $exit_code. Restarting (Retry $RETRY_COUNT/$MAX_RETRIES)..."
+    sleep $RESTART_DELAY
+
+    RESTART_DELAY=$((RESTART_DELAY * 2))
+    if [ "$RESTART_DELAY" -gt "$MAX_DELAY" ]; then
+      RESTART_DELAY=$MAX_DELAY
+    fi
+  elif [ "$exit_code" -eq 0 ]; then
+    log_msg INFO "MMDVM-Last-Heard exited normally. Stopping."
+    break
+  else
+    log_msg ERROR "MMDVM-Last-Heard exited with unrecoverable code $exit_code. Stopping."
+    send_notification "Script exited with unrecoverable code $exit_code. Service stopping."
+    exit "$exit_code"
   fi
 done

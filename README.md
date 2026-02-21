@@ -62,7 +62,7 @@ git pull --autostash
 
 Run the main script with root privileges. This script automatically:
 
-- Checks for and installs system dependencies (`gcc`, `git`, `python3-dev`, `wget`).
+- Checks for and installs system dependencies (`gcc`, `git`, `python3-dev`, `curl`).
 - Installs `uv` and sets up the Python virtual environment.
 - Updates the repository to the latest version.
 - Runs the application in a monitoring loop.
