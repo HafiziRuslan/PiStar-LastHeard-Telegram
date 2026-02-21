@@ -1,29 +1,29 @@
 [project]
-name = "MMDVM-Last-Heard"
-version = "0.1beta4"
-description = "Telegram bot to monitor the last transmissions of a MMDVM gateway"
-keywords = ["amateur-radio", "mmdvm", "pi-star", "wpsd"]
-readme = "README.md"
-license = "BSD-3-Clause"
+name = 'MMDVM-Last-Heard'
+version = '0.1beta4'
+description = 'Telegram bot to monitor the last transmissions of a MMDVM gateway'
+keywords = ['amateur-radio', 'mmdvm', 'pi-star', 'wpsd']
+readme = 'README.md'
+license = 'BSD-3-Clause'
 authors = [
-  { name = "Luca", email = "61653175+iu2frl@users.noreply.github.com" },
-  { name = "Hafizi Ruslan", email = "9w2lgx@mhrtech.my" },
+  { name = 'Luca', email = '61653175+iu2frl@users.noreply.github.com' },
+  { name = 'Hafizi Ruslan', email = '9w2lgx@mhrtech.my' },
 ]
-maintainers = [{ name = "Hafizi Ruslan", email = "9w2lgx@mhrtech.my" }]
+maintainers = [{ name = 'Hafizi Ruslan', email = '9w2lgx@mhrtech.my' }]
 classifiers = [
-  "Development Status :: 4 - Beta",
-  "Programming Language :: Python",
+  'Development Status :: 4 - Beta',
+  'Programming Language :: Python',
 ]
 urls.github = 'https://github.com/HafiziRuslan/MMDVM-Last-Heard'
 urls.repository = 'https://github.com/HafiziRuslan/MMDVM-Last-Heard.git'
 urls.sourcecode = 'https://github.com/0x9900/aprstar.git'
 urls.history = 'https://github.com/HafiziRuslan/MMDVM-Last-Heard/blob/master/CHANGELOG.md'
 urls.issuetracker = 'https://github.com/HafiziRuslan/MMDVM-Last-Heard/issues'
-requires-python = ">=3.13"
+requires-python = '>=3.13'
 dependencies = [
-  "humanize>=4.15.0",
-  "python-dotenv>=1.2.1",
-  "python-telegram-bot>=22.6",
+  'humanize>=4.15.0',
+  'python-dotenv>=1.2.1',
+  'python-telegram-bot>=22.6',
 ]
 
 [tool.ruff]
