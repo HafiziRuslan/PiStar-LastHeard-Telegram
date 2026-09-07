@@ -2,14 +2,14 @@
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
   "version": 1,
-  "serialNumber": "urn:uuid:7e4c6636-59a1-4a7d-8e0a-d635942581e2",
+  "serialNumber": "urn:uuid:8125d4a1-b403-4f7c-85b6-39aae87a1303",
   "metadata": {
-    "timestamp": "2026-09-03T22:50:29.956316300Z",
+    "timestamp": "2026-09-07T12:06:19.758743200Z",
     "tools": [
       {
         "vendor": "Astral Software Inc.",
         "name": "uv",
-        "version": "0.12.9"
+        "version": "0.12.10"
       }
     ],
     "component": {
@@ -28,10 +28,10 @@
   "components": [
     {
       "type": "library",
-      "bom-ref": "anyio-2@4.15.0",
+      "bom-ref": "anyio-2@4.15.1",
       "name": "anyio",
-      "version": "4.15.0",
-      "purl": "pkg:pypi/anyio@4.15.0"
+      "version": "4.15.1",
+      "purl": "pkg:pypi/anyio@4.15.1"
     },
     {
       "type": "library",
@@ -112,7 +112,7 @@
   ],
   "dependencies": [
     {
-      "ref": "anyio-2@4.15.0",
+      "ref": "anyio-2@4.15.1",
       "dependsOn": [
         "idna-8@3.19",
         "typing-extensions-12@4.16.0"
@@ -134,7 +134,7 @@
     {
       "ref": "httpx-6@0.28.1",
       "dependsOn": [
-        "anyio-2@4.15.0",
+        "anyio-2@4.15.1",
         "certifi-3@2026.7.22",
         "httpcore-5@1.0.9",
         "idna-8@3.19"
