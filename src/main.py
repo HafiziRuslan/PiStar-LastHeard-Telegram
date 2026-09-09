@@ -1088,48 +1088,48 @@ class MMDVMLogLine:
 		mode_icon = self._ICONS.get(self.mode, '📶')
 		display_mode = 'DVSwitch' if self.mode in ('DVS', 'DVSwitch') else self.mode
 
-		message = f'{mode_icon} Mode: <b>{display_mode}</b>'
+		message = f'{mode_icon} <b>Mode</b>: {display_mode}'
 		if self.mode == 'DMR' or self.mode == 'DMR-D':
 			message += f' (Slot {self.slot})'
 		time = (self.timestamp.replace(tzinfo=dt.timezone.utc) or dt.datetime.now()).astimezone().isoformat(timespec='milliseconds')
-		message += f'\n🕒 Time: <b>{time}</b>'
+		message += f'\n🕒 <b>Time</b>: {time}'
 		if self.url:
-			message += f'\n🎙️ Caller: <b><a href="{self.url}">{self.callsign}</a>{self.get_caller_location()}</b>'
+			message += f'\n🎙️ <b>Caller</b>: <a href="{self.url}">{self.callsign}</a>{self.get_caller_location()}'
 		else:
-			message += f'\n🎙️ Caller: <b>{self.callsign}{self.get_caller_location()}</b>'
-		message += f'\n\t🛰️ via: {"RF" if not self.is_network else "NET"}\n🔊 Target: <b>{self.destination}{self.get_talkgroup_name()}</b>'
+			message += f'\n🎙️ <b>Caller</b>: {self.callsign}{self.get_caller_location()}'
+		message += f'\n\t🛰️ via: {"RF" if not self.is_network else "NET"}\n🔊 <b>Target</b>: {self.destination}{self.get_talkgroup_name()}'
 		if self.is_voice:
-			message += '\n🗣️ Type: <b>Voice</b>'
+			message += '\n🗣️ <b>Type</b>: Voice'
 			if self.is_kerchunk:
 				message += ' (Kerchunk)'
 			else:
 				message += (
-					f'\n⏱️ Duration: <b>{humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit="seconds", format="%0.0f")}</b>'
+					f'\n⏱️ <b>Duration</b>: {humanize.precisedelta(dt.timedelta(seconds=self.duration), minimum_unit="seconds", format="%0.0f")}'
 				)
 				if self.ber > 0:
-					message += f'\n📊 BER: <b>{self.ber}%</b>'
+					message += f'\n📊 <b>Bit Error Rate</b>: {self.ber}%'
 				if self.is_network:
 					if self.packet_loss > 0:
-						message += f'\n📈 PL: <b>{self.packet_loss}%</b>'
+						message += f'\n📈 <b>Packet Loss</b>: {self.packet_loss}%'
 				else:
-					message += f'\n📶 RSSI: <b>{self.rssi}</b>'
+					message += f'\n📶 <b>Received Signal Strength Indicator</b>: {self.rssi}'
 		else:
-			message += f'\n💾 Type: <b>Data {self.data_type.split()[-1].title()}</b>'
+			message += f'\n💾 <b>Type</b>: Data {self.data_type.split()[-1].title()}'
 			if self.block > 0:
-				message += f'\n📦 Blocks: <b>{self.block}</b>'
+				message += f'\n📦 <b>Blocks</b>: {self.block}'
 		if self.is_watchdog:
-			message += '\n\n⚠️ Warning: <b>Network watchdog expired</b>'
+			message += '\n\n⚠️ <b>Warning</b>: Network watchdog expired'
 		if self.mode == 'D-Star':
 			if self.destination.startswith('CQCQCQ'):
-				message += '\n\n📢 Action: <b>Call to all stations</b>'
+				message += '\n\n📢 <b>Action</b>: Call to all stations'
 			elif self.destination.endswith('L'):
-				message += f'\n\n🔗 Action: <b>Link to {self.destination[:-1]}</b>'
+				message += f'\n\n🔗 <b>Action</b>: Link to {self.destination[:-1]}'
 			elif self.destination.endswith('U'):
-				message += '\n\n❌ Action: <b>Unlink reflector</b>'
+				message += '\n\n❌ <b>Action</b>: Unlink reflector'
 			elif self.destination.endswith('I'):
-				message += '\n\nℹ️ Action: <b>Get repeater info</b>'
+				message += '\n\nℹ️ <b>Action</b>: Get repeater info'
 			elif self.destination.endswith('E'):
-				message += '\n\n🔄 Action: <b>Echo test</b>'
+				message += '\n\n🔄 <b>Action</b>: Echo test'
 		return message
 
 
@@ -1224,10 +1224,10 @@ class LogObserver:
 						msg = f'📃 {app_name_short} '
 						if current_log_path:
 							msg += (
-								f'Log Changed\nOld Log: <s>{os.path.basename(current_log_path)}</s>\nNew Log: <b>{os.path.basename(latest_log)}</b>'
+								f'Log Changed\nOld Log: <s>{os.path.basename(current_log_path)}</s>\n<b>New Log</b>: {os.path.basename(latest_log)}'
 							)
 						else:
-							msg += f'Monitoring\nLog: <b>{os.path.basename(latest_log)}</b>'
+							msg += f'Monitoring\n<b>Log</b>: {os.path.basename(latest_log)}'
 						await self.telegram_bot.queue_message(msg)
 					current_log_path = latest_log
 				if current_log_path:
