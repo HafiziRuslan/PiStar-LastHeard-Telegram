@@ -2,14 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
-## [beta10] - (2026-09-07T20:07:21+08:00)
+## [beta10] - (2026-09-10T06:36:07+08:00)
 
-- 7 commit(s) contributed to the release.
-- 35 day(s) passed between releases.
+- 8 commit(s) contributed to the release.
+- 37 day(s) passed between releases.
 
 ### 🐛 Bug Fixes in beta10
 
 - [32c1dcc](https://github.com/HafiziRuslan/MMDVM-LastHeard/commit/32c1dcce1851df5cd556d92b085fbb604849a585) fix artifacts value *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-08-09T07:02:12+08:00*
+
+### 🚜 Refactor in beta10
+
+- [e97dfd2](https://github.com/HafiziRuslan/MMDVM-LastHeard/commit/e97dfd205a2aa49f386e356886c3a532a21a1520) refactor(telegram): reformat message labels and order *by [@HafiziRuslan](https://github.com/HafiziRuslan) on 2026-09-10T06:36:07+08:00*
 
 ### ⚙️ Miscellaneous Tasks in beta10
 
@@ -640,4 +644,4 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-generated using git-cliff at 2026-09-07T20:08:27.221466088+08:00
+generated using git-cliff at 2026-09-10T06:37:16.463796978+08:00
